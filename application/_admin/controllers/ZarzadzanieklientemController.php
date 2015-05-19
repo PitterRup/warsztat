@@ -34,7 +34,7 @@ class ZarzadzanieklientemController extends AdminController {
 				$this->_request->goToAddress($this->directoryUrl . '/zarzadzanieklientem/newcustomer/type/msg', 0);
 			}
 			else {
-				$this->_request->goToAddress($this->directoryUrl . '/zarzadzanieklientem/newcar/clientid/'.$id, 0);
+				$this->_request->goToAddress($this->directoryUrl . '/zarzadzanieklientem/newcar/clientid/'.$id.'/type/msg', 0);
 			}
 		}
 	}
@@ -53,7 +53,7 @@ class ZarzadzanieklientemController extends AdminController {
 			$Manage = new Managecustomer();
 			if (!$Manage->addCar($postdata)) {
 				$this->msg(false,"Samochód nie został dodany.");
-				$this->_request->goToAddress($this->directoryUrl . '/zarzadzanieklientem/newcar', 0);
+				$this->_request->goToAddress($this->directoryUrl . '/zarzadzanieklientem/newcar/clientid/$param/msg', 0);
 			}
 			else {
 				$this->msg(true,"Klient został zapisany.");
