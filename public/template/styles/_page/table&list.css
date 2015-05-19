@@ -1,0 +1,334 @@
+/* table */
+ul.table {
+	position: relative;
+	float: left;
+	width: 820px;
+	margin: 0px 0 0 15px;
+	font-family: century gothic;
+	list-style: none;
+}
+ul.table li {
+	width: 820px;
+	min-height: 26px;
+	line-height: 26px;
+	position: relative;
+	clear: both;
+    float: left;
+}
+
+/* inaczej zrobione tabele */
+ul.productTable { 
+	margin-left: 37px!important; 
+	width: 775px!important;
+}
+ul.productTable li { width: 775px!important; }
+ul.chooseTable {
+	margin: 0 0 50px 136px;
+	width: 726px;
+}
+ul.chooseTable li { width: 726px; }
+ul.catTable {
+	width: 732px;
+	margin-left: 59px;
+}
+ul.catTable li { width: 732px; }
+ul.long { 
+	width: 726px; 
+	margin-left: 136px;
+	margin-top: 0px;
+}
+ul.long li { width: 726px; }
+
+ul.productTable .znak,
+ul.productTable .state {
+	position: absolute;
+	top: 7px;
+	left: -27px;
+	background: #EA0202;
+	box-shadow: 1px 1px 2px 0px black;
+	font-size: 12px;
+	color: white;
+	border-radius: 4px;
+	padding: 2px 4px;
+}
+ul.productTable .znak {
+	top: 3px;
+	left: -35px;
+	background: #F9C700;
+}
+
+/*child*/
+ul.table ul.child {
+	margin: 0;
+	padding: 0;
+	display: none;
+	float: left;
+	clear: both;
+	list-style: none;
+	border-left: 1px solid #D1D1D1;
+}
+ul.table li.last ul.child { border-left: none; }
+
+ul.table li.naglowek .col {
+	background: none;
+	color: #333333;
+	font-size: 12px;
+	line-height: 36px;
+	text-align: center;
+	overflow: hidden;
+}
+ul.table li.naglowek .col.textBig {
+	font-size: 18px;
+	line-height: 29px;
+}
+ul.table li.naglowek .col.twoLevelText {
+	line-height: 12px;
+}
+ul.table li.high>.col {
+	height: 80px;
+}
+ul.table li.middle>.col {
+	height: 39px;
+	line-height: 39px;
+}
+
+ul.table li:not(.naglowek):hover>.col .abRow,
+ul.table li:not(.naglowek):hover>.col:not(.treeCol):not(.moveCol):not(.wl),
+ul.table li:not(.naglowek):hover>.col>.level>.col {
+	background: #BCBCBC;
+}
+
+/* hiddenObj */
+ul.table li.hiddenObj>.titleCol{
+	color: #A1A1A1;
+}
+
+/* placeholder */
+ul.table li.liPlaceHolder {
+	width: 805px;
+	margin-left:15px;
+	background: #f8f8f8;
+}
+
+/* col */
+ul.table .col {
+	float: left;
+	background: #CCCCCC;
+	margin: 0 5px 2px 0;
+	height: 26px;
+	line-height: 26px;
+	font-size: 15px;
+	text-align: center;
+	display: block;
+	position: relative;
+}
+ul.table .col.wl { background: none; }
+ul.table .last {
+	margin-right: 0;
+}
+
+/* highligh i a */
+ul.table .col a {
+	color: black;
+	text-decoration: none;
+	display: block;
+}
+ul.table .col .highlight {
+	margin-top: 6px;
+}
+
+/* moveCol */
+ul.table .col.moveCol { 
+	width: 10px;
+	background: none; 
+}
+ul.table>li:not(.naglowek):hover>.col.moveCol {
+	background: url(../../img/admin/move-blog-icon.png) 50% no-repeat;
+	cursor: url(../../img/admin/cursor_hand.png) 12 10, pointer;
+}
+
+/* moreCol */
+ul.table .col.moreCol {
+	line-height: 22px;
+	margin-right: 0;
+}
+
+/* titleCol */
+ul.table .col.titleCol {
+	padding-left: 20px;
+	text-align: left;
+}
+ul.table .col.inputCol input,
+ul.table .col.titleCol input { 
+	width: 90%;
+	font-size: 15px;
+    line-height: 26px;
+    background: none; 
+    border: none;
+    font-family: century gothic;
+}
+ul.productTable .col.inputCol input,
+ul.productTable .col.titleCol input {
+	text-align: center;
+}
+ul.productTable .col.inputCol input { color: #b9b9b9; }
+ul.productTable .col select {
+	width: 90%;
+	height: 25px;
+	line-height: 25px;
+	text-align: center;
+	margin-top: 8px;
+}
+ul.productTable .col select option {
+	padding: 2px 10px;
+	text-align: left;
+}
+
+/* treeCol */
+ul.table .col.treeCol {
+	height: 28px;
+	background: none;
+	border-left: 1px solid #D1D1D1;
+	margin: 0;
+}
+ul.table li.naglowek .col.treeCol,
+ul.table .col.treeCol.hide {
+	border: none;
+}
+ul.table .col.treeCol.ft {
+	height: 15px;
+	margin: 13px 0 0 0;
+}
+ul.table .col.treeCol.lt {
+	height: 13px;
+}
+ul.table .col.treeCol.ftC {
+	margin-top: -15px;
+	height: 43px;
+}
+ul.table .col.treeCol.ftC.lt {
+	height: 28px!important;
+}
+ul.table .col.treeCol.ftC .hLine {
+	margin-top: 27px;
+}
+ul.table .col.treeCol .hLine {
+	border-top: 1px solid #D1D1D1;
+	display: block;
+    margin-top: 12px;
+}
+ul.table .col.treeCol.hide .hLine {
+	border: none;
+}
+ul.table .col.treeCol.ft .hLine { margin-top: 0px; }
+
+/* opCol */
+ul.table li:not(.naglowek) .col.opCol { 
+	line-height: 22px;
+	position: relative;
+	cursor: pointer;
+}
+ul.productTable .col.opCol {
+	height: 39px;
+}
+ul.table .col.opCol .highlight {
+	margin-top: 0px;
+	width: 100%;
+	height: 100%;
+}
+ul.table .col.opCol .highlight>img { margin-top: 6px; }
+ul.productTable .col.opCol .highlight>img { margin-top: 12px; }
+
+/* imgCol */
+ul.table .col.imgCol {
+	overflow: hidden;
+	position: relative;
+}
+ul.table li:not(.naglowek):hover .col.imgCol {
+	overflow: visible;
+}
+ul.table li:not(.naglowek):hover .col.imgCol img {
+	position: absolute;
+	z-index: 200;
+	left: 0;
+	top: 0;
+	box-shadow: 0 0 2px 1px #222222;
+}
+
+/* level */
+ul.table .level {
+	float: left;
+	margin: 0 2px 2px 0;
+}
+ul.table .level.last { margin-right: 0px; }
+ul.table .level .col { 
+	height: 39px; 
+	line-height: 39px;
+	margin: 0;
+}
+ul.table .col .number {
+	font-size: 17px;
+}
+
+/* abRow */
+ul.table .col .abRow {
+	position: absolute; 
+	bottom: 0px; 
+	left: 0px;
+	display: block;
+	font-size: 14px; 
+	background: #ccc; 
+	width: 100%;
+}
+
+
+
+/* kolory i wzory */
+ul.list {
+	margin: 0 0 0 136px;
+	padding: 0;
+	float: left;
+	clear: both;
+	list-style: none;
+	width: 726px;
+}
+ul.list li {
+	float: left;
+	width: 151px;
+	line-height: 25px;
+	padding: 0 20px 0 0;
+	margin-right: 10px;
+	position: relative;
+	text-align: center;
+}
+ul.list li:hover a,
+ul.list li.active a{
+	color: black;
+	font-size: 16px;
+}
+ul.list li.add { 
+	font-size: 14px; 
+}
+ul.list li.add:hover {  
+	text-decoration: underline; 
+}
+ul.list li.add:hover a {font-size: 14px; }
+ul.list li a.miniMenu {
+	display: none;
+	position: absolute;
+	right: 4px;
+	top: 6px;
+}
+ul.list li:hover a.miniMenu { display: block; }
+ul.list li a { 
+	display: block;
+	color: #666666;
+	line-height: 25px;
+	font-size: 14px;
+	text-decoration: none; 
+}
+ul.list li input {
+	width: 151px!important;
+	height: 25px!important;
+	display: none;
+}

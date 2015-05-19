@@ -1,0 +1,18 @@
+<div class="objectMenu tableObjectMenu">
+	<div class="row">
+		<div class="icon"></div>
+		<div class="text"><a href="<?= $this->directoryUrl.'/clients/show/id/'.$this->customer['id']; ?>">Pokaż więcej informacji</a></div>
+	</div>
+	<div class="row">
+		<div class="icon"></div>
+		<div class="text"><a href="<?= $this->directoryUrl.'/transactions/list/customerId/'.$this->customer['id']; ?>">Edytuj dane osobowe</a></div>
+	</div>
+	<div class="row">
+		<div class="icon"></div>
+		<div class="text"><a href="<?= $this->directoryUrl.'/zarzadzanieklientem/newcar/clientid/'.$this->customer['id']; ?>">Dodaj samochód</a></div>
+	</div>
+	<div class="row">
+		<div class="icon" style="margin-top: 2px"><img src="<?= $this->baseUrl.'/public/template/img/admin/remove-blog-hover-icon.png'; ?>"/></div> 
+		<div class="text"><a ajax="yes" ajax-link="<?= $this->directoryUrl.'/clients/delete/id/'.$this->customer['id']; ?>" ajax-options="remove:true,text:yes">Usuń</a></div>
+	</div>
+</div>

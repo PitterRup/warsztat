@@ -1,0 +1,51 @@
+<div style="padding: 20px">
+	<form action="<?= $this->directoryUrl.'/zarzadzanieklientem/newcar/clientid/'.$this->clientid.'/type/noContent'; ?>" method="POST" class="form saveBoxOn settingsForm">
+		<p class="h2">Nowy samochód</p>
+		<div class="group">
+			<div class="row">
+				<label>Model </label>
+				<input type="text" name="dane[model]">
+			</div>
+			<div class="row">
+				<label>Marka </label>
+				<input type="text" name="dane[marka]">
+			</div>
+			<div class="row">
+				<label>Rok produkcji </label>
+				<input type="text" name="dane[rok]">
+			</div>
+			<div class="row">
+				<label>Przebieg </label>
+				<input type="text" name="dane[przebieg]">
+			</div>
+			<div class="row">
+				<label>Wersja wyposażenia </label>
+				<input type="text" name="dane[wersja]">
+			</div>
+			<div class="row">
+				<label>Rodzaj nadwozia <span class="small">sedan, lift-back, hatch-back, kombi, pick-up, kabriolet, minivan</span></label>
+				<input type="text" name="dane[nadwozie]">
+			</div>
+			<div class="row">
+				<label>Pojemność silnika <span class="small">w centrymatrach sześciennych</span></label>
+				<input type="text" name="dane[pojemnosc]">
+			</div>
+			<div class="row">
+				<label>Moc silnika <span class="small">w KM</span></label>
+				<input type="text" name="dane[moc]">
+			</div>
+			<div class="row">
+				<label>Rodzaj silnika <span class="small">TDI, SDI ...</span></label>
+				<input type="text" name="dane[rodzajsil]">
+			</div>
+			<div class="row">
+				<label>Rodzaj oleju silnikowego</label>
+				<input type="text" name="dane[rodzajol]">
+			</div>
+			<div class="row">
+				<label>Napęd <span class="small">4x4, tył, przód</span></label>
+				<input type="text" name="dane[naped]">
+			</div>
+		</div>
+	</form>
+</div>

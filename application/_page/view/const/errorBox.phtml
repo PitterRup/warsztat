@@ -1,0 +1,11 @@
+<?php	
+	if(isset($_SESSION[$this->_config->dbTableNames->Klient]["msg"]["text"]) && !empty($_SESSION[$this->_config->dbTableNames->Klient]["msg"]["text"])) {
+		if($this->_getParam('type')=='msg') { 
+			$state = $_SESSION[$this->_config->dbTableNames->Klient]['msg']['state'];
+			$text = $_SESSION[$this->_config->dbTableNames->Klient]['msg']['text'];
+			if(isset($_SESSION[$this->_config->dbTableNames->Klient]['msg']['state'])) unset($_SESSION[$this->_config->dbTableNames->Klient]['msg']); 
+		}
+	}
+	
+	echo '<div id="errorBox" class="'.$state.'">'.$text.'</div>';
+?>

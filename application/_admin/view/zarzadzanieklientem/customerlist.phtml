@@ -1,0 +1,19 @@
+<p class="h2">Lista klientów</p>
+<ul class="table productTable" model="Customers" loadState="1" paramsLink="<?= $this->_request->params; ?>" treeEdit="no">
+	<li class="naglowek">
+		<div class="col" style="width:60px">id</div>
+		<div class="col" style="width:255px">imię i nazwisko</div>
+		<div class="col" style="width:180px">NIP/PESEL</div>
+		<div class="col" style="width:195px">telefon</div>
+		<div class="col last" style="width:60px">opcje</div>
+	</li>
+	<?php foreach($this->customers as $this->customer): ?>
+		<li class="middle">
+			<div class="col" style="width: 60px;"><?= $this->customer['id']; ?></div>
+			<div class="col" style="width:255px;"><?= $this->customer['nazw']; ?></div>
+			<div class="col" style="width:180px; font-size: 14px;"><?= $this->customer['nip_pesel']; ?></div>
+			<div class="col" style="width:195px; font-size: 14px;"><?= $this->customer['nr_tel']; ?></div>
+			<div class="col opCol" style="width: 60px"><div class="highlight" onclick="javascript:objectMenu.toggle($(this));"><?= $this->buttonListEdit; ?><?= $this->renderContent("zarzadzanieklientem/editMenu.phtml"); ?></div></div>
+		</li>
+	<?php endforeach; ?>
+</ul>

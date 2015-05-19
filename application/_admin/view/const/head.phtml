@@ -1,0 +1,17 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />  
+<link rel="icon" href="<?= $this->baseUrl; ?>/public/template/<?= $this->_layoutPath; ?>img/favicon.png" />
+<!--[if lt IE 8]>
+<link rel="shortcut icon" href="<?= $this->_request->baseUrl; ?>/public/template/<?= $this->_layoutPath; ?>img/favicon.ico" />
+<![endif]-->
+<meta name="author" content="Piotrek Kusiak, Andrzej Kusiak">
+<meta name="robots" content="noindex, nofollow" />          
+<?php 
+	echo '<link rel="stylesheet" type="text/css" href="'.$this->baseUrl.'/public/template/'.$this->_layoutPath.'styles/_admin/main.css">
+	'.$this->_getLinkScript().'
+	<script type="text/javascript" src="'.$this->baseUrl.'/public/js/jquery.js"></script>
+	<script type="text/javascript" src="'.$this->baseUrl.'/public/js/_main.js"></script>
+	<script type="text/javascript"> _baseUrl = "'.$this->baseUrl.'"; _directoryUrl = "'.$this->directoryUrl.'"; _paramsLink = "'.$this->_request->paramsLink.'"; </script>
+	<script type="text/javascript" src="'.$this->baseUrl.'/public/js/_admin/main.js"></script>'
+	.$this->_getHeadScript(); 
+?>
+<title>Warsztat samochodowy</title>

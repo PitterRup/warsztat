@@ -1,0 +1,33 @@
+#infoContainer .info {
+	display: none; 
+	position: absolute; 
+	z-index: 420!important;
+}
+#infoContainer .info .text {
+	position: relative; 
+	background: #333333; 
+	display: block; 
+	max-width: 300px; 
+	width: 300px; 
+	font-size: 11px; 
+	color: #DEDEDE; 
+	padding: 5px 15px 5px 15px; 
+	border: 1px solid #242424; 
+	line-height: 15px;
+	border-radius: 5px;
+}
+#infoContainer .info .strzalka {
+	position: absolute; 
+	left:0; 
+	top:0; 
+	width: 5px;
+	height: 5px;
+}
+#infoContainer .info .strzalka.bottomPos
+{ background: url(img/infoBottom.png) no-repeat; }
+#infoContainer .info .strzalka.topPos
+{ background: url(img/infoTop.png) no-repeat; }
+#infoContainer .info .strzalka.leftPos
+{ background: url(img/infoLeft.png) no-repeat; }
+#infoContainer .info .strzalka.rightPos
+{ background: url(img/infoRight.png) no-repeat; }

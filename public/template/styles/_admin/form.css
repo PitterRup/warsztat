@@ -1,0 +1,281 @@
+/* standard dla wszystkich elementów */
+input[type=checkbox] {
+	float: left;
+	width: auto;
+	margin: 11px 15px 0 0;
+	line-height: 25px;
+}
+input[type=text],
+input[type=password],
+select,
+textarea {
+	border-top: 1px solid #A3A3A3;
+	border-right: 1px solid #BFBDBD;
+	border-bottom: 1px solid #CECCCC;
+	border-left: 1px solid #BFBDBD;
+	background: white;
+	box-shadow: inset 0 0 1px 0px #A3A3A3;
+}
+input[type=text]:focus,
+input[type=password]:focus,
+textarea:focus {
+	box-shadow: inset 0 0 2px 0px #7CA0F4;
+	border-color: #7CA0F4;
+}
+
+
+/* Formularze */
+.formLogin {
+	width: 430px;
+	margin: 31px auto 0px auto;
+}
+.formLogin .row label {
+	width: 115px!important;
+}
+.formLogin .row input {
+	width: 161px!important;
+}
+
+.form {
+	width: 100%;
+	position: relative;
+}
+.form .row
+{
+	width: 100%;
+	margin: 0 0 5px 0;
+	min-height: 25px;
+	line-height: 25px;
+	clear: both;
+	overflow: hidden;
+}
+.form .row2
+{
+	width: 100%;
+	margin: 0 0 5px 0;
+	min-height: 25px;
+	line-height: 25px;
+}
+.form .row label.twoRow
+{
+	width: 100%;
+}
+.form .row label.panel
+{
+	font-size: 13px;
+	text-align: left;
+}
+.form .row label.blackBg
+{
+	color: #f2f0f0;
+	font-size: 14px;
+}
+.form .row label
+{
+	text-align: right;
+	display: block;
+	float:left;
+	width: 250px;
+	min-height: 25px;
+	line-height: 25px;
+	margin-right: 10px;
+	font-size: 14px;
+	font-family: century gothic;
+}
+.form .row span.textLine {
+	text-align: left;
+	font-size: 16px;
+}
+.form .row input[type=text],
+.form .row input[type=password] {
+	float: left;
+	width: 200px;
+	height: 25px;
+	line-height: 25px;
+	padding: 0 5px;
+}
+.logIn
+{
+	background: url(../../img/admin/login.png) 50% 50% no-repeat;
+	width: 100px!important;
+	height: 13px;
+	border: 0px;
+	cursor: pointer;
+	text-indent: -2000px;
+}
+input.txt
+{
+	border: 1px solid #808080;
+}
+input.txt:focus
+{
+	background: url(../../img/admin/bg_input.jpg) repeat-x;
+}
+
+.longInput
+{
+	width: 250px!important;
+}
+.form .row .button
+{
+	width: auto;
+	height: auto;
+}
+.form .row .submit
+{
+	float: right;
+	margin-right: 116px;
+	margin-top: 5px;
+}
+.rowCenter {
+	text-align: center!important;
+	margin-top: 40px;
+}
+.rowCenter .group2,
+.rowCenter .group {
+	clear: both;
+	margin: 13px 0;
+	float: left;
+	overflow: hidden;
+	width: 100%;
+}
+.rowCenter .group2 {
+	margin: 0 0 13px 0;
+}
+.rowCenter .blackColor {
+	color: #333333!important;
+}
+.rowCenter .row { 
+	overflow: hidden; 
+	clear: both;
+}
+.rowCenter .row input[type=text],
+.rowCenter .row input[type=password],
+ul.list li input[type=text] {
+	background: none repeat scroll 0 0 #F5F5F5;
+    border: 1px solid #B9B9B9;
+    font-size: 18px;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    width: 996px;
+    color: #B9B9B9;
+}
+.rowCenter .row.short {
+	text-align: left;
+}
+.rowCenter .row.short input[type=text],
+.rowCenter .row.short input[type=password] {
+	width: 100px;
+}
+.rowCenter .row.short span {
+	float: left;
+    font-size: 20px;
+    line-height: 36px;
+    margin: 0 10px;
+}
+.rowCenter .row textarea {
+	background: none repeat scroll 0 0 #F5F5F5;
+    border: 1px solid #B9B9B9;
+    color: #B9B9B9;
+    height: 200px;
+    width: 986px;
+    padding: 5px;
+}
+.rowCenter .row .withPromotion {
+	float: left;
+	line-height: 34px;
+	padding: 0 22px;
+}
+.rowCenter label {
+	text-align: center!important;
+}
+
+.rowCenter .row select {
+	float: left;
+	width: 200px;
+	height: 36px;
+	background: none repeat scroll 0 0 #F5F5F5;
+    border: 1px solid #B9B9B9;
+    color: #b9b9b9;
+    font-size: 18px;
+    line-height: 36px;
+    text-align: center;
+}
+ul.list li input:focus,
+.rowCenter .row select:focus,
+.rowCenter .row input[type=text]:focus,
+.rowCenter .row input[type=password]:focus
+{
+	color: #333;
+	border: 1px solid #565656;
+}
+.rowCenter .row select:blur,
+.rowCenter .row input[type=text]:blur,
+.rowCenter .row input[type=password]:blur  
+{
+	color: #b9b9b9;
+	border: 1px solid #B9B9B9;
+}
+
+.form .row.uploadImages {
+	text-align: left;
+	overflow: hidden;
+}
+
+.group .row .text {
+	display: block;
+    float: left;
+    font-family: arial;
+    font-size: 12px !important;
+}
+
+.formGroup .group {
+	margin: 20px;
+	float: left;
+	overflow: hidden;
+}
+
+/* hiddenSpace */
+.form .hiddenSpace {
+	display: none;
+	overflow: hidden;
+	clear: both;
+	float: left;
+}
+
+
+/* settingsForm */
+.settingsForm .row {
+	float: left;
+	padding: 20px 0;
+	overflow: hidden;
+	border-top: 1px solid #999;
+}
+.settingsForm .row:first-child {
+	border-top: none;
+}
+.settingsForm .row label {
+	text-align: left;
+	font-size: 14px;
+	color: #222222;
+	width: 200px;
+}
+.settingsForm .row .small {
+	color: #999;
+	font-size: 11px;
+	display: block;
+	text-align: left;
+	line-height: 14px;
+}
+
+.settingsForm .row input[type=password],
+.settingsForm .row input[type=text] {
+	padding: 0 5px;
+	width: 500px;
+}
+.settingsForm .row textarea {
+	padding: 5px;
+	width: 500px;
+	height: 70px;
+}

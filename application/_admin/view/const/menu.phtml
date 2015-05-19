@@ -1,0 +1,39 @@
+<div id="menu">
+	<ul class="firstLevel">
+		<!-- KLIENCI -->
+		<li class="<?= $this->_controllerName=='zarzadzanieklientem' ? 'active':''; ?>">
+			<a><span class="title">Klienci</span></a>
+			<ul class="child">
+				<li><a href="<?= $this->directoryUrl.'/zarzadzanieklientem/newcustomer'; ?>">Nowy klient</a></li>
+				<li><a href="<?= $this->directoryUrl.'/zarzadzanieklientem/customerlist'; ?>">Przeglądaj klientów</a></li>
+			</ul>
+		</li>
+
+		<!-- MECHANICY -->
+		<li class="<?= $this->_controllerName=='mechanicy' ? 'active':''; ?>">
+			<a><span class="title">Mechanicy</span></a>
+			<ul class="child">
+				<li><a href="">Nowy mechanik</a></li>
+				<li><a href="">Przeglądaj mechaników</a></li>
+			</ul>
+		</li>
+
+		<!-- STANOWISKA -->
+		<li class="<?= $this->_controllerName=='stanowiska' ? 'active':''; ?>">
+			<a><span class="title">Stanowiska</span></a>
+			<ul class="child">
+				<li><a href="">Nowe stanowisko</a></li>
+				<li><a href="">Przeglądaj stanowiska</a></li>
+			</ul>
+		</li>
+
+		<!-- OBSŁUGA KLIENTA -->
+		<li class="<?= $this->_controllerName=='obsluga' ? 'active':''; ?>">
+			<a><span class="title">Obsługa klienta</span></a>
+			<ul class="child">
+				<li><a href="">Nowy pracownik</a></li>
+				<li><a href="">Przeglądaj pracowników</a></li>
+			</ul>
+		</li>
+	</ul>
+</div>

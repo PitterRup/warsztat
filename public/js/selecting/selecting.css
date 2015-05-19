@@ -1,0 +1,56 @@
+/* zaznaczenie obiektów */
+#selection {
+	position: absolute;
+	display: none;
+	border: 1px solid #3399FF;
+	background: url("bg.png");
+	z-index: 200;
+}
+#selectMenu {
+	position: absolute;
+	width: 190px;
+	border: 1px solid #B9B9B9;
+	background: #F5F5F5;
+	padding: 5px;
+	z-index: 301;
+	display: none;
+	box-shadow: 3px 3px 6px -3px #222222;
+}
+#selectMenu ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+#selectMenu ul li {
+    color: rgb(125,125,125);
+    display: block;
+    height: 23px;
+    line-height: 23px;
+    width: 190px;
+    margin: 0;
+}
+#selectMenu ul li a {
+	border-bottom: 1px dashed #C3C3C3;
+	color: rgb(125,125,125);
+	text-decoration: none;
+	font-size: 15px;
+	display: block;
+	padding: 0 5px 0 5px;
+	width: 180px;
+	height: 100%;
+}
+#selectMenu ul li.last a {
+	border-bottom: none;
+}
+#selectMenu ul li a .name {
+	display: block;
+	width: 115px;
+	float: left;
+}
+#selectMenu ul li a .key {
+	color: #C9C9C9;
+	font-size: 13px;
+	display: block;
+	width: 65px;
+	float: right;
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pl" lang="pl">
+<head><?= $this->renderContent("const/head.phtml"); ?></head>                       
+<body baseUrl="<?= $this->baseUrl; ?>" directoryUrl="<?= $this->directoryUrl; ?>" currentUrl="<?= $this->currentUrl; ?>" controllerName="<?= $this->_controllerName; ?>" actionName="<?= $this->_actionName; ?>">
+         
+	<!-- Warstwa przysłaniająca stronę w czasie czekania na ajaxa (z loaderem) -->
+	<div id="overflow"><div id="loader"></div></div>
+
+
+	<!-- TOP -->
+	<div class="navigation">
+		<a href="<?= $this->directoryUrl; ?>/index/logout/type/noContent" class="rightLink highlight"><img src="<?= $this->baseUrl; ?>/public/template/<?= $this->_layoutPath; ?>img/admin/logout.png" class="active"/><img src="<?= $this->baseUrl; ?>/public/template/<?= $this->_layoutPath; ?>img/admin/logout_active.png" class="hover"/></a>
+	</div>
+
+
+	<!--  MENU -->
+	<?= $this->renderContent("const/menu.phtml"); ?>
+
+
+	<!-- fixedBox -->
+	<div class="errorHolder"></div>
+  	<div class="saveHolder"></div> 
+
+	<div id="fixedBox">
+		<?= $this->renderContent("const/errorBox.phtml"); ?>
+		<div id="saveBox"><a class="roundCorners">zapisz</a></div>
+	</div>
+
+
+	<!-- Zawartość strony -->
+	<div id="page">
+		<div class="pageText relative tablePage">
+			<?= $this->getContent(); ?>
+		</div>
+	</div>	
+	
+</body>
+</html>

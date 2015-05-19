@@ -1,0 +1,75 @@
+#upload {
+    width:1000px;
+    margin:10px 0 20px 0px;
+    float:left;
+    display: none;
+}
+
+#drop {
+    float: left;
+    margin: 3px 0 0 0;
+}
+#drop .button {
+    text-align: center;
+    width: 100px;
+    border: 2px dashed rgb(185,185,185);
+    background: rgb(245,245,245);
+    color: rgb(185,185,185);
+    font-size: 17px;
+    height: 65px;
+    line-height: 24px;
+    padding: 10px 0 0;
+}
+#drop .button:hover {
+    color: rgb(155,155,155);
+    cursor: pointer;
+    border: 2px dashed rgb(155,155,155);
+}
+
+
+#uploadContainer {
+    float: left;
+    list-style: none;
+    line-height: 65px;
+}
+#uploadContainer>li {
+    float: left;
+    position: relative;
+    height: 80px;
+    margin: 0 10px 5px 0;
+    border: 3px solid white;
+    overflow: hidden;
+}
+#uploadContainer>li:hover .imgMenu { display: block; }
+#uploadContainer>li.working {
+    padding: 0 10px;
+    width: 80px;
+    height: 80px;
+    padding: 3px;
+}
+#uploadContainer>li.active {
+    border: 3px solid #960000;
+}
+#uploadContainer> li .img img {
+    max-height: 80px;
+}
+#uploadContainer>li .delete {
+    position: absolute;
+    right: 0px;
+    top: 6px;
+    width: 15px;
+    height: 13px;
+    background: url(../img/icons.png) 0 -12px no-repeat;
+    cursor: pointer;
+}
+#uploadContainer>li .canvas {
+    display: none;
+}
+#uploadContainer>li canvas {
+    top: 10px;
+    left: 10px;
+    position: absolute;
+}
+#uploadContainer>li .error img{
+    margin: 2px 0 0 46px;
+}

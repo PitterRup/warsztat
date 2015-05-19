@@ -1,0 +1,61 @@
+div.tagsinput { 
+	overflow-y: auto;
+	overflow-x: hidden;
+	background: none repeat scroll 0 0 #F5F5F5;
+    border: 1px solid #B9B9B9;
+    font-size: 18px;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    width: 998px!important;
+}
+div.tagsinput span.tag { 
+	border: 1px solid #a5d24a; 
+	display: block; 
+	float: left; 
+	padding: 5px; 
+	text-decoration:none; 
+	background: #cde69c; 
+	color: #638421; 
+	margin-left: 5px; 
+	margin-top: 2px; 
+	font-size:13px;
+	height: 20px;
+    line-height: 20px;
+    cursor: move;
+}
+div.tagsinput span.tag a { 
+	font-weight: bold; 
+	color: #82ad2b; 
+	text-decoration:none; 
+	font-size: 11px; 
+	display: block;
+    float: right; 
+    margin: -1px 0 0 4px;
+} 
+div.tagsinput input.short{ width:100px!important; }
+div.tagsinput input.long{ width:300px!important; }
+div.tagsinput input { 
+	padding:0px; 
+	background: transparent; 
+	outline:0px;  
+	margin-left:5px; 
+	background: none repeat scroll 0 0 #F5F5F5;
+	border: none;
+    font-size: 18px;
+    height: 36px;
+    line-height: 36px;
+}
+div.tagsinput div { 
+	display:block; 
+	float: left; 
+} 
+.tags_clear { 
+	clear: both; 
+	width: 100%; 
+	height: 0px; 
+}
+.not_valid {
+	background: #FBD8DB !important; 
+	color: #90111A !important;
+}

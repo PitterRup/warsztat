@@ -1,0 +1,68 @@
+#upload {
+    width: 100%;
+    margin: 80px 0 80px 80px;
+    float: left;
+}
+
+/* drop */
+#drop {
+    height: 517px;
+    width: 80%;
+    padding: 10px;
+    border: 4px dashed #DADADA;
+    text-align: center;
+    font-family: tahoma;
+    color: #DADADA;
+}
+#drop p {
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 20px;
+    margin: 5px 0 5px;
+}
+#drop .strzalka {
+    height: 30px;
+    margin: 20px 0 20px;
+    background: url(../img/strzalka.png) 50% 50% no-repeat;
+}
+#drop .small {
+    color: rgb(185,185,185);
+}
+
+#drop .big {
+   font-size: 21px; 
+}
+
+#drop .button {
+    background: #333333;
+    color: #C8C8C8;
+    margin-top: 20px;
+    padding: 7px 35px;
+    cursor: pointer;
+    font-size: 13px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+#drop .button:hover {
+    color: #DEDEDE;
+}
+
+#upload .file {
+    display:none;
+}
+
+.order-obj .delete {
+    color: red;
+    font-size: 18px;
+    height: 14px;
+    line-height: 8px;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    right: 7px;
+    text-align: center;
+    text-shadow: 0 0 1px black;
+    top: 5px;
+    cursor: pointer;
+}

@@ -1,0 +1,52 @@
+{
+	"errorReporting": true,
+	
+	"host": "localhost",
+	"userName": "root",
+	"password": "aplikacja",
+	"datebaseName": "inzynieria",
+
+	"paths": {
+		"panel": "_admin",
+		"default": "_page"
+	},
+
+	"layoutPath": "",
+
+	// ustawienia panelu admina
+	"admin": {
+		"startOn": true,
+
+		// dozwolone formaty uploadowanych zdjęć
+		"allowedImgFormat": ["jpg","jpeg","png","gif"]
+	},
+
+	"lang": {
+		"on": false,
+		"autosetting": false,
+		"default": "pl",
+		"langs": ["pl","en"]
+	},
+
+	"protected": {
+		"dirs": {
+			"_admin": 2,
+			"_page": 1
+		},
+		"controllers": {
+			"_page": {
+			}
+		},
+		"actions": {
+			"_page": {
+			}
+		}
+	},
+
+	"routeDirs":["_page"],
+
+	"dbTableNames": {
+		"Pracownik": "pracownik",
+		"Klient": "klient"
+	}
+}

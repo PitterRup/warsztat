@@ -1,0 +1,247 @@
+#upload
+{
+    width:1000px;
+    margin:10px 0 20px 0px;
+    float:left;
+}
+
+#drop
+{
+    background: rgb(245,245,245);
+    height: 317px;
+    width: 976px;
+    padding: 10px;
+    border: 2px dashed rgb(185,185,185);
+    text-align: center;
+
+}
+
+#drop p
+{
+    text-align: center;
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+#drop .small
+{
+    color: rgb(185,185,185);
+}
+
+#drop .big
+{
+   font-size: 21px; 
+}
+
+#drop .button
+{
+    background: #333333;
+    color: #C8C8C8;
+    margin-top: 20px;
+    padding: 7px 35px;
+    cursor: pointer;
+    font-size: 13px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+#drop .button:hover
+{
+    color: #DEDEDE;
+}
+
+#drop a
+{
+
+}
+
+#drop a:hover
+{
+    
+}
+
+#upload .file
+{
+    display:none;
+}
+
+#upload ul
+{    
+    list-style: none;
+    float: left;
+    width: 1000px;
+    position: relative;
+    margin-top: 50px;
+}
+#upload ul .title
+{
+    float: left;
+    font-size: 18px;
+    height: 37px;
+    line-height: 37px;
+    margin-bottom: 10px;
+    padding: 3px;
+    width: 100%;
+}
+#upload ul .title .smallText
+{
+    font-size: 12px;
+    line-height: 37px;
+    color: #c32c2c;
+}
+#upload ul li
+{
+    float: left;
+    position: relative;
+    width: 170px;
+    height: 272px;
+    margin: 0 15px 52px 15px; 
+}
+#upload.descOff ul li {
+    height: 166px;
+}
+#upload ul li .blackColor { color: black; }
+#upload ul li .img
+{
+    float: left;
+    width: 168px;
+    height: 81px;
+    padding: 15px 0 15px 0;
+    position: relative;
+    overflow: hidden;
+    background: rgb(245,245,245);
+    margin-bottom: 10px;
+    border: 1px solid rgb(185,185,185);
+}
+#upload ul li .img .imgTitle
+{
+    display: none;
+}
+#upload ul li .img img
+{
+    position: relative;
+    max-width: 124px;
+    max-height: 81px;
+    display: none;
+}
+#upload ul li .delete
+{
+    position: absolute;
+    right: 3px;
+    top: 3px;
+    width: 15px;
+    height: 13px;
+    background: url(../img/icons.png) 0 -12px no-repeat;
+    cursor: pointer;
+}
+#upload ul li .canvas 
+{
+    display: none;
+}
+#upload ul li p
+{
+    
+}
+#upload ul li p label
+{
+    font-size: 12px;
+    display: block;   
+}
+#upload ul li .description
+{
+    margin: 5px 0 5px 0;
+    float: left;
+}
+#upload ul li textarea{
+    width: 164px;
+    height: 90px;
+    line-height: 18px;
+    background: rgb(245,245,245);
+    border: 1px solid rgb(185,185,185);
+    font-size: 11px;
+    color: rgb(155,155,155);
+    padding: 2px;
+}
+#upload ul li select{
+    width: 170px;
+    height: 26px;
+    padding-top: 3px;
+    padding-right: 20px;
+    background: rgb(245,245,245) url(../img/slideDown_icon.png) 96% 50% no-repeat;
+    border: 1px solid rgb(185,185,185);
+
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    text-indent: 0.01px;
+    text-overflow: "";
+}
+#upload ul li select .subCat {
+    margin-left: 20px;
+}
+#upload ul li .font
+{
+    float: left;
+    width: 30px;
+    color: white;
+    font-size: 13px;
+    height: 20px;
+    line-height: 20px;
+    margin: 10px 0 0 20px;
+}
+#upload ul li .errorText
+{
+    float: left;
+    width: 265px;
+    height: 20px;
+    margin: 10px 0 0 5px;
+    line-height: 20px;
+    font-size: 13px;
+    color: white;
+    display: block;
+}
+#upload ul li input.imgopis
+{
+    float: left;
+    width: 265px;
+    height: 20px;
+    margin: 10px 0 0 5px;
+    line-height: 20px;
+    font-size: 15px;
+    display: block;
+}
+
+#upload ul li i{
+    font-weight: normal;
+    font-style:normal;
+    color:#7f7f7f;
+    display:block;
+}
+
+#upload ul li canvas{
+    top: 15px;
+    left: 32px;
+    position: absolute;
+}
+
+#upload ul li span{
+    width: 15px;
+    height: 16px;
+    background: url('../img/icons.png') no-repeat;
+    position: absolute;
+    background-position: 0 -12px;
+    top: 34px;
+    right: 4px;
+    cursor: pointer;
+}
+
+#upload ul li.working span{
+    height: 16px;
+    background-position: 0 -12px;
+}
+
+#upload ul li .error p{
+    color:red;
+}
+
+#upload ul li .error img{
+    margin: 2px 0 0 46px;
+}
