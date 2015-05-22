@@ -1,0 +1,52 @@
+<div style="padding: 20px">
+	<form action="<?= $this->directoryUrl.'/zarzadzanieklientem/editcar/carid/'.$this->car['id'].'/type/noContent'; ?>" method="POST" class="form saveBoxOn settingsForm">
+		<p class="h2">Nowy samochód</p>
+		<div class="group">
+			<div class="row">
+				<label>Model </label>
+				<input type="text" name="dane[model]" value="<?php echo $this->car['Model'];?> ">
+			</div>
+			<div class="row">
+				<label>Marka </label>
+				<input type="text" name="dane[marka]" value="<?php echo $this->car['Marka'];?>">
+			</div>
+			<div class="row">
+				<label>Rok produkcji </label>
+				<input type="text" name="dane[rok]" value="<?php echo $this->car['Rok_pr'];?>">
+			</div>
+			<div class="row">
+				<label>Przebieg </label>
+				<input type="text" name="dane[przebieg]" value="<?php echo $this->car['Przeb'];?>">
+			</div>
+			<div class="row">
+				<label>Wersja wyposażenia </label>
+				<input type="text" name="dane[wersja]" value="<?php echo $this->car['Wer_wyp'];?>">
+			</div>
+			<div class="row">
+				<label>Rodzaj nadwozia <span class="small">sedan, lift-back, hatch-back, kombi, pick-up, kabriolet, minivan</span></label>
+				<input type="text" name="dane[nadwozie]" value="<?php echo $this->car['Rodz_nadw'];?>">
+			</div>
+			<div class="row">
+				<label>Pojemność silnika <span class="small">w centrymatrach sześciennych</span></label>
+				<input type="text" name="dane[pojemnosc]" value="<?php echo $this->car['poj_sil'];?>">
+			</div>
+			<div class="row">
+				<label>Moc silnika <span class="small">w KM</span></label>
+				<input type="text" name="dane[moc]" value="<?php echo $this->car['Moc_sil'];?>">
+			</div>
+			<div class="row">
+				<label>Rodzaj silnika <span class="small">TDI, SDI ...</span></label>
+				<input type="text" name="dane[rodzajsil]" value="<?php echo $this->car['Rodz_sil'];?>">
+			</div>
+			<div class="row">
+				<label>Rodzaj oleju silnikowego</label>
+				<input type="text" name="dane[rodzajol]" value="<?php echo $this->car['rodz_ol_sil'];?>">
+			</div>
+			<div class="row">
+				<label>Napęd <span class="small">4x4, tył, przód</span></label>
+				<input type="text" name="dane[naped]" value="<?php echo $this->car['Naped'];?>">
+                                <input type="submit" value="Zapisz">
+			</div>
+		</div>
+	</form>
+</div>

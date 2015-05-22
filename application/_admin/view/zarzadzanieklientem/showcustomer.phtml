@@ -6,3 +6,13 @@ Numer telefonu <?php echo $this->data['nr_tel'];?> <br/>
 Adres e-mail <?php echo $this->data['mail'];?> <br/>
 Wariant posiadanego ubezpieczenia <?php echo $this->data['war_ubez'];?> <br/>
 Login <?php echo $this->data['login'];?> <br/>
+
+Samochody <br/>
+<?php
+
+foreach ($this->cars as $car){
+   echo 'Model:'.$car['Model'].' Marka:'.$car['Marka'].' Rok produkcji:'.$car['Rok_pr']
+           .'<a href="'.$this->directoryUrl.'/zarzadzanieklientem/editcar/carid/'.$car['id'].'">Edytuj</a>'
+           . '<a href="'.$this->directoryUrl.'/zarzadzanieklientem/showcar/carid/'.$car['id'].'">Pokaż więcej informacji</a><br/>';
+}
+?>

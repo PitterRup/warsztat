@@ -86,7 +86,8 @@ class ZarzadzanieklientemController extends AdminController {
         $id = $this->_getParam("clientid");
         $Manage = new Managecustomer();
         if ($this->_isPost() && $id) {
-            $data = $this->_getPost('Dane');
+            $data = $this->_getPost('dane');
+            $this->_request->goToAddress($this->directoryUrl . "/zarzadzanieklientem/customerlist", 0);
             $Manage->updatecustomer($id, $data);
         } else if ($id) {
             $this->view->clientdata = $Manage->getclient($id);
@@ -100,11 +101,40 @@ class ZarzadzanieklientemController extends AdminController {
         if ($id) {
             $Manage = new Managecustomer();
             $data = $Manage->getclient($id);
+            $cars = $Manage->getcars($id);
+            if ($data) {
+                $this->view->data = $data;
+                $this->view->cars = $cars;
+            } else {
+                $this->_request->goToAddress($this->directoryUrl . "/zarzadzanieklientem/customerlist", 0);
+            }
+        } else {
+            $this->_request->goToAddress($this->directoryUrl . "/zarzadzanieklientem/customerlist", 0);
+        }
+    }
+
+    public function showcarAction() {
+        $id = $this->_getParam("carid");
+        if ($id) {
+            $Manage = new Managecustomer();
+            $data = $Manage->getcar($id);
             if ($data) {
                 $this->view->data = $data;
             } else {
                 $this->_request->goToAddress($this->directoryUrl . "/zarzadzanieklientem/customerlist", 0);
             }
+        }
+    }
+
+    public function editcarAction() {
+        $id = $this->_getParam("carid");
+        $Manage = new Managecustomer();
+        if ($this->_isPost() && $id) {
+            $data = $this->_getPost('dane');
+            $Manage->updatecar($id, $data);
+            $this->_request->goToAddress($this->directoryUrl . "/zarzadzanieklientem/customerlist", 0);
+        } else if ($id) {
+            $this->view->car = $Manage->getcar($id);
         } else {
             $this->_request->goToAddress($this->directoryUrl . "/zarzadzanieklientem/customerlist", 0);
         }
