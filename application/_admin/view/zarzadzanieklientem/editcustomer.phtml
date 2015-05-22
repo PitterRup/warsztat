@@ -1,0 +1,42 @@
+<div style="padding: 20px">
+	<form action="<?= $this->directoryUrl.'/zarzadzanieklientem/editcustomer/type/noContent/clientid/'.$this->clientdata['id']; ?>" method="POST" class="form saveBoxOn settingsForm">
+		<p class="h2">Nowy klient</p>
+		<div class="group">
+			<div class="row">
+				<label>Nazwa / Imię i nazwisko <span class="small">nazwa firmy lub imię i nazwisko klienta</span></label>
+                                <input type="text" name="dane[nazw]" value="<?php echo $this->clientdata['nazw'];?>">
+			</div>
+			<div class="row">
+				<label>NIP/PESEL </label>
+				<input type="text" name="dane[nip]" value="<?php echo $this->clientdata['nip_pesel'];?>">
+			</div>
+			<div class="row">
+				<label>Adres </label>
+				<input type="text" name="dane[adres]" value="<?php echo $this->clientdata['adr_zameld'];?>">
+			</div>
+			<div class="row">
+				<label>Numer telefonu </label>
+				<input type="text" name="dane[tel]" value="<?php echo $this->clientdata['nr_tel'];?>">
+			</div>
+			<div class="row">
+				<label>Adres e-mail </label>
+				<input type="text" name="dane[email]" value="<?php echo $this->clientdata['mail'];?>">
+			</div>
+			<div class="row">
+				<label>Wariant posiadanego ubezpieczenia </label>
+				<input type="text" name="dane[warub]" value="<?php echo $this->clientdata['war_ubez'];?>">
+			</div>
+		</div>
+
+		<div class="group">
+			<div class="row">
+				<label>Login <span class="small">Max 25 znaków</span></label>
+				<input type="text" name="dane[login]" value="<?php echo $this->clientdata['login'];?>">
+			</div>
+			<div class="row">
+				<label>Hasło <span class="small">Maks 25 znaków</span></label>
+				<input type="password" name="dane[haslo]" placeholder="hasło">
+			</div>
+		</div>
+	</form>
+</div>

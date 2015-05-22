@@ -13,11 +13,11 @@
 
 	"layoutPath": "",
 
-	// ustawienia panelu admina
+	
 	"admin": {
 		"startOn": true,
 
-		// dozwolone formaty uploadowanych zdjęć
+	
 		"allowedImgFormat": ["jpg","jpeg","png","gif"]
 	},
 

@@ -64,5 +64,35 @@ class Managecustomer extends GeneralModelsController {
             return false;
         }
     }
+    
+    private function getobjdata($id, $table){
+        $query = "SELECT * FROM $table WHERE id=$id";
+        if ($this->setQuery($query)) {
+            $this->fetchRow();
+            return $this->data;
+        } else
+            return false;
+    }
+    public function getclient($id){
+        return $this->getobjdata($id,'klient');
+    }
+    
+    public function getcar($id){
+         return $this->getobjdata($id,'samochod');
+    }
+   
+    
+    public function updatecustomer($id,&$param){
+        $query="UPDATE klient SET nazw=".$param['nazw'].", nip_pesel=".$param['nip'].",adr_zameld=".$param['adres'].", nr_tel=".$param['tel'].", mail=".$param['email'].", war_ubez=".$param['warub'].",login=". $param['login']." , pass=".$param['haslo']." WHERE id='$id'";
+        if ($this->setQuery($query)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    public function updatecar(){
+        
+    }
 
 }
