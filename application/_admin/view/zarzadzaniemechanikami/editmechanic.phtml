@@ -1,0 +1,60 @@
+<div style="padding: 20px">
+	<form action="<?= $this->directoryUrl.'/zarzadzaniemechanikami/editmechanic/mechanicid/'.$this->mechanic['id'].'/type/noContent/'; ?>" method="POST" class="form saveBoxOn settingsForm">
+		<p class="h2">Nowy mechanik</p>
+		<div class="group">
+			<div class="row">
+				<label>Imię </label>
+                                <input type="text" name="dane[imie]" value="<?php echo $this->mechanic['Imie'];?>">
+			</div>
+                    <div class="row">
+				<label>Nazwisko </label>
+                                <input type="text" name="dane[nazw]" value="<?php echo $this->mechanic['Nazw'];?>">
+			</div>
+			<div class="row">
+				<label>PESEL </label>
+				<input type="text" name="dane[pesel]" value="<?php echo $this->mechanic['pesel'];?>">
+			</div>
+			<div class="row">
+				<label>Adres </label>
+				<input type="text" name="dane[adres]" value="<?php echo $this->mechanic['adr_zam'];?>">
+			</div>
+			<div class="row">
+				<label>Numer telefonu </label>
+				<input type="text" name="dane[tel]" value="<?php echo $this->mechanic['nr_tel'];?>">
+			</div>
+			<div class="row">
+				<label>Adres e-mail </label>
+				<input type="text" name="dane[email]" value="<?php echo $this->mechanic['mail'];?>">
+			</div>
+			<div class="row">
+				<label>Specjalizacja </label>
+				<input type="text" name="dane[spe]" value="<?php echo $this->mechanic['specj'];?>">
+			</div>
+                    <div class="row">
+				<label>Doświadczenie zawodowe </label>
+				<input type="text" name="dane[dosw]" value="<?php echo $this->mechanic['dosw_zaw'];?>">
+			</div>
+                    <div class="row">
+				<label>Dyspozycyjność </label>
+				<input type="text" name="dane[dysp]" value="<?php echo $this->mechanic['dyspoz'];?>">
+			</div>
+                    <div class="row">
+				<label>Obsługiwane stanowiska </label>
+				<input type="text" name="dane[stan]" value="<?php echo $this->mechanic['obsl_stan'];?>">
+			</div>
+		</div>
+
+		<div class="group">
+			<div class="row">
+				<label>Login <span class="small">Max 25 znaków</span></label>
+				<input type="text" name="dane[login]" value="<?php echo $this->mechanic['login'];?>">
+			</div>
+			<div class="row">
+				<label>Hasło <span class="small">Maks 25 znaków</span></label>
+				<input type="password" name="dane[haslo]" placeholder="hasło">
+                                    
+			</div>
+                    <input type="submit" value="Zapisz">
+		</div>
+	</form>
+</div>

@@ -13,8 +13,8 @@
 		<li class="<?= $this->_controllerName=='mechanicy' ? 'active':''; ?>">
 			<a><span class="title">Mechanicy</span></a>
 			<ul class="child">
-				<li><a href="">Nowy mechanik</a></li>
-				<li><a href="">Przeglądaj mechaników</a></li>
+				<li><a href="<?= $this->directoryUrl.'/zarzadzaniemechanikami/newmechanic'; ?>">Nowy mechanik</a></li>
+				<li><a href="<?= $this->directoryUrl.'/zarzadzaniemechanikami/mechaniclist'; ?>">Przeglądaj mechaników</a></li>
 			</ul>
 		</li>
 
@@ -22,8 +22,8 @@
 		<li class="<?= $this->_controllerName=='stanowiska' ? 'active':''; ?>">
 			<a><span class="title">Stanowiska</span></a>
 			<ul class="child">
-				<li><a href="">Nowe stanowisko</a></li>
-				<li><a href="">Przeglądaj stanowiska</a></li>
+				<li><a href="<?= $this->directoryUrl.'/zarzadzaniestanowiskami/newplace'; ?>">Nowe stanowisko</a></li>
+				<li><a href="<?= $this->directoryUrl.'/zarzadzaniestanowiskami/placelist'; ?>">Przeglądaj stanowiska</a></li>
 			</ul>
 		</li>
 

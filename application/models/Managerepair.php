@@ -17,7 +17,7 @@ class Managerepair extends GeneralModelsController {
         
     }
 
-    private function getweekarray() {
+    public function getweekarray() {
         $numberofday = 7;
         $weekarray = array(date("Y-m-d", time()));
         for ($i = 1; $i <= $numberofday; $i++) {
@@ -38,6 +38,10 @@ class Managerepair extends GeneralModelsController {
             
         }
         return $repairarray;
+    }
+    
+    public function getavailablemechanic($date){
+        
     }
 
 }

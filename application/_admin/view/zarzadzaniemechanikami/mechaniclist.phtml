@@ -1,0 +1,28 @@
+<p class="h2">Lista mechaników</p>
+<ul class="table productTable" model="Customers" loadState="1" paramsLink="<?= $this->_request->params; ?>" treeEdit="no">
+	<li class="naglowek">
+		<div class="col" style="width:60px">id</div>
+		<div class="col" style="width:255px">Nazwisko</div>
+		<div class="col" style="width:180px">PESEL</div>
+		<div class="col" style="width:195px">telefon</div>
+		<div class="col last" style="width:60px">opcje</div>
+	</li>
+	<?php foreach($this->mechanics as $this->mechanic): ?>
+		<li class="middle">
+			<div class="col" style="width: 60px;"><?= $this->mechanic['id']; ?></div>
+			<div class="col" style="width:255px;"><?= $this->mechanic['Nazw']; ?></div>
+			<div class="col" style="width:180px; font-size: 14px;"><?= $this->mechanic['pesel']; ?></div>
+			<div class="col" style="width:195px; font-size: 14px;"><?= $this->mechanic['nr_tel']; ?></div>
+			<div class="col opCol" style="width: 60px"><div class="highlight" onclick="javascript:objectMenu.toggle($(this));"><?= $this->buttonListEdit; ?><?= $this->renderContent("zarzadzaniemechanikami/editMenu.phtml"); ?></div></div>
+		</li>
+	<?php endforeach; ?>
+</ul> 
+
+
+   <?php /*foreach ($this->mechanics as $mechanic){
+     echo 'ID'.$mechanic['id'].'<br/>'.
+     'Imie'.$mechanic['Imie'].'<br/>'.
+            'Nazwisko' .$mechanic['Nazw'].'<br/>';
+    }*/
+   ?>
+       

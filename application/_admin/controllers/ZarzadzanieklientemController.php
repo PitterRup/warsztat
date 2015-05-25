@@ -16,9 +16,8 @@ class ZarzadzanieklientemController extends AdminController {
     public function init() {
         // zdefiniowanie akcji domyślnej
         // jest wykonywana gdy w adresie nie podany żadnej akcji, a akcja index nie istnieje
-       $this->defaultAction = 'customerlist';
+        $this->defaultAction = 'customerlist';
     }
-    
 
     public function newcustomerAction() {
         if (!$this->_isPost()) {
@@ -88,8 +87,8 @@ class ZarzadzanieklientemController extends AdminController {
         $Manage = new Managecustomer();
         if ($this->_isPost() && $id) {
             $data = $this->_getPost('dane');
-            $this->_request->goToAddress($this->directoryUrl . "/zarzadzanieklientem/customerlist", 0);
             $Manage->updatecustomer($id, $data);
+            $this->_request->goToAddress($this->directoryUrl . "/zarzadzanieklientem/customerlist", 0);
         } else if ($id) {
             $this->view->clientdata = $Manage->getclient($id);
         } else {

@@ -1,9 +1,10 @@
-Test
 <?php
-foreach ($this->repair as $days){
+foreach ($this->repair as $key=>$days){
+    echo $this->date[$key]."<br/>";
     foreach ($days as $work){
-        echo 'ID Zadania:'.$work['ID_Zadania'].'<br/> Diagnoza:'.$work['Diagnoza'].'<br/>.Satus:'.$work['Status'];
+        echo 'ID Zadania:'.$work['ID_Zadania'].'<br/> Diagnoza:'.$work['Diagnoza'].'<br/>Satus:'.$work['Status'];
     }
+    echo "<br/>";
 }
 /*foreach ($this->repair as $work){
     echo $work;

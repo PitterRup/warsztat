@@ -58,7 +58,7 @@ class Managecustomer extends GeneralModelsController {
 
     public function delcustomer($id) {
         $updateguery = "UPDATE `samochod` SET `Klient_ID`=NULL WHERE Klient_ID='$id'";
-        $query = "DELETE FROM klient WHERE ID=$id ";
+        $query = "DELETE FROM klient WHERE id=$id ";
         if ($this->setQuery($updateguery) && $this->setQuery($query)) {
             return true;
         } else {
