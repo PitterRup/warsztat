@@ -51,7 +51,7 @@ class ZarzadzaniemechanikamiController extends AdminController {
             if ($data) {
                 $this->view->mechanic = $data;
             } else {
-                // $this->_request->goToAddress($this->directoryUrl . "/zarzadzaniemechanikami/mechaniclist", 0);
+                 $this->_request->goToAddress($this->directoryUrl . "/zarzadzaniemechanikami/mechaniclist", 0);
             }
         } else {
             $this->_request->goToAddress($this->directoryUrl . "/zarzadzaniemechanikami/mechaniclist", 0);
@@ -64,12 +64,13 @@ class ZarzadzaniemechanikamiController extends AdminController {
         if ($this->_isPost() && $id) {
             $data = $this->_getPost('dane');
             if($Manage->updatemechanic($id, $data)){
-                 $this->msg(false, 'Wystąpił błąd dane mechanika nie zostały zapisane');
+                   $this->msg(true, 'Mechanik zapisany');
+               
             }
             else {
-                 $this->msg(true, 'Mechanik zapisany');
+                $this->msg(false, 'Wystąpił błąd dane mechanika nie zostały zapisane');
             }
-           // $this->_request->goToAddress($this->directoryUrl . "/zarzadzaniemechanikami/mechaniclist/type/msg", 0);
+            $this->_request->goToAddress($this->directoryUrl . "/zarzadzaniemechanikami/mechaniclist/type/msg", 0);
         } else if ($id) {
             $this->view->mechanic = $Manage->getmechanic($id);
         } else {

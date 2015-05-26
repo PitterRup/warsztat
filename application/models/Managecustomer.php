@@ -11,20 +11,9 @@
  *
  * @author Kacper
  */
-class Managecustomer extends GeneralModelsController {
+class Managecustomer extends Basecontroller {
 
-    public function init() {
-        
-    }
-
-    protected function valuesl($data) {
-        $list = array();
-        foreach ($data as $val) {
-            $list[] = "'" . $val . "'";
-        }
-        $parm = join(',', $list);
-        return $parm;
-    }
+   
 
     public function addCustomer($data, &$id) {
         $parm = $this->valuesl($data);
@@ -40,20 +29,11 @@ class Managecustomer extends GeneralModelsController {
     public function addCar($data) {
         $parm = $this->valuesl($data);
         $query = "INSERT INTO samochod(Model, Marka, Rok_pr, Przeb, Wer_wyp, Rodz_nadw,poj_sil,Moc_sil,Rodz_sil,rodz_ol_sil,Naped,Klient_ID) VALUES(" . $parm . ")";
-        if ($this->setQuery($query)) {
-            return true;
-        } else {
-            return false;
-        }
+        return $this->add($query);
     }
 
     public function getcustomerlist() {
-        $query = "SELECT * FROM klient";
-        if ($this->setQuery($query)) {
-            $this->fetchAll();
-            return $this->data;
-        } else
-            return false;
+        return $this->getlist("klient");
     }
 
     public function delcustomer($id) {
@@ -66,21 +46,14 @@ class Managecustomer extends GeneralModelsController {
         }
     }
 
-    private function getobjdata($id, $table) {
-        $query = "SELECT * FROM $table WHERE id=$id";
-        if ($this->setQuery($query)) {
-            $this->fetchRow();
-            return $this->data;
-        } else
-            return false;
-    }
+   
 
     public function getclient($id) {
-        return $this->getobjdata($id, 'klient');
+        return $this->getdata($id, 'klient');
     }
 
     public function getcar($id) {
-        return $this->getobjdata($id, 'samochod');
+        return $this->getdata($id, 'samochod');
     }
 
     public function getcars($clientid) {
@@ -94,20 +67,12 @@ class Managecustomer extends GeneralModelsController {
 
     public function updatecustomer($id, &$param) {
         $query = "UPDATE klient SET nazw='" . $param['nazw'] . "', nip_pesel='" . $param['nip'] . "',adr_zameld='" . $param['adres'] . "', nr_tel='" . $param['tel'] . "', mail='" . $param['email'] . "', war_ubez='" . $param['warub'] . "',login='" . $param['login'] . "' , pass='" . $param['haslo'] . "' WHERE id='$id'";
-        if ($this->setQuery($query)) {
-            return true;
-        } else {
-            return false;
-        }
+        $this->update($query);
     }
 
     public function updatecar($id, &$param) {
         $query ="UPDATE samochod SET Model='".$param['model']."',Marka='".$param['marka']."',Rok_pr='".$param['rok']."',Przeb='".$param['przebieg']."',Wer_wyp='".$param['wersja']."',Rodz_nadw='".$param['nadwozie']."',poj_sil='".$param['pojemnosc']."',Moc_sil='".$param['moc']."',Rodz_sil='".$param['rodzajsil']."',rodz_ol_sil='".$param['rodzajol']."',Naped='".$param['naped']. "' WHERE id='$id'";
-         if ($this->setQuery($query)) {
-            return true;
-        } else {
-            return false;
-        }
+        $this->update($query);
     }
 
 }

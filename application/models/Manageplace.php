@@ -11,36 +11,34 @@
  *
  * @author Kacper
  */
-class Manageplace extends GeneralModelsController {
-    public function init(){
-        
-    }
-    
-     protected function valuesl($data) {
-        $list = array();
-        foreach ($data as $val) {
-            $list[] = "'" . $val . "'";
+class Manageplace extends Basecontroller {
+
+    public function addplace(&$data, $stat) {
+        $parm = $this->valuesl($data);
+        if (!$stat) {
+            $stat = 'n';
         }
-        $parm = join(',', $list);
-        return $parm;
+        $query = "INSERT INTO stanowisko(Nazw,ladow,wymiary,przezn,Posiad_tun) VALUES(" . $parm . ",'$stat')";
+        return $this->add($query);
     }
-    
-    public function addplace(&$data){
-      $parm = $this->valuesl($data);
-        $query = "INSERT INTO stanowisko(Nazw,ladow,wymiary,Posiad_tun,przezn) VALUES(" . $parm .")";
-        if ($this->setQuery($query)) {
-            return true;
-        } else {
-            return false;
-        }  
+
+    public function getplacelist() {
+        return $this->getlist("stanowisko");
     }
-    
-    public function getplacelist(){
-        $query = "SELECT * FROM stanowisko";
-        if ($this->setQuery($query)) {
-            $this->fetchAll();
-            return $this->data;
-        } else
-            return false;
+
+    public function getplace($id) {
+        return $this->getdata($id, 'stanowisko');
+    }
+
+    public function updateplace($id, &$param, $stat) {
+        if (!$stat) {
+            $stat = 'n';
+        }
+        $query = "UPDATE stanowisko SET Nazw='" . $param['Nazw'] . "',ladow='" . $param['ladow'] . "', wymiary='" . $param['wymiary'] . "',Posiad_tun='" . $stat . "', przezn='" . $param['przezn'] . "' WHERE id='$id'";
+        return $this->update($query);
+    }
+
+    public function deleteplace($id){
+        return $this->delete("stanowisko",$id);
     }
 }

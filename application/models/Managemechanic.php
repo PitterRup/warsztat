@@ -11,46 +11,22 @@
  *
  * @author Kacper
  */
-class Managemechanic extends GeneralModelsController {
-   public function init(){
-       
-   }
-   protected function valuesl($data) {
-        $list = array();
-        foreach ($data as $val) {
-            $list[] = "'" . $val . "'";
-        }
-        $parm = join(',', $list);
-        return $parm;
-    }
+class Managemechanic extends Basecontroller {
+ 
    
    public function addMechanic(&$data){
        $parm = $this->valuesl($data);
         $query = "INSERT INTO pracownik(Imie,Nazw,pesel,adr_zam,nr_tel,mail,specj,dosw_zaw,dyspoz,obsl_stan,login,pass,Fun_Prac_ID) VALUES(" . $parm . ",'2')";
-        if ($this->setQuery($query)) {
-            return true;
-        } else {
-            return false;
-        }
+       return $this->add($query);
    }
    
      public function getmechaniclist() {
-        $query = "SELECT * FROM pracownik WHERE Fun_Prac_ID ='2'";
-        if ($this->setQuery($query)) {
-            $this->fetchAll();
-            return $this->data;
-        } else
-            return false;
+       return $this->getlist("pracownik", " WHERE Fun_Prac_ID ='2'");
     }
     
     public function updatemechanic($id, &$param){
     $query = "UPDATE pracownik SET Imie='" . $param['imie'] . "',Nazw='".$param['nazw']."', pesel='" . $param['pesel'] . "',adr_zam='" . $param['adres'] . "', nr_tel='" . $param['tel'] . "', mail='" . $param['email'] . "',specj='" . $param['spe'] ."',dosw_zaw='".$param['dosw'] ."',dyspoz='".$param['dysp']."',obsl_stan='".$param['stan']."',login='" . $param['login'] . "' , pass='" . $param['haslo'] . "' WHERE id='$id'";
-        
-        if ($this->setQuery($query)) {
-            return true;
-        } else {
-            return false;
-        }
+       return $this->update($query);
     }
     
     public function getmechanic($id){
@@ -62,12 +38,6 @@ class Managemechanic extends GeneralModelsController {
             return false;
     }
     public function delmechanic($id){
-        $query = "DELETE FROM pracownik WHERE id=$id";
-        if($this->setQuery($query)){
-            return true;
-        }
-        else {
-            return false;
-        }
+        return $this->delete("pracownik", $id);
     }
 }

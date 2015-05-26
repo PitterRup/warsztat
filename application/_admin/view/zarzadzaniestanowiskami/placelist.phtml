@@ -13,16 +13,10 @@
 			<div class="col" style="width:255px;"><?= $this->place['Nazw']; ?></div>
 			<div class="col" style="width:180px; font-size: 14px;"><?= $this->place['ladow']; ?></div>
 			<div class="col" style="width:195px; font-size: 14px;"><?= $this->place['wymiary']; ?></div>
-			<div class="col opCol" style="width: 60px"><div class="highlight" onclick="javascript:objectMenu.toggle($(this));"><?= $this->buttonListEdit; ?><?= $this->renderContent(""); ?></div></div>
+			<div class="col opCol" style="width: 60px"><div class="highlight" onclick="javascript:objectMenu.toggle($(this));"><?= $this->buttonListEdit; ?><?= $this->renderContent("zarzadzaniestanowiskami/editMenu.phtml"); ?></div></div>
 		</li>
 	<?php endforeach; ?>
 </ul> 
 
 
-   <?php /*foreach ($this->mechanics as $mechanic){
-     echo 'ID'.$mechanic['id'].'<br/>'.
-     'Imie'.$mechanic['Imie'].'<br/>'.
-            'Nazwisko' .$mechanic['Nazw'].'<br/>';
-    }*/
-   ?>
-       
+  
