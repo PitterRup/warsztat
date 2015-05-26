@@ -25,6 +25,8 @@ class ZarzadzaniemechanikamiController extends AdminController {
         // po wysłaniu formularza metodą POST
         else {
             $postdata = $this->_getPost('dane');
+            $permissions = '{"_admin":1}';
+            $postdata[] = $permissions;
             $Manage = new Managemechanic();
             if ($Manage->addMechanic($postdata)) {
                 $this->msg(true, "Mechanik został zapisany");
@@ -59,16 +61,17 @@ class ZarzadzaniemechanikamiController extends AdminController {
     }
 
     public function editmechanicAction() {
+        $this->_headScript($this->baseUrl . '/public/js/_admin/form.js');
+        $this->_linkScript($this->baseUrl . '/public/template/styles/_admin/form.css');
         $id = $this->_getParam("mechanicid");
         $Manage = new Managemechanic();
         if ($this->_isPost() && $id) {
             $data = $this->_getPost('dane');
             if($Manage->updatemechanic($id, $data)){
-                   $this->msg(true, 'Mechanik zapisany');
-               
+                $this->msg(true, 'Mechanik został zapisany.');
             }
             else {
-                $this->msg(false, 'Wystąpił błąd dane mechanika nie zostały zapisane');
+                $this->msg(false, 'Wystąpił błąd! Mchanika nie został zapisany.');
             }
             $this->_request->goToAddress($this->directoryUrl . "/zarzadzaniemechanikami/mechaniclist/type/msg", 0);
         } else if ($id) {
@@ -79,14 +82,14 @@ class ZarzadzaniemechanikamiController extends AdminController {
     }
 
     public function delmechanicAction() {
-        
         $id = $this->_getParam("mechanicid");
         $Manage= new Managemechanic();
         if($Manage->delmechanic($id)){
-             $this->_request->goToAddress($this->directoryUrl . "/zarzadzaniemechanikami/mechaniclist", 0);
+            $this->msg(true, 'Mechanik został usunięty');
+             $this->_request->goToAddress($this->directoryUrl . "/zarzadzaniemechanikami/mechaniclist/type/msg", 0);
         }
         else{
-            $this->msg(false, 'Wystąpił błąd mechanik nie został usunięty');
+            $this->msg(false, 'Wystąpił błąd! Mechanik nie został usunięty');
             $this->_request->goToAddress($this->directoryUrl . "/zarzadzaniemechanikami/mechaniclist/type/msg", 0);
         }
     }

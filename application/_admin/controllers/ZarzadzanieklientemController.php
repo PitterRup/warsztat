@@ -27,6 +27,8 @@ class ZarzadzanieklientemController extends AdminController {
         // po wysłaniu formularza metodą POST
         else {
             $postdata = $this->_getPost('dane');
+            $permissions = '{"_page":1}';
+            $postdata[] = $permissions;
             $id = 0;
             $Manage = new Managecustomer();
             if (!$Manage->addCustomer($postdata, $id)) {
@@ -72,9 +74,10 @@ class ZarzadzanieklientemController extends AdminController {
         if ($id) {
             $Manage = new Managecustomer();
             if ($Manage->delcustomer($id)) {
-                $this->_request->goToAddress($this->directoryUrl . "/zarzadzanieklientem/customerlist", 0);
+                $this->msg(true, "Klien został usunięty.");
+                $this->_request->goToAddress($this->directoryUrl . "/zarzadzanieklientem/customerlist/type/msg", 0);
             } else {
-                $this->msg(false, 'Wystąpił błąd klient nie został usunięty');
+                $this->msg(false, 'Wystąpił błąd! Klient nie został usunięty');
                 $this->_request->goToAddress($this->directoryUrl . "/zarzadzanieklientem/customerlist/type/msg", 0);
             }
         } else {
@@ -83,16 +86,20 @@ class ZarzadzanieklientemController extends AdminController {
     }
 
     public function editcustomerAction() {
+        $this->_headScript($this->baseUrl . '/public/js/_admin/form.js');
+        $this->_linkScript($this->baseUrl . '/public/template/styles/_admin/form.css');
         $id = $this->_getParam("clientid");
         $Manage = new Managecustomer();
         if ($this->_isPost() && $id) {
             $data = $this->_getPost('dane');
-            $Manage->updatecustomer($id, $data);
-            $this->_request->goToAddress($this->directoryUrl . "/zarzadzanieklientem/customerlist", 0);
+            if($Manage->updatecustomer($id, $data)) $this->msg(true, "Zmiany zostały zapisane.");
+            else $this->msg(false, "Wystąpił błąd! Zmiany nie zostały zapisane.");
+
+            $this->_request->goToAddress($this->directoryUrl . "/zarzadzanieklientem/customerlist/type/msg", 0);
         } else if ($id) {
             $this->view->clientdata = $Manage->getclient($id);
         } else {
-            $this->_request->goToAddress($this->directoryUrl . "/zarzadzanieklientem/customerlist", 0);
+            $this->_request->goToAddress($this->directoryUrl . "/zarzadzanieklientem/customerlist/type/msg", 0);
         }
     }
 

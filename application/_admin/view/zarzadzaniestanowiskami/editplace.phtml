@@ -4,25 +4,24 @@
 		<div class="group">
 			<div class="row">
 				<label>Nazwa </label>
-                                <input type="text" name="dane[Nazw]" value="<?php echo $this->place['Nazw'];?>" >
+				<input type="text" name="dane[Nazw]" value="<?php echo $this->place['Nazw'];?>" >
 			</div>
-                    <div class="row">
-				<label>Ładowność </label>
-                                <input type="text" name="dane[ladow]" value="<?php echo $this->place['ladow'];?>">
+				<div class="row">
+				<label>Ładowność <span class="small">wartość podawana w tonach</span></label>
+				<input type="text" name="dane[ladow]" value="<?php echo $this->place['ladow'];?>">
 			</div>
 			<div class="row">
-				<label>Wymiary </label>
-				<input type="text" name="dane[wymiary]" value="<?php echo $this->place['wymiary'];?>" >
+				<label>Wymiary <span class="small">wartości podawane w metrach (długość, szerokość, wysokość)</span></label>
+				<input type="text" name="dane[wymiary]" value="<?php echo $this->place['wymiary'];?>" placeholder="np. 20x20x20">
 			</div>
 			<div class="row">
 				<label>Posiada tunel </label>
-                                <input type="checkbox" name="stat"  <?php echo ($this->place['Posiad_tun']== 'y') ? 'checked="checked"':'';?> value="y"> 
+				<input type="checkbox" name="stat"  <?php echo ($this->place['Posiad_tun']== 'y') ? 'checked="checked"':'';?> value="y"> 
 			</div>
 			<div class="row">
 				<label>Przeznaczenie </label>
 				<input type="text" name="dane[przezn]"value="<?php echo $this->place['przezn'];?>">
 			</div>
-                    <input type="submit" value="Wyślij">
 		</div>
 	</form>
 </div>
