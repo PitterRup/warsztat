@@ -1,0 +1,14 @@
+<div class="objectMenu tableObjectMenu">
+	<div class="row">
+		<div class="icon"></div>
+		<div class="text"><a href="<?= $this->directoryUrl.'/zarzadzanieobslugakli/showservice/serviceid/'.$this->service['id']; ?>">Pokaż więcej informacji</a></div>
+	</div>
+	<div class="row">
+		<div class="icon"></div>
+		<div class="text"><a href="<?= $this->directoryUrl.'/zarzadzanieobslugakli/editservice/serviceid/'.$this->service['id']; ?>">Edytuj dane osobowe</a></div>
+	</div>
+	<div class="row">
+		<div class="icon" style="margin-top: 2px"><img src="<?= $this->baseUrl.'/public/template/img/admin/remove-blog-hover-icon.png'; ?>"/></div> 
+		<div class="text"><a href="<?= $this->directoryUrl.'/zarzadzanieobslugakli/delservice/serviceid/'.$this->service['id'].'/type/noContent/'; ?>">Usuń mechanika</a></div>
+	</div>
+</div>

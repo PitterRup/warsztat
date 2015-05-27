@@ -11,7 +11,7 @@
  *
  * @author Kacper
  */
-class Managecustomer extends Basecontroller {
+class Managecustomer extends Basemodel {
 
    
 

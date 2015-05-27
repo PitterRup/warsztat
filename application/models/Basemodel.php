@@ -11,7 +11,7 @@
  *
  * @author Kacper
  */
-class Basecontroller extends GeneralModelsController {
+class Basemodel extends GeneralModelsController {
     public function init(){
         
     }

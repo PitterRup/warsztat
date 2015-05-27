@@ -1,0 +1,59 @@
+<div style="padding: 20px">
+	<form action="<?= $this->directoryUrl.'/zarzadzanieobslugakli/newservice/type/noContent/'; ?>" method="POST" class="form saveBoxOn settingsForm">
+		<p class="h2">Nowy pracownik działu obsługi klienta</p>
+		<div class="group">
+			<div class="row">
+				<label>Imię </label>
+                                <input type="text" name="dane[imie]">
+			</div>
+                    <div class="row">
+				<label>Nazwisko </label>
+                                <input type="text" name="dane[nazw]">
+			</div>
+			<div class="row">
+				<label>PESEL </label>
+				<input type="text" name="dane[pesel]">
+			</div>
+			<div class="row">
+				<label>Adres </label>
+				<input type="text" name="dane[adres]">
+			</div>
+			<div class="row">
+				<label>Numer telefonu </label>
+				<input type="text" name="dane[tel]">
+			</div>
+			<div class="row">
+				<label>Adres e-mail </label>
+				<input type="text" name="dane[email]">
+			</div>
+			<div class="row">
+				<label>Specjalizacja </label>
+				<input type="text" name="dane[spe]">
+			</div>
+                    <div class="row">
+				<label>Doświadczenie zawodowe </label>
+				<input type="text" name="dane[dosw]">
+			</div>
+                    <div class="row">
+				<label>Dyspozycyjność </label>
+				<input type="text" name="dane[dysp]">
+			</div>
+                    <div class="row">
+				<label>Obsługiwane stanowiska </label>
+				<input type="text" name="dane[stan]">
+			</div>
+		</div>
+
+		<div class="group">
+			<div class="row">
+				<label>Login <span class="small">Max 25 znaków</span></label>
+				<input type="text" name="dane[login]">
+			</div>
+			<div class="row">
+				<label>Hasło <span class="small">Maks 25 znaków</span></label>
+				<input type="password" name="dane[haslo]" placeholder="hasło">
+                                    
+			</div>
+		</div>
+	</form>
+</div>

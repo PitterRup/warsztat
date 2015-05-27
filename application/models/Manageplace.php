@@ -11,7 +11,7 @@
  *
  * @author Kacper
  */
-class Manageplace extends Basecontroller {
+class Manageplace extends Basemodel {
 
     public function addplace(&$data, $stat) {
         $parm = $this->valuesl($data);

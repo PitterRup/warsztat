@@ -54,7 +54,7 @@ class ZarzadzanieklientemController extends AdminController {
                 $this->msg(false, "Samochód nie został dodany.");
                 $this->_request->goToAddress($this->directoryUrl . "/zarzadzanieklientem/newcar/clientid/$param/type/msg", 0);
             } else {
-                $this->msg(true, "Klient został zapisany.");
+                $this->msg(true, "Samochód został zapisany.");
                 $this->_request->goToAddress($this->directoryUrl . '/zarzadzanieklientem/customerlist/type/msg', 0);
             }
         }

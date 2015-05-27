@@ -11,7 +11,7 @@
  *
  * @author Kacper
  */
-class Managemechanic extends Basecontroller {
+class Managemechanic extends Basemodel {
  
    
    public function addMechanic(&$data){

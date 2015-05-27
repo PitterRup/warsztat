@@ -1,0 +1,19 @@
+<p class="h2">Lista pracowników działu obsługi klienta</p>
+<ul class="table productTable" model="Customers" loadState="1" paramsLink="<?= $this->_request->params; ?>" treeEdit="no">
+	<li class="naglowek">
+		<div class="col" style="width:60px">id</div>
+		<div class="col" style="width:255px">Nazwisko</div>
+		<div class="col" style="width:180px">PESEL</div>
+		<div class="col" style="width:195px">telefon</div>
+		<div class="col last" style="width:60px">opcje</div>
+	</li>
+	<?php foreach($this->services as $this->service): ?>
+		<li class="middle">
+			<div class="col" style="width: 60px;"><?= $this->service['id']; ?></div>
+			<div class="col" style="width:255px;"><?= $this->service['Nazw']; ?></div>
+			<div class="col" style="width:180px; font-size: 14px;"><?= $this->service['pesel']; ?></div>
+			<div class="col" style="width:195px; font-size: 14px;"><?= $this->service['nr_tel']; ?></div>
+			<div class="col opCol" style="width: 60px"><div class="highlight" onclick="javascript:objectMenu.toggle($(this));"><?= $this->buttonListEdit; ?><?= $this->renderContent("zarzadzanieobslugakli/editMenu.phtml"); ?></div></div>
+		</li>
+	<?php endforeach; ?>
+</ul> 
