@@ -11,18 +11,17 @@
  *
  * @author Kacper
  */
-class ZarzadzanieobslugakliController extends  AdminController  {
-    public function init(){
+class ZarzadzanieobslugakliController extends AdminController {
+
+    public function init() {
         
     }
-    
-    public function newserviceAction(){
-         if (!$this->_isPost()) {
+
+    public function newserviceAction() {
+        if (!$this->_isPost()) {
             $this->_headScript($this->baseUrl . '/public/js/_admin/form.js');
             $this->_linkScript($this->baseUrl . '/public/template/styles/_admin/form.css');
-        }
-        
-        else {
+        } else {
             $postdata = $this->_getPost('dane');
             $Manage = new Manageservice();
             if (!$Manage->addservice($postdata)) {
@@ -30,19 +29,20 @@ class ZarzadzanieobslugakliController extends  AdminController  {
                 $this->_request->goToAddress($this->directoryUrl . '/zarzadzanieobslugakli/newservice/type/msg', 0);
             } else {
                 $this->msg(true, "Klient został zapisany");
-                               $this->_request->goToAddress($this->directoryUrl . '/zarzadzanieobslugakli/servicelist/type/msg', 0);
+                $this->_request->goToAddress($this->directoryUrl . '/zarzadzanieobslugakli/servicelist/type/msg', 0);
             }
         }
     }
-    
-    public function servicelistAction(){
-         $this->_linkScript($this->baseUrl . '/public/template/styles/_admin/table&list.css');
+
+    public function servicelistAction() {
+        $this->_linkScript($this->baseUrl . '/public/template/styles/_admin/table&list.css');
 
         $Manage = new Manageservice();
         $this->view->services = $Manage->getservicelist();
     }
-    
-    public function showserviceAction(){
+
+    public function showserviceAction() {
+        $this->_linkScript($this->baseUrl . '/public/template/styles/_admin/form.css');
         $id = $this->_getParam("serviceid");
         if ($id) {
             $Manage = new Manageservice();
@@ -50,23 +50,23 @@ class ZarzadzanieobslugakliController extends  AdminController  {
             if ($data) {
                 $this->view->service = $data;
             } else {
-                 $this->_request->goToAddress($this->directoryUrl . "/zarzadzanieobslugakli/servicelist", 0);
+                $this->_request->goToAddress($this->directoryUrl . "/zarzadzanieobslugakli/servicelist", 0);
             }
         } else {
             $this->_request->goToAddress($this->directoryUrl . "/zarzadzanieobslugakli/servicelist", 0);
         }
     }
-    
-    public function editserviceAction(){
-         $id = $this->_getParam("serviceid");
+
+    public function editserviceAction() {
+        $this->_headScript($this->baseUrl . '/public/js/_admin/form.js');
+        $this->_linkScript($this->baseUrl . '/public/template/styles/_admin/form.css');
+        $id = $this->_getParam("serviceid");
         $Manage = new Manageservice();
         if ($this->_isPost() && $id) {
             $data = $this->_getPost('dane');
-            if($Manage->updateservice($id, $data)){
-                   $this->msg(true, 'Pracownik zapisany');
-               
-            }
-            else {
+            if ($Manage->updateservice($id, $data)) {
+                $this->msg(true, 'Pracownik zapisany');
+            } else {
                 $this->msg(false, 'Wystąpił błąd dane pracownika nie zostały zapisane');
             }
             $this->_request->goToAddress($this->directoryUrl . "/zarzadzanieobslugakli/servicelist/type/msg", 0);
@@ -76,15 +76,16 @@ class ZarzadzanieobslugakliController extends  AdminController  {
             $this->_request->goToAddress($this->directoryUrl . "/zarzadzanieobslugakli/servicelist", 0);
         }
     }
-    public function delserviceAction(){
-         $id = $this->_getParam("serviceid");
-        $Manage= new Manageservice();
-        if($Manage->delservice($id)){
-             $this->_request->goToAddress($this->directoryUrl . "/zarzadzanieobslugakli/servicelist", 0);
-        }
-        else{
+
+    public function delserviceAction() {
+        $id = $this->_getParam("serviceid");
+        $Manage = new Manageservice();
+        if ($Manage->delservice($id)) {
+            $this->_request->goToAddress($this->directoryUrl . "/zarzadzanieobslugakli/servicelist", 0);
+        } else {
             $this->msg(false, 'Wystąpił błąd pracownik nie został usunięty');
             $this->_request->goToAddress($this->directoryUrl . "/zarzadzanieobslugaklienta/servicelist/type/msg", 0);
         }
     }
+
 }

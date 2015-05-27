@@ -92,9 +92,11 @@ class ZarzadzanieklientemController extends AdminController {
         $Manage = new Managecustomer();
         if ($this->_isPost() && $id) {
             $data = $this->_getPost('dane');
-            if($Manage->updatecustomer($id, $data)) $this->msg(true, "Zmiany zostały zapisane.");
-            else $this->msg(false, "Wystąpił błąd! Zmiany nie zostały zapisane.");
-
+            if ($Manage->updatecustomer($id, $data)) {
+                $this->msg(true, "Zmiany zostały zapisane.");
+            } else {
+                $this->msg(false, "Wystąpił błąd! Zmiany nie zostały zapisane.");
+            }
             $this->_request->goToAddress($this->directoryUrl . "/zarzadzanieklientem/customerlist/type/msg", 0);
         } else if ($id) {
             $this->view->clientdata = $Manage->getclient($id);
@@ -144,9 +146,11 @@ class ZarzadzanieklientemController extends AdminController {
         $Manage = new Managecustomer();
         if ($this->_isPost() && $id) {
             $data = $this->_getPost('dane');
-            if($Manage->updatecar($id, $data)) $this->msg(true,"Zmiany zostały zapisane");
-            else $this->msg(false,"Zmiany nie zostały zapisane");
-
+            if ($Manage->updatecar($id, $data)) {
+                $this->msg(true, "Zmiany zostały zapisane");
+            } else {
+                $this->msg(false, "Zmiany nie zostały zapisane");
+            }
             $this->_request->goToAddress($this->directoryUrl . "/zarzadzanieklientem/showcustomer/clientid/$clientid/type/msg", 0);
         } else if ($id) {
             $this->view->car = $Manage->getcar($id);
@@ -170,4 +174,5 @@ class ZarzadzanieklientemController extends AdminController {
             $this->_request->goToAddress($this->directoryUrl . "/zarzadzanieklientem/customerlist", 0);
         }
     }
+
 }

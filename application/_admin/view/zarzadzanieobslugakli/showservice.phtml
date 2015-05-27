@@ -1,3 +1,53 @@
-ID <?php echo $this-service['id'];?> <br/>
-Imie <?php echo $this->service['Imie'];?> <br/>
-Nazwisko <?php echo $this->service['Nazw'];?> <br/>
+<div style="padding: 0 20px;">
+	<div class="form formGroup showForm">
+		<p class="h2">Informacje o pracowniku</p>
+		<div class="row">
+			<label>ID: </label>
+			<span class="textLine"><?= $this->service['id']; ?></span>
+		</div>
+		<div class="row">
+			<label>Imie: </label>
+			<span class="textLine"><?= $this->service['Imie']; ?></span>
+		</div>
+		<div class="row">
+			<label>Nazwisko: </label>
+			<span class="textLine"><?= $this->service['Nazw']; ?></span>
+		</div>
+		<div class="row">
+			<label>Pesel: </label>
+			<span class="textLine"><?= $this->service['pesel']; ?></span>
+		</div>
+		<div class="row">
+			<label>Adres zamieszkania: </label>
+			<span class="textLine"><?= $this->service['adr_zam']; ?></span>
+		</div>
+		<div class="row">
+			<label>Numer telefonu: </label>
+			<span class="textLine"><?= $this->service['nr_tel']; ?></span>
+		</div>
+		<div class="row">
+			<label>Adres e-mail: </label>
+			<span class="textLine"><?= $this->service['mail']; ?></span>
+		</div>
+		<div class="row">
+			<label>Specjalizacja: </label>
+			<span class="textLine"><?= $this->service['specj']; ?></span>
+		</div>
+		<div class="row">
+			<label>Doświadczenie zawodowe: </label>
+			<span class="textLine"><?= $this->service['dosw_zaw']; ?> <?= $this->service['dosw_zaw']==1 ? 'rok':(in_array($this->service['dosw_zaw']{count($this->service['dosw_zaw'])}, array(2,3,4)) ? 'lata':'lat'); ?></span>
+		</div>
+		<div class="row">
+			<label>Dyspozycyjność: </label>
+			<span class="textLine"><?= $this->service['dyspoz'] ? 'tak':'nie'; ?></span>
+		</div>
+		<div class="row">
+			<label>Obsługiwane stanowiska: </label>
+			<span class="textLine"><?= $this->service['obsl_stan']; ?></span>
+		</div>
+		<div class="row">
+			<label>Login: </label>
+			<span class="textLine"><?= $this->service['login']; ?></span>
+		</div>
+	</div>
+</div>
