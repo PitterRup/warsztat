@@ -1,0 +1,14 @@
+<div class="objectMenu tableObjectMenu">
+	<div class="row">
+		<div class="icon"></div>
+		<div class="text"><a href="<?= $this->directoryUrl.'/zarzadzanieklientem/showcar/carid/'.$this->car['id']; ?>">Pokaż więcej informacji</a></div>
+	</div>
+	<div class="row">
+		<div class="icon"></div>
+		<div class="text"><a href="<?= $this->directoryUrl.'/zarzadzanieklientem/editcar/carid/'.$this->car['id'].'/clientid/'.$this->clientid; ?>">Edytuj informacje</a></div>
+	</div>
+	<div class="row">
+		<div class="icon" style="margin-top: 2px"><img src="<?= $this->baseUrl.'/public/template/img/admin/remove-blog-hover-icon.png'; ?>"/></div> 
+		<div class="text"><a href="<?= $this->directoryUrl.'/zarzadzanieklientem/delcar/carid/'.$this->car['id'].'/clientid/'.$this->clientid.'/type/noContent'; ?>">Usuń samochód</a></div>
+	</div>
+</div>

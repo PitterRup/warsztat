@@ -1,12 +1,53 @@
-ID: <?php echo $this->data['id'];?><br/>
-Model: <?php echo $this->data['Model'];?><br/>
-Marka: <?php echo $this->data['Marka'];?><br/>
-Rok produkcji: <?php echo $this->data['Rok_pr'];?><br/>
-Przebieg: <?php echo $this->data['Przeb'];?><br/>
-Wersja wyposażenia: <?php echo $this->data['wer_wyp'];?><br/>
-Rodzaj nadwozia: <?php echo $this->data['Rodz_nadw'];?><br/>
-Pojmność silnika: <?php echo $this->data['poj_sil'];?><br/>
-Moc silnika: <?php echo $this->data['Moc_sil'];?><br/>
-Rodzaj silnika: <?php echo $this->data['Rodz_sil'];?><br/>
-Rodzaj oleju silnikowego: <?php echo $this->data['rodz_ol_sil'];?><br/>
-Napęd: <?php echo $this->data['Naped'];?><br/>
+<div style="padding: 0 20px;">
+	<div class="form formGroup showForm">
+		<p class="h2">Informacje o samochodzie</p>
+		<div class="row">
+			<label>ID: </label>
+			<span class="textLine"><?= $this->data['id']; ?></span>
+		</div>
+		<div class="row">
+			<label>Marka: </label>
+			<span class="textLine"><?= $this->data['Marka']; ?></span>
+		</div>
+		<div class="row">
+			<label>Model: </label>
+			<span class="textLine"><?= $this->data['Model']; ?></span>
+		</div>
+		<div class="row">
+			<label>Rok produkcji </label>
+			<span class="textLine"><?= $this->data['Rok_pr']; ?></span>
+		</div>
+		<div class="row">
+			<label>Przebieg: </label>
+			<span class="textLine"><?= $this->data['Przeb']; ?></span>
+		</div>
+		<div class="row">
+			<label>Wersja wyposażenia: </label>
+			<span class="textLine"><?= $this->data['Wer_wyp']; ?></span>
+		</div>
+		<div class="row">
+			<label>Rodzaj nadwozia: </label>
+			<span class="textLine"><?= $this->data['Rodz_nadw']; ?></span>
+		</div>
+		<div class="row">
+			<label>Pojemność silnika: </label>
+			<span class="textLine"><?= $this->data['poj_sil']; ?></span>
+		</div>
+		<div class="row">
+			<label>Moc silnika: </label>
+			<span class="textLine"><?= $this->data['Moc_sil']; ?></span>
+		</div>
+		<div class="row">
+			<label>Rodzaj silnika: </label>
+			<span class="textLine"><?= $this->data['Rodz_sil']; ?></span>
+		</div>
+		<div class="row">
+			<label>Rodzaj oleju silnikowego: </label>
+			<span class="textLine"><?= $this->data['rodz_ol_sil']; ?></span>
+		</div>
+		<div class="row">
+			<label>Napęd: </label>
+			<span class="textLine"><?= $this->data['Naped']; ?></span>
+		</div>
+	</div>
+</div>

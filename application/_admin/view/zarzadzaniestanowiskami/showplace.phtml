@@ -1,8 +1,25 @@
-ID <?php echo $this->place['id'];?> <br/>
-Nazwa stanowiska <?php echo $this->place['Nazw'];?> <br/>
-Ładowność <?php echo $this->place['ladow'];?> <br/>
-Wymiary <?php echo $this->place['wymiary'];?> <br/>
-<?php if($this->place['Posiad_tun']==1){
-    echo 'Posiada tunel <br/>';
-}
-?>
+<div style="padding: 0 20px;">
+	<div class="form formGroup showForm">
+		<p class="h2">Informacje o stanowisku</p>
+		<div class="row">
+			<label>ID: </label>
+			<span class="textLine"><?= $this->place['id']; ?></span>
+		</div>
+		<div class="row">
+			<label>Nazwa stanowiska: </label>
+			<span class="textLine"><?= $this->place['Nazw']; ?></span>
+		</div>
+		<div class="row">
+			<label>Ładowność: </label>
+			<span class="textLine"><?= $this->place['ladow']; ?> <span class="small">[tona]</span></span>
+		</div>
+		<div class="row">
+			<label>Wymiary: </label>
+			<span class="textLine"><?= $this->place['wymiary']; ?> <span class="small">[metr x metr x metr]</span></span>
+		</div>
+		<div class="row">
+			<label>Posiada tunel: </label>
+			<span class="textLine"><?= $this->place['Posiad_tun'] ? 'tak':'nie'; ?></span>
+		</div>
+	</div>
+</div>

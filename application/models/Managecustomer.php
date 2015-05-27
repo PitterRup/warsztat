@@ -17,7 +17,7 @@ class Managecustomer extends Basemodel {
 
     public function addCustomer($data, &$id) {
         $parm = $this->valuesl($data);
-        $query = "INSERT INTO klient(nazw, nip_pesel, adr_zameld, nr_tel, mail, war_ubez, login, pass) VALUES(" . $parm . ")";
+        $query = "INSERT INTO klient(nazw, nip_pesel, adr_zameld, nr_tel, mail, war_ubez, login, pass, permissions) VALUES(" . $parm . ")";
         if ($this->setQuery($query)) {
             $id = mysql_insert_id();
             return true;
@@ -46,6 +46,15 @@ class Managecustomer extends Basemodel {
         }
     }
 
+    public function delcar($id) {
+        $query = "DELETE FROM samochod WHERE id=$id ";
+        if ($this->setQuery($query)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
    
 
     public function getclient($id) {
@@ -66,13 +75,13 @@ class Managecustomer extends Basemodel {
     }
 
     public function updatecustomer($id, &$param) {
-        $query = "UPDATE klient SET nazw='" . $param['nazw'] . "', nip_pesel='" . $param['nip'] . "',adr_zameld='" . $param['adres'] . "', nr_tel='" . $param['tel'] . "', mail='" . $param['email'] . "', war_ubez='" . $param['warub'] . "',login='" . $param['login'] . "' , pass='" . $param['haslo'] . "' WHERE id='$id'";
-        $this->update($query);
+        $query = "UPDATE klient SET nazw='" . $param['nazw'] . "', nip_pesel='" . $param['nip'] . "',adr_zameld='" . $param['adres'] . "', nr_tel='" . $param['tel'] . "', mail='" . $param['email'] . "', war_ubez='" . $param['warub'] . "',login='" . $param['login'] . "' , pass='" . $param['pass'] . "' WHERE id='$id'";
+        return $this->update($query);
     }
 
     public function updatecar($id, &$param) {
         $query ="UPDATE samochod SET Model='".$param['model']."',Marka='".$param['marka']."',Rok_pr='".$param['rok']."',Przeb='".$param['przebieg']."',Wer_wyp='".$param['wersja']."',Rodz_nadw='".$param['nadwozie']."',poj_sil='".$param['pojemnosc']."',Moc_sil='".$param['moc']."',Rodz_sil='".$param['rodzajsil']."',rodz_ol_sil='".$param['rodzajol']."',Naped='".$param['naped']. "' WHERE id='$id'";
-        $this->update($query);
+        return $this->update($query);
     }
 
 }

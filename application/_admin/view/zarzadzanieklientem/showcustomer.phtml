@@ -1,18 +1,59 @@
-ID <?php echo $this->data['id'];?> <br/>
-Nazwa / Imie i nazwisko <?php echo $this->data['nazw'];?> <br/>
-NIP/PESEL <?php echo $this->data['nip_pesel'];?> <br/>
-Adres zameldowania <?php echo $this->data['adr_zameld'];?> <br/>
-Numer telefonu <?php echo $this->data['nr_tel'];?> <br/>
-Adres e-mail <?php echo $this->data['mail'];?> <br/>
-Wariant posiadanego ubezpieczenia <?php echo $this->data['war_ubez'];?> <br/>
-Login <?php echo $this->data['login'];?> <br/>
+<div style="padding: 0 20px;">
+	<div class="form formGroup showForm">
+		<p class="h2">Informacje o kliencie</p>
+		<div class="row">
+			<label>ID: </label>
+			<span class="textLine"><?= $this->data['id']; ?></span>
+		</div>
+		<div class="row">
+			<label>Imię i nazwisko: </label>
+			<span class="textLine"><?= $this->data['nazw']; ?></span>
+		</div>
+		<div class="row">
+			<label>Adres zameldowania: </label>
+			<span class="textLine"><?= $this->data['adr_zameld']; ?></span>
+		</div>
+		<div class="row">
+			<label>Numer telefonu: </label>
+			<span class="textLine"><?= $this->data['nr_tel']; ?></span>
+		</div>
+		<div class="row">
+			<label>Adres e-mail: </label>
+			<span class="textLine"><?= $this->data['mail']; ?></span>
+		</div>
+		<div class="row">
+			<label>Wariant posiadanego ubezpieczenia: </label>
+			<span class="textLine"><?= $this->data['war_ubez']; ?></span>
+		</div>
+		<div class="row">
+			<label>Login: </label>
+			<span class="textLine"><?= $this->data['login']; ?></span>
+		</div>
+	</div>
+</div>
 
-Samochody <br/>
-<?php
-
-foreach ($this->cars as $car){
-   echo 'Model:'.$car['Model'].' Marka:'.$car['Marka'].' Rok produkcji:'.$car['Rok_pr']
-           .'<a href="'.$this->directoryUrl.'/zarzadzanieklientem/editcar/carid/'.$car['id'].'">Edytuj</a>'
-           . '<a href="'.$this->directoryUrl.'/zarzadzanieklientem/showcar/carid/'.$car['id'].'">Pokaż więcej informacji</a><br/>';
-}
-?>
+<p class="h3" style="margin: 100px 0 30px 0">Lista samochodów</p>
+<ul class="table productTable" style="margin-bottom: 100px">
+	<li class="naglowek">
+		<div class="col" style="width:60px">id</div>
+		<div class="col" style="width:150px">Marka</div>
+		<div class="col" style="width:100px">Model</div>
+		<div class="col" style="width:80px">Rok</div>
+		<div class="col" style="width:50px">Poj.</div>
+		<div class="col" style="width:80px">R.S.</div>
+		<div class="col" style="width:155px">Rodzaj nadwozia</div>
+		<div class="col last" style="width:60px">opcje</div>
+	</li>
+	<?php foreach($this->cars as $this->car): ?>
+		<li class="middle">
+			<div class="col" style="width: 60px;"><?= $this->car['id']; ?></div>
+			<div class="col" style="width:150px;"><?= $this->car['Marka']; ?></div>
+			<div class="col" style="width:100px;"><?= $this->car['Model']; ?></div>
+			<div class="col" style="width:80px;"><?= $this->car['Rok_pr']; ?></div>
+			<div class="col" style="width:50px;"><?= $this->car['poj_sil']; ?></div>
+			<div class="col" style="width:80px;"><?= $this->car['Rodz_sil']; ?></div>
+			<div class="col" style="width:155px;"><?= $this->car['Rodz_nadw']; ?></div>
+			<div class="col opCol" style="width: 60px"><div class="highlight" onclick="javascript:objectMenu.toggle($(this));"><?= $this->buttonListEdit; ?><?= $this->renderContent("zarzadzanieklientem/editMenuCar.phtml"); ?></div></div>
+		</li>
+	<?php endforeach; ?>
+</ul>

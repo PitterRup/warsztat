@@ -4,11 +4,11 @@
 		<div class="group">
 			<div class="row">
 				<label>Imię </label>
-                                <input type="text" name="dane[imie]" value="<?php echo $this->mechanic['Imie'];?>">
+				<input type="text" name="dane[imie]" value="<?php echo $this->mechanic['Imie'];?>">
 			</div>
-                    <div class="row">
+			<div class="row">
 				<label>Nazwisko </label>
-                                <input type="text" name="dane[nazw]" value="<?php echo $this->mechanic['Nazw'];?>">
+				<input type="text" name="dane[nazw]" value="<?php echo $this->mechanic['Nazw'];?>">
 			</div>
 			<div class="row">
 				<label>PESEL </label>
@@ -30,15 +30,15 @@
 				<label>Specjalizacja </label>
 				<input type="text" name="dane[spe]" value="<?php echo $this->mechanic['specj'];?>">
 			</div>
-                    <div class="row">
-				<label>Doświadczenie zawodowe </label>
+					<div class="row">
+				<label>Doświadczenie zawodowe <span class="small">wartość liczona w latach</span></label>
 				<input type="text" name="dane[dosw]" value="<?php echo $this->mechanic['dosw_zaw'];?>">
 			</div>
-                    <div class="row">
-				<label>Dyspozycyjność </label>
+			<div class="row">
+				<label>Dyspozycyjność <span class="small">1 - tak, 0 - nie</span></label>
 				<input type="text" name="dane[dysp]" value="<?php echo $this->mechanic['dyspoz'];?>">
 			</div>
-                    <div class="row">
+			<div class="row">
 				<label>Obsługiwane stanowiska </label>
 				<input type="text" name="dane[stan]" value="<?php echo $this->mechanic['obsl_stan'];?>">
 			</div>
@@ -51,10 +51,8 @@
 			</div>
 			<div class="row">
 				<label>Hasło <span class="small">Maks 25 znaków</span></label>
-				<input type="password" name="dane[haslo]" placeholder="hasło">
-                                    
+				<input type="password" name="dane[pass]" placeholder="hasło" value="<?= $this->mechanic['pass']; ?>">			
 			</div>
-                    <input type="submit" value="Zapisz">
 		</div>
 	</form>
 </div>

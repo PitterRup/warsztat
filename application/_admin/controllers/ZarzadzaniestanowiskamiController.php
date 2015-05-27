@@ -42,6 +42,7 @@ class ZarzadzaniestanowiskamiController extends AdminController {
     }
 
     public function showplaceAction() {
+        $this->_linkScript($this->baseUrl . '/public/template/styles/_admin/form.css');
         $id = $this->_getParam("placeid");
         if ($id) {
             $Manage = new Manageplace();
@@ -57,6 +58,8 @@ class ZarzadzaniestanowiskamiController extends AdminController {
     }
 
     public function editplaceAction() {
+        $this->_headScript($this->baseUrl . '/public/js/_admin/form.js');
+        $this->_linkScript($this->baseUrl . '/public/template/styles/_admin/form.css');
         $id = $this->_getParam("placeid");
         $Manage = new Manageplace();
         if ($this->_isPost() && $id) {
@@ -79,10 +82,10 @@ class ZarzadzaniestanowiskamiController extends AdminController {
         $id= $this->_getParam("placeid");
         $Manage = new Manageplace();
         if($Manage->deleteplace($id)){
-            $this->msg(true,'Stanowisko usunięte');
+            $this->msg(true,'Stanowisko zostało usunięte');
         }
         else{
-            $this->msg(false,'Wystąpił błąd, stanowisko nie zostało usunięte');
+            $this->msg(false,'Wystąpił błąd! Stanowisko nie zostało usunięte');
         }
          $this->_request->goToAddress($this->directoryUrl . "/zarzadzaniestanowiskami/placelist/type/msg", 0);
     }

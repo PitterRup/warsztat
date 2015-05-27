@@ -1,3 +1,53 @@
-ID <?php echo $this->mechanic['id'];?> <br/>
-Imie <?php echo $this->mechanic['Imie'];?> <br/>
-Nazwisko <?php echo $this->mechanic['Nazw'];?> <br/>
+<div style="padding: 0 20px;">
+	<div class="form formGroup showForm">
+		<p class="h2">Informacje o mechaniku</p>
+		<div class="row">
+			<label>ID: </label>
+			<span class="textLine"><?= $this->mechanic['id']; ?></span>
+		</div>
+		<div class="row">
+			<label>Imie: </label>
+			<span class="textLine"><?= $this->mechanic['Imie']; ?></span>
+		</div>
+		<div class="row">
+			<label>Nazwisko: </label>
+			<span class="textLine"><?= $this->mechanic['Nazw']; ?></span>
+		</div>
+		<div class="row">
+			<label>Pesel: </label>
+			<span class="textLine"><?= $this->mechanic['pesel']; ?></span>
+		</div>
+		<div class="row">
+			<label>Adres zamieszkania: </label>
+			<span class="textLine"><?= $this->mechanic['adr_zam']; ?></span>
+		</div>
+		<div class="row">
+			<label>Numer telefonu: </label>
+			<span class="textLine"><?= $this->mechanic['nr_tel']; ?></span>
+		</div>
+		<div class="row">
+			<label>Adres e-mail: </label>
+			<span class="textLine"><?= $this->mechanic['mail']; ?></span>
+		</div>
+		<div class="row">
+			<label>Specjalizacja: </label>
+			<span class="textLine"><?= $this->mechanic['specj']; ?></span>
+		</div>
+		<div class="row">
+			<label>Doświadczenie zawodowe: </label>
+			<span class="textLine"><?= $this->mechanic['dosw_zaw']; ?> <?= $this->mechanic['dosw_zaw']==1 ? 'rok':(in_array($this->mechanic['dosw_zaw']{count($this->mechanic['dosw_zaw'])}, array(2,3,4)) ? 'lata':'lat'); ?></span>
+		</div>
+		<div class="row">
+			<label>Dyspozycyjność: </label>
+			<span class="textLine"><?= $this->mechanic['dyspoz'] ? 'tak':'nie'; ?></span>
+		</div>
+		<div class="row">
+			<label>Obsługiwane stanowiska: </label>
+			<span class="textLine"><?= $this->mechanic['obsl_stan']; ?></span>
+		</div>
+		<div class="row">
+			<label>Login: </label>
+			<span class="textLine"><?= $this->mechanic['login']; ?></span>
+		</div>
+	</div>
+</div>
