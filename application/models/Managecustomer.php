@@ -46,6 +46,15 @@ class Managecustomer extends Basecontroller {
         }
     }
 
+    public function delcar($id) {
+        $query = "DELETE FROM samochod WHERE id=$id ";
+        if ($this->setQuery($query)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
    
 
     public function getclient($id) {
@@ -72,7 +81,7 @@ class Managecustomer extends Basecontroller {
 
     public function updatecar($id, &$param) {
         $query ="UPDATE samochod SET Model='".$param['model']."',Marka='".$param['marka']."',Rok_pr='".$param['rok']."',Przeb='".$param['przebieg']."',Wer_wyp='".$param['wersja']."',Rodz_nadw='".$param['nadwozie']."',poj_sil='".$param['pojemnosc']."',Moc_sil='".$param['moc']."',Rodz_sil='".$param['rodzajsil']."',rodz_ol_sil='".$param['rodzajol']."',Naped='".$param['naped']. "' WHERE id='$id'";
-        $this->update($query);
+        return $this->update($query);
     }
 
 }

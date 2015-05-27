@@ -6,7 +6,7 @@ class IndexController extends AdminController {
 
 
 	public function indexAction() {
-	
+		$this->_request->goToAddress($this->directoryUrl.'/zarzadzanieklientem/customerlist');
 	}
 
 	public function loginAction() { 

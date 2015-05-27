@@ -1,5 +1,5 @@
 <div style="padding: 20px">
-	<form action="<?= $this->directoryUrl.'/zarzadzanieklientem/editcar/carid/'.$this->car['id'].'/type/noContent'; ?>" method="POST" class="form saveBoxOn settingsForm">
+	<form action="<?= $this->directoryUrl.'/zarzadzanieklientem/editcar/carid/'.$this->car['id'].'/clientid/'.$this->clientid.'/type/noContent'; ?>" method="POST" class="form saveBoxOn settingsForm">
 		<p class="h2">Nowy samochód</p>
 		<div class="group">
 			<div class="row">
@@ -45,7 +45,6 @@
 			<div class="row">
 				<label>Napęd <span class="small">4x4, tył, przód</span></label>
 				<input type="text" name="dane[naped]" value="<?php echo $this->car['Naped'];?>">
-                                <input type="submit" value="Zapisz">
 			</div>
 		</div>
 	</form>

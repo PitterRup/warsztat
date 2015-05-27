@@ -42,6 +42,7 @@ class ZarzadzaniestanowiskamiController extends AdminController {
     }
 
     public function showplaceAction() {
+        $this->_linkScript($this->baseUrl . '/public/template/styles/_admin/form.css');
         $id = $this->_getParam("placeid");
         if ($id) {
             $Manage = new Manageplace();

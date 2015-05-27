@@ -46,6 +46,7 @@ class ZarzadzaniemechanikamiController extends AdminController {
     }
 
     public function showmechanicAction() {
+        $this->_linkScript($this->baseUrl . '/public/template/styles/_admin/form.css');
         $id = $this->_getParam("mechanicid");
         if ($id) {
             $Manage = new Managemechanic();

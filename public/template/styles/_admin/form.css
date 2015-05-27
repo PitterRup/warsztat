@@ -279,3 +279,29 @@ ul.list li input:focus,
 	width: 500px;
 	height: 70px;
 }
+
+
+/* showForm */
+.showForm .group {
+	float: left;
+	clear: both;
+	margin: 20px 0;
+	width: 100%;
+}
+.showForm .row:hover {
+	background: #C9C7C7;
+}
+.showForm .row label {
+	width: 300px;
+	float: left;
+	color: #5E5E5E;
+	text-align: left;
+}
+.showForm .row span.textLine {
+	float: left;
+	width: 300px;
+}
+.showForm .row span.textLine .small {
+	font-size: 13px;
+	color: #7C7C7C;
+}
