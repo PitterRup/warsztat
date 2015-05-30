@@ -47,12 +47,7 @@ class Managecustomer extends Basemodel {
     }
 
     public function delcar($id) {
-        $query = "DELETE FROM samochod WHERE id=$id ";
-        if ($this->setQuery($query)) {
-            return true;
-        } else {
-            return false;
-        }
+       return $this->delete('samochod', $id);
     }
 
    

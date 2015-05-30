@@ -26,21 +26,51 @@ class Managerepair extends GeneralModelsController {
         return $weekarray;
     }
 
-    public function getrepair() {
-        $weekarray = $this->getweekarray();
-        $repairarray = array();
-        foreach ($weekarray as $day) {
-            $query = "SELECT ID_Zadania,Diagnoza,Status FROM zadania WHERE Data=STR_TO_DATE('$day','%Y-%m-%d')";
-            if ($this->setQuery($query)) {
-                $this->fetchAll();
-                $repairarray[] = $this->data;
-            }
-            
+    public function countavailablemechanic() {
+        $num = "SELECT COUNT(*) FROM pracownik WHERE Fun_Prac_ID=2";
+        if ($this->setQuery($num)) {
+            $this->fetchRow();
+            $mechanic = $this->data;
         }
-        return $repairarray;
+        else{
+           return false;
+        }
+        $weekarray = $this->getweekarray();
+        $availablemechanic = array();
+        foreach ($weekarray as $time) {
+           if( $this->setQuery("SELECT COUNT(*) FROM naprawa_pracownik WHERE Naprawa_ID=(SELECT id FROM naprawa WHERE Data= STR_TO_DATE('$time','%Y-%m-%d'))")){
+            $this->fetchRow();
+            $availablemechanic[] = (int)$mechanic - (int)$this->data['COUNT(*)'];
+           }
+        }
+        return $availablemechanic;
+    }
+
+    public function countavailableplace() {
+        $num = "SELECT COUNT(*) FROM stanowisko ";
+        if ($this->setQuery($num)) {
+            $this->fetchRow();
+            $places = $this->data;
+        }
+        else{
+           return false;
+        }
+        $weekarray = $this->getweekarray();
+        $availableplaces = array();
+        foreach ($weekarray as $time) {
+           if( $this->setQuery("SELECT COUNT(*) FROM naprawa WHERE Data= STR_TO_DATE('$time','%Y-%m-%d')")){
+            $this->fetchRow();
+            $availableplaces[] = (int)$places - (int)$this->data['COUNT(*)'];
+           }
+        }
+        return $availableplaces;
     }
     
-    public function getavailablemechanic($date){
+    public function getavailablemechanics($date){
+        
+    }
+    
+    public function getavailableplaces($date){
         
     }
 

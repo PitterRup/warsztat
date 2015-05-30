@@ -125,7 +125,7 @@ class ZarzadzanieklientemController extends AdminController {
     }
 
     public function showcarAction() {
-        $this->_linkScript($this->baseUrl . '/public/template/styles/_admin/form.css');
+              $this->_linkScript($this->baseUrl . '/public/template/styles/_admin/form.css');
         $id = $this->_getParam("carid");
         if ($id) {
             $Manage = new Managecustomer();

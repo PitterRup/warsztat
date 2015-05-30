@@ -19,6 +19,7 @@ class ZarzadzaniezadaniamiController extends AdminController {
     public function indexAction(){
         $Manage= new Managerepair();
         $this->view->date=$Manage->getweekarray();
-        $this->view->repair=$Manage->getrepair();
+        $this->view->mechanic=$Manage->countavailablemechanic();
+        $this->view->places=$Manage->countavailableplace();
     }
 }
