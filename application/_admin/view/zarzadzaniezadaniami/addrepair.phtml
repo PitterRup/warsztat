@@ -1,0 +1,21 @@
+<form action="<?php echo $this->directoryUrl . '/zarzadzaniezadaniami/includecar/date/' . $this->date; ?>" method="POST">
+
+
+    <?php
+    foreach ($this->mechanicstable as $mechanic) {
+        echo '<input type="checkbox" name="mechanic" value="' . $mechanic['id'] . '">' . $mechanic['Imie'] . ' ' . $mechanic['Nazw'] . ' ' . $mechanic['nr_tel'] . '<br/>';
+    }
+    echo '<br/>';
+    foreach ($this->placestable as $place) {
+        echo '<input type="checkbox" name="place" value="' . $place['id'] . '">' . $place['Nazw'] . ' ' . $place['ladow'] . ' ' . $place['wymiary'] . ' ' . $place['przezn'] . ' ' . ($place['Posiad_tun'] ? 'Posiada tunel' : 'Nie posiada tunelu');
+        echo '<br/>';
+    }
+    ?>
+    Dane klienta<br/>
+    Nazwisko: <input type="text" name="client"><br/>
+    
+    Marka samochodu:<input type="text" name="car[Marka]"> <br/>
+    Model:<input type="text" name="car[Model]"> <br/>
+    Rok produkcji:<input type="text" name="car[Rok_pr]"> <br/>
+    <input type="submit" value="Dalej">
+</form>

@@ -1,0 +1,13 @@
+<form action="<?php echo $this->directoryUrl . '/zarzadzaniezadaniami/savedata/date/' . $this->date; ?>" method="POST">
+    
+      <?php foreach ($this->cars as $car){
+        echo'<input type="checkbox" name="carid" value="'.$car['id'].'">Model '.$car['Model'].'Marka:'.$car['Marka'].'Rok produkcji:'.$car['Rok_pr'].'Przebieg:'.$car['Przeb'].'Wersja wyposażenia:'.$car['Wer_wyp'].'Rodzaj nadwozia:'.$car['Rodz_nadw'];  
+      }
+      ?>
+    <input type="hidden" name="mechanic" value="<?php echo $this->mechanicid;?>">
+    <input type="hidden" name="place" value="<?php echo $this->placeid;?>">
+    Diagnoza <input type="text" name="info"> <br/>
+    Status <input type="text" name="status"><br/>
+    Cena<input type="text" name="price"><br/>
+    <input type="submit">
+</form>
