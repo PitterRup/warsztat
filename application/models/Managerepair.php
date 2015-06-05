@@ -99,5 +99,23 @@ class Managerepair extends Basemodel {
             return false;
         }
     }
-
+    
+    public function getdetails($date,&$datar,&$mechanicr){
+        $mechanicr=array();
+        $query ="SELECT * FROM `naprawa` JOIN `stanowisko` ON naprawa.Stanowisko_ID= stanowisko.id JOIN `samochod` ON naprawa.Samochod_ID=samochod.id WHERE naprawa.Data=STR_TO_DATE('$date','%Y-%m-%d') ";
+   if ($this->setQuery($query)) {
+            $this->fetchAll();
+            $datar=$this->data;
+            foreach ($datar as $key=>$num){
+            $mechanic="SELECT * FROM `pracownik` WHERE id=(SELECT Pracownik_ID FROM Naprawa_Pracownik WHERE Naprawa_ID=".$num['id'].")";
+            $this->setQuery($mechanic);
+            $this->fetchAll();
+            $mechanicr[$key]=  $this->data;
+            }
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 }

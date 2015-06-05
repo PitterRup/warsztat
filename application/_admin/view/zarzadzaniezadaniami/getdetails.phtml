@@ -1,0 +1,21 @@
+<?php 
+foreach ($this->data as $i=> $details){
+    echo 'Diagnoza: '.$details['Diagnoza'].'<br/>'
+            . 'Status: '.$details['Status'].'<br/>'
+            . 'Nazwa stanowiska: '.$details['Nazw'].'<br/>'
+            . 'Ładowność: '.$details['ladow'].'<br/>'
+            . 'Wymiary: '.$details['wymiary'].'<br/>'
+            . ($details['Posiad_tun']=='y'?'Posiada tunel':'Nie posiada tunelu').'<br/>'
+            . 'Przeznaczenie: '.$details['przezn'].'<br/>'
+            . '<br/>Dane samochodu<br/>'
+            . 'Marka: '.$details['Marka'].'<br/>'
+            . 'Model: '.$details['Model'].'<br/>'
+            . 'Rok produkcji: '.$details['Rok_pr'].'<br/>'
+            . '<br/>Dane mechaników<br/> ';
+   foreach($this->mechanic[$i] as $line){
+        echo'Imie: '.$line['Imie'].'<br/>'
+                . 'Nazwisko: '.$line['Nazw'].'<br/>'
+                . 'Numer telefonu: '.$line['nr_tel'].'<br/>';
+    }
+}
+?>

@@ -66,5 +66,16 @@ class ZarzadzaniezadaniamiController extends AdminController {
             }
         }
     }
+    
+    public function getdetailsAction(){
+         $Manage = new Managerepair();
+        $date = $this->_getParam('date');
+        $datar;
+        $mechanicr;
+        if($Manage->getdetails($date,$datar,$mechanicr)){
+            $this->view->data=$datar;
+            $this->view->mechanic=$mechanicr; 
+        }
+    }
 
 }
