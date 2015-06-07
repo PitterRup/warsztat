@@ -28,7 +28,7 @@ class ZarzadzanieobslugakliController extends AdminController {
                 $this->msg(false, "Pracownik nie został zapisany.");
                 $this->_request->goToAddress($this->directoryUrl . '/zarzadzanieobslugakli/newservice/type/msg', 0);
             } else {
-                $this->msg(true, "Klient został zapisany");
+                $this->msg(true, "Pracownik został zapisany");
                 $this->_request->goToAddress($this->directoryUrl . '/zarzadzanieobslugakli/servicelist/type/msg', 0);
             }
         }
@@ -64,6 +64,7 @@ class ZarzadzanieobslugakliController extends AdminController {
         $Manage = new Manageservice();
         if ($this->_isPost() && $id) {
             $data = $this->_getPost('dane');
+            $data['dysp'] = $data['dysp']=='tak' ? 1:0;
             if ($Manage->updateservice($id, $data)) {
                 $this->msg(true, 'Pracownik zapisany');
             } else {

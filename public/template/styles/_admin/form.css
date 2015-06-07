@@ -23,6 +23,18 @@ textarea:focus {
 	border-color: #7CA0F4;
 }
 
+select { 
+	width: 186px;
+	margin-top: 1px; 
+	text-align: center;
+	line-height: 25px;
+	height: 25px;
+}
+select option {
+	text-align: left;
+	padding: 2px 10px;
+}
+
 
 /* Formularze */
 .formLogin {
@@ -47,7 +59,6 @@ textarea:focus {
 	min-height: 25px;
 	line-height: 25px;
 	clear: both;
-	overflow: hidden;
 }
 .form .row2
 {
@@ -249,7 +260,6 @@ ul.list li input:focus,
 .settingsForm .row {
 	float: left;
 	padding: 20px 0;
-	overflow: hidden;
 	border-top: 1px solid #999;
 }
 .settingsForm .row:first-child {
@@ -304,4 +314,11 @@ ul.list li input:focus,
 .showForm .row span.textLine .small {
 	font-size: 13px;
 	color: #7C7C7C;
+}
+
+
+.searchField {
+	float: left;
+	width: 510px;
+	position: relative;
 }

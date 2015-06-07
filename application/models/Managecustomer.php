@@ -79,4 +79,19 @@ class Managecustomer extends Basemodel {
         return $this->update($query);
     }
 
+    public function find($string) {
+        $words = explode(" ", $string);         
+        $where = "nazw LIKE '%$words[0]%'";
+        if(isset($words[1])) $where .= " OR nazw LIKE '%$words[1]%'";
+
+        $this->setQuery("SELECT DISTINCT * FROM klient WHERE $where ORDER BY nazw ASC");
+        $this->fetchAssocAll();
+
+        foreach($this->data as $row) {
+            $rows .= '<li objId="'.$row['id'].'">'.$row['nazw'].'</li>';
+        }
+
+        return $rows;
+    }
+
 }

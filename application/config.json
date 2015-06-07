@@ -47,6 +47,7 @@
 
 	"dbTableNames": {
 		"Pracownik": "pracownik",
-		"Klient": "klient"
+		"Klient": "klient",
+		"FunPrac": "fun_prac"
 	}
 }

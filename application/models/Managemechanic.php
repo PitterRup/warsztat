@@ -16,7 +16,7 @@ class Managemechanic extends Basemodel {
    
    public function addMechanic(&$data){
 	   $parm = $this->valuesl($data);
-		$query = "INSERT INTO pracownik(Imie,Nazw,pesel,adr_zam,nr_tel,mail,specj,dosw_zaw,dyspoz,obsl_stan,login,pass,permissions,Fun_Prac_ID) VALUES(" . $parm . ",'2')";
+		$query = "INSERT INTO pracownik(Imie,Nazw,pesel,adr_zam,nr_tel,mail,specj,dosw_zaw,dyspoz,obsl_stan,login,pass,Fun_Prac_ID) VALUES(" . $parm . ",'2')";
 	   return $this->add($query);
    }
    

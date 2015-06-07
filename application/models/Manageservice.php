@@ -15,7 +15,7 @@ class Manageservice extends Basemodel {
     
     public function addservice(&$data){
          $parm = $this->valuesl($data);
-        $query = "INSERT INTO pracownik(Imie,Nazw,pesel,adr_zam,nr_tel,mail,specj,dosw_zaw,dyspoz,obsl_stan,login,pass,Fun_Prac_ID) VALUES(" . $parm . ",'3')";
+        $query = "INSERT INTO pracownik(Imie,Nazw,pesel,adr_zam,nr_tel,mail,specj,dosw_zaw,dyspoz,login,pass,Fun_Prac_ID) VALUES(" . $parm . ",'3')";
        return $this->add($query);
     }
     

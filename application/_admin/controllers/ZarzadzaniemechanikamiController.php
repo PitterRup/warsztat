@@ -25,8 +25,6 @@ class ZarzadzaniemechanikamiController extends AdminController {
         // po wysłaniu formularza metodą POST
         else {
             $postdata = $this->_getPost('dane');
-            $permissions = '{"_admin":1}';
-            $postdata[] = $permissions;
             $Manage = new Managemechanic();
             if ($Manage->addMechanic($postdata)) {
                 $this->msg(true, "Mechanik został zapisany");

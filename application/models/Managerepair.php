@@ -14,7 +14,7 @@
 class Managerepair extends Basemodel {
 
     public function getweekarray() {
-        $numberofday = 7;
+        $numberofday = 30;
         $weekarray = array(date("Y-m-d", time()));
         for ($i = 1; $i <= $numberofday; $i++) {
             $weekarray[] = date("Y-m-d", strtotime("+$i day"));
@@ -61,7 +61,7 @@ class Managerepair extends Basemodel {
     }
 
     public function getavailablemechanics($date) {
-        $query = "SELECT id, Imie, Nazw,nr_tel FROM pracownik WHERE id NOT IN( SELECT Pracownik_ID FROM naprawa_pracownik WHERE Naprawa_ID IN (SELECT id FROM naprawa WHERE Data= STR_TO_DATE('$date','%Y-%m-%d'))) AND Fun_Prac_ID=2";
+        $query = "SELECT id, Imie, Nazw,nr_tel,pesel FROM pracownik WHERE id NOT IN( SELECT Pracownik_ID FROM naprawa_pracownik WHERE Naprawa_ID IN (SELECT id FROM naprawa WHERE Data= STR_TO_DATE('$date','%Y-%m-%d'))) AND Fun_Prac_ID=2";
         if ($this->setQuery($query)) {
             $this->fetchAll();
             return $this->data;

@@ -5,6 +5,7 @@
 	display: none;
 	background: white;
 	z-index: 100;
+	top: 26px;
 }
 .searchBox>ul {
 	list-style: none;

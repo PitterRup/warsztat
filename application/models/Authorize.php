@@ -38,7 +38,7 @@ class Authorize extends GeneralModelsController {
     }
 
     public function getData($login) {
-        $this->setQuery("SELECT ip,phpsessid,permissions FROM $this->_name WHERE login= BINARY '$login'");
+        $this->setQuery("SELECT a.ip, a.phpsessid, f.permissions FROM $this->_name a, $this->_FunPrac f WHERE a.Fun_Prac_ID=f.id AND login= BINARY '$login'");
         $this->fetchRow();
         return $this->data;
     } 

@@ -1,21 +1,85 @@
-<form action="<?php echo $this->directoryUrl . '/zarzadzaniezadaniami/includecar/date/' . $this->date; ?>" method="POST">
+<div style="padding: 20px">
+    <form action="<?php echo $this->directoryUrl . '/zarzadzaniezadaniami/savedata/date/' . $this->date; ?>" method="POST" class="form saveBoxOn settingsForm">
+        <p class="h3">Dane klienta</p>
+        <div class="group">
+            <div class="row">
+                <label>Imię i nazwisko klienta </label>
+                <div class="searchField">
+                    <input type="text" name="client" placeholder="Wyszukaj klienta" autocomplete="off" searchBox-link="<?= $this->directoryUrl.'/zarzadzaniezadaniami/findClient/type/noContent'; ?>" valueSelector="input[name=clientId]">
+                </div>
+            </div>
+            <script type="text/javascript"> $(".searchField input").searchBox(); </script>
+            <div class="row carField">
+                <label>Samochód </label>
+                <div class="searchField">
+                    <input type="text" name="car" placeholder="Wybierz auto" autocomplete="off" class="listOptionHandler">
+                    <div class="listOption" style="min-width: 510px;">
+                        <ul></ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <label>Diagnoza </label>
+                <input type="text" name="info">
+            </div>
+            <div class="row">
+                <label>Status </label>
+                <select name="status">
+                    <option value="niezdiagnozowany">niezdiagnozowany</option>
+                    <option value="zdiagnozowany">zdiagnozowany</option>
+                    <option value="naprawiony">naprawiony</option>
+                </select>
+            </div>
+            <div class="row">
+                <label>Cena naprawy <span class="small">gdy nieznana pozostawić puste</span></label>
+                <input type="text" name="info">
+            </div>
+        </div>
 
+        <p class="h4">Lista wolnych mechaników</p>
+        <ul class="table productTable">
+            <li class="naglowek">
+                <div class="col" style="width:60px">id</div>
+                <div class="col" style="width:255px">Imię i nazwisko</div>
+                <div class="col" style="width:180px">PESEL</div>
+                <div class="col" style="width:195px">telefon</div>
+                <div class="col last" style="width:60px">wybierz</div>
+            </li>
+            <?php foreach($this->mechanicstable as $mechanic): ?>
+                <li class="middle">
+                    <div class="col" style="width: 60px;"><?= $mechanic['id']; ?></div>
+                    <div class="col" style="width:255px;"><?= $mechanic['Imie'].' '.$mechanic['Nazw']; ?></div>
+                    <div class="col" style="width:180px; font-size: 14px;"><?= $mechanic['pesel']; ?></div>
+                    <div class="col" style="width:195px; font-size: 14px;"><?= $mechanic['nr_tel']; ?></div>
+                    <div class="col opCol" style="width: 60px"><input type="checkbox" name="mechanic" value="<?= $mechanic['id']; ?>"></div>
+                </li>
+            <?php endforeach; ?>
+        </ul> 
 
-    <?php
-    foreach ($this->mechanicstable as $mechanic) {
-        echo '<input type="checkbox" name="mechanic" value="' . $mechanic['id'] . '">' . $mechanic['Imie'] . ' ' . $mechanic['Nazw'] . ' ' . $mechanic['nr_tel'] . '<br/>';
-    }
-    echo '<br/>';
-    foreach ($this->placestable as $place) {
-        echo '<input type="checkbox" name="place" value="' . $place['id'] . '">' . $place['Nazw'] . ' ' . $place['ladow'] . ' ' . $place['wymiary'] . ' ' . $place['przezn'] . ' ' . ($place['Posiad_tun'] ? 'Posiada tunel' : 'Nie posiada tunelu');
-        echo '<br/>';
-    }
-    ?>
-    Dane klienta<br/>
-    Nazwisko: <input type="text" name="client"><br/>
-    
-    Marka samochodu:<input type="text" name="car[Marka]"> <br/>
-    Model:<input type="text" name="car[Model]"> <br/>
-    Rok produkcji:<input type="text" name="car[Rok_pr]"> <br/>
-    <input type="submit" value="Dalej">
-</form>
+        <p class="h4">Lista wolnych stanowisk</p>
+        <ul class="table productTable" style="margin-bottom: 200px">
+            <li class="naglowek">
+                <div class="col" style="width:60px">id</div>
+                <div class="col" style="width:155px">Nazwa</div>
+                <div class="col" style="width:70px">Ładowność</div>
+                <div class="col" style="width:105px">Wymiary</div>
+                <div class="col" style="width:55px">Tunel</div>
+                <div class="col" style="width:235px">Przeznaczenie</div>
+                <div class="col last" style="width:60px">wybierz</div>
+            </li>
+            <?php foreach($this->placestable as $place): ?>
+                <li class="middle">
+                    <div class="col" style="width: 60px;"><?= $place['id']; ?></div>
+                    <div class="col" style="width:155px;"><?= $place['Nazw']; ?></div>
+                    <div class="col" style="width:70px; font-size: 14px;"><?= $place['ladow']; ?></div>
+                    <div class="col" style="width:105px; font-size: 14px;"><?= $place['wymiary']; ?></div>
+                    <div class="col" style="width:55px; font-size: 14px;"><?= $place['Posiad_tun'] ? 'tak':'nie'; ?></div>
+                    <div class="col" style="width:235px; font-size: 14px;"><?= $place['przezn']; ?></div>
+                    <div class="col opCol" style="width: 60px"><input type="checkbox" name="place" value="<?= $place['id']; ?>"></div>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+        <input type="hidden" name="clientId" value="">
+        <input type="hidden" name="carId" value="">
+    </form>
+</div> 

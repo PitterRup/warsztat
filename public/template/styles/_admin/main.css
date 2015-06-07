@@ -802,6 +802,15 @@ p.h2 {
 	text-align: center;
 	margin-top: 30px;
 }
+.h4 {
+	font-size: 25px;
+	line-height: 30px;
+	text-align: center;
+	margin-top: 50px;
+	clear: both;
+	float: left;
+	width: 100%;
+}
 #archiveStateBox {
 	width: 500px;
 	font-size: 14px;
@@ -1048,4 +1057,57 @@ textarea.high {
 	clear: both;
 	overflow: hidden;
 	font-size: 14px;
+}
+
+
+p.info {
+	clear: both;
+	padding: 20px 50px;
+	margin-bottom: 20px;
+}
+
+
+/* listOption */
+.listOption {
+	position: absolute;
+	border: 1px solid #BCBCBC;
+	display: none;
+	background: white;
+	z-index: 100;
+	top: 26px;
+}
+.listOption>ul {
+	list-style: none;
+	width: 100%;
+	margin: 0;
+	padding: 2px 0 2px 0;
+	font-size: 13px;
+}
+.listOption>ul>li {
+	font-size: 13px;
+    height: 20px;
+    line-height: 20px;
+    padding: 2px 10px;
+}
+.listOption>ul>li:hover {
+	background: #3399FF;
+	color: white;
+	cursor: pointer;
+	display: block;
+}
+.listOption>ul>li:hover .infoText {
+	color: white;
+}
+.listOption>ul>li .infoText {
+	float: left;
+
+}
+.listOption>ul>li .infoText2 {
+	float: right;
+	color: #C6C0C0;
+	margin: 0 0 0 10px;
+	font-size: 14px;
+}
+.listOption>ul>li .value {
+	display: none;
 }

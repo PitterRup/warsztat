@@ -1,9 +1,35 @@
-<?php
-foreach ($this->date as $key=>$days){
-   echo $days.'<br/> Liczba wolnych mechaników:'.$this->mechanic[$key]
-           .'<br/> Liczba wolnych stanowisk:'.$this->places[$key]. '<br/><a href="'.$this->directoryUrl.'/zarzadzaniezadaniami/getdetails/date/'.$days.'">Szegóły </a> <br/><form action="'.$this->directoryUrl.'/zarzadzaniezadaniami/addrepair/date/'.$days.'" method="GET"> <input type ="submit" value="Dodaj naprawę"></form><br/>';
-           
-}
+<p class="h2" style="margin-bottom:50px">Kalendarz napraw</p>
 
- ?>
- 
+<p class="info">M - ilość wolnych mechaników w dniu <br>S - ilość wolnych stanowisk w dniu</p>
+
+<ul class="table calendar">
+	<li class="middle">
+		<?php 
+		$t = date("Y-m-d");
+		$t2 = date("Y-m-d", strtotime("$today +1 day"));
+		$t3 = date("Y-m-d", strtotime("$today +2 day"));
+		foreach($this->date as $key=>$days): 
+			$day = $this->_filter->getDayName($days);
+			$mc = $this->mechanic[$key];
+			$pc = $this->places[$key];
+			$empty = $mc==0 OR $pc==0;
+			if($day!='Niedziela'):
+				?>
+				<div class="col <?= $empty ? 'empty':''; ?>" style="width:131px">
+					<div class="colTitle">
+					<?php
+						if($days==$t) echo 'Dzisiaj';
+						elseif($days==$t2) echo 'Jutro';
+						elseif($days==$t3) echo 'Pojutrze';
+						else echo $this->_filter->convertDate($days);
+					?>
+					</div>
+					<a <?= $empty ? '':'href="'.$this->directoryUrl.'/zarzadzaniezadaniami/addrepair/date/'.$days.'"'; ?>>
+						<span class="dayName"><?= $day ?></span>
+						<span><?= 'M: '.$mc.' S: '.$pc; ?></span>
+					</a>
+				</div>
+			<?php endif;
+		endforeach; ?>
+	</li>
+</ul>

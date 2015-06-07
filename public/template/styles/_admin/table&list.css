@@ -39,6 +39,49 @@ ul.long {
 }
 ul.long li { width: 726px; }
 
+/* calendar */
+ul.calendar li:not(.naglowek) {
+}
+ul.calendar li:not(.naglowek) .col {
+	height: 100px!important;
+	cursor: pointer;
+	margin-bottom: 40px!important;
+}
+ul.calendar .col {
+	position: relative;
+}
+ul.calendar .col:not(.empty):hover {
+	background: #BCBCBC;
+}
+ul.calendar .col.empty {
+	background: #DB2E2E;
+}
+ul.calendar .col.empty a .dayName {
+	color: white;
+}
+ul.calendar .col .colTitle {
+	position: absolute;
+	top: -20px;
+	left: 0px;
+	width: 100%;
+	text-align: center;
+	font-size: 13px;
+	height: 20px;
+	line-height: 20px;
+}
+ul.calendar .col a {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+ul.calendar .col a .dayName {
+	clear: both;
+	display: block;
+	width: 100%;
+	text-align: center;
+	color: #898989;
+}
+
 ul.productTable .znak,
 ul.productTable .state {
 	position: absolute;
@@ -92,9 +135,9 @@ ul.table li.middle>.col {
 	line-height: 39px;
 }
 
-ul.table li:not(.naglowek):hover>.col .abRow,
-ul.table li:not(.naglowek):hover>.col:not(.treeCol):not(.moveCol):not(.wl),
-ul.table li:not(.naglowek):hover>.col>.level>.col {
+ul.table:not(.calendar) li:not(.naglowek):hover>.col .abRow,
+ul.table:not(.calendar) li:not(.naglowek):hover>.col:not(.treeCol):not(.moveCol):not(.wl),
+ul.table:not(.calendar) li:not(.naglowek):hover>.col>.level>.col {
 	background: #BCBCBC;
 }
 
@@ -238,6 +281,11 @@ ul.table .col.opCol .highlight {
 }
 ul.table .col.opCol .highlight>img { margin-top: 6px; }
 ul.productTable .col.opCol .highlight>img { margin-top: 12px; }
+
+ul.productTable .col.opCol input[type=checkbox] {
+	margin-left: 20px;
+}
+
 
 /* imgCol */
 ul.table .col.imgCol {

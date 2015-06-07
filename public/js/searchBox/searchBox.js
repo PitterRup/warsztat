@@ -79,6 +79,8 @@
 	    					'click': function() {
 		    					var liVal = $(this).text();
 		    					formObj.val(liVal);
+		    					$(formObj.attr("valueSelector")).val($(this).attr("objId"));
+		    					getClientCars($(this).attr("objId"));
 		    					box.hide().find("li.hover").removeClass("hover");
 		    				},
 		    				'mouseenter': function() { $(this).addClass("hover"); },
@@ -114,3 +116,54 @@
 		});
 	}
 })(jQuery);
+
+
+function getClientCars(clientId) {
+	$.ajax({
+		url: _directoryUrl+"/zarzadzaniezadaniami/getClientCars/type/noContent",
+		type: 'POST',
+		data: {clientId:clientId},
+		success: function(response) {
+			$(".carField .listOption ul").html(response);
+			initList();
+		}
+	});
+}
+
+page.initModule = function() {
+	initList();
+}
+page.ilControll = true;
+
+function initList() {
+	if($(".listOptionHandler").length>0) {
+		// handler init
+		$(".listOptionHandler").unbind("click blur").bind({
+			'click': function() {
+				if($(".listOption li").length > 0) $(".listOption").show();
+			},
+			'blur': function(e) {
+				if(page.ilControll) $(".listOption").hide();
+			}
+		});
+
+		// list init
+		$(".listOption").unbind("mouseenter mouseleave").bind({
+			'mouseenter': function() {
+				page.ilControll = false;
+			},
+			'mouseleave': function() {
+				page.ilControll = true;
+				$(this).hide();
+			}
+		});
+		$(".listOption li").unbind("click").bind({
+			'click': function() {
+				var val = $(this).text();
+				$(".listOption").hide()
+				$(".listOptionHandler").val(val);
+				$("input[name=carId]").val($(this).attr("objId"));
+			}
+		});
+	}
+}

@@ -18,6 +18,7 @@ class ZarzadzaniezadaniamiController extends AdminController {
     }
 
     public function indexAction() {
+        $this->_linkScript($this->baseUrl . '/public/template/styles/_admin/table&list.css');
         $Manage = new Managerepair();
         $this->view->date = $Manage->getweekarray();
         $this->view->mechanic = $Manage->countavailablemechanic();
@@ -25,25 +26,19 @@ class ZarzadzaniezadaniamiController extends AdminController {
     }
 
     public function addrepairAction() {
+        $this->_headScript($this->baseUrl . '/public/js/_admin/form.js');
+        $this->_linkScript($this->baseUrl . '/public/template/styles/_admin/form.css');
+        $this->_linkScript($this->baseUrl . '/public/template/styles/_admin/table&list.css');
+        // .searchBox
+        $this->_headScript($this->baseUrl.'/public/js/searchBox/searchBox.js');
+        $this->_linkScript($this->baseUrl.'/public/js/searchBox/searchBox.css');
+
         $Manage = new Managerepair();
         $date = $this->_getParam('date');
         if ($date) {
             $this->view->placestable = $Manage->getavailableplaces($date);
             $this->view->mechanicstable = $Manage->getavailablemechanics($date);
             $this->view->date=$date;
-        }
-    }
-
-    public function includecarAction() {
-        if ($this->_isPost()) {
-            $Manage = new Managerepair();
-            $this->view->date=  $this->_getParam('date');
-            $this->view->mechanicid = $this->_getPost('mechanic');
-            $this->view->placeid = $this->_getPost('place');
-            $cardata = $this->_getPost('car');
-            $clientdata=  $this->_getPost('client');
-            
-          $this->view->cars=$Manage->find($cardata,$clientdata);
         }
     }
     
@@ -53,16 +48,18 @@ class ZarzadzaniezadaniamiController extends AdminController {
             $date=  $this->_getParam('date');
             $mechanicid=  $this->_getPost('mechanic');
             $placeid=  $this->_getPost('place');
-            $carid=  $this->_getPost('carid');
+            $carid=  $this->_getPost('carId');
             $info=  $this->_getPost('info');
             $status=  $this->_getPost('status');
             $price=  $this->_getPost('price');
             
             if($Manage->saverepair($carid,$mechanicid,$placeid,$date,$info,$status,$price)){
-               echo "Informacje zapisane";
+                $this->msg(true, "Naprawa została zapisana.");
+                $this->_request->goToAddress($this->directoryUrl . '/zarzadzaniezadaniami/index/type/msg', 0);
             }
             else{
-               
+                $this->msg(false, "Naprawa nie została zapisana.");
+                $this->_request->goToAddress($this->directoryUrl . '/zarzadzaniezadaniami/index/type/msg', 0);
             }
         }
     }
@@ -76,6 +73,27 @@ class ZarzadzaniezadaniamiController extends AdminController {
             $this->view->data=$datar;
             $this->view->mechanic=$mechanicr; 
         }
+    }
+
+    public function findClientAction() {
+        $string = $this->_getPost("searchString");
+        $Manage = new Managecustomer;
+        $rows = $Manage->find($string);
+        $count = $Manage->getNumRows();
+        echo $count>0 ? $rows : '<center class="noResults">Nie znaleziono klienta.</center>';
+    }
+
+    public function getClientCarsAction() {
+        $clientId = $this->_getPost('clientId');
+        $Manage = new Managecustomer;
+        $data = $Manage->getcars($clientId);
+        
+        foreach($data as $row) {
+            $rows .= '<li objId="'.$row['id'].'">'.$row['Marka'].' '.$row['Model'].' '.$row['poj_sil'].' '.$row['Rodz_sil'].' '.$row['Rok_pr'].'</li>';
+        }
+
+        $count = $Manage->getNumRows();
+        echo $count>0 ? $rows : '<center class="noResults">Brak samochodów dla tego klienta.</center>';
     }
 
 }

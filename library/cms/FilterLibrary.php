@@ -1,5 +1,12 @@
 <?php
 class FilterLibrary {
+	public function getDayName($date) {
+		$x = date("w",strtotime($date));
+		$numbers = array(0,1,2,3,4,5,6);
+		$days = array("Niedziela", "Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek", "Sobota");
+		$name = str_replace($numbers, $days, $x);
+		return $name;
+	}
 	public function convertDate($date)
 	{
 	 	$date = explode("-", $date);
