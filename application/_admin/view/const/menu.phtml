@@ -21,7 +21,7 @@
 					<li><a href="<?= $this->directoryUrl.'/zarzadzanieklientem/customerlist'; ?>">Przeglądaj klientów</a></li>
 				</ul>
 			</li>
-		<?php elseif($pses['funcId']==1): ?>
+		<?php endif; if($pses['funcId']==1): ?>
 			<!-- MECHANICY -->
 			<li class="<?= $this->_controllerName=='zarzadzaniemechanikami' ? 'active':''; ?>">
 				<a><span class="title">Mechanicy</span></a>
@@ -48,7 +48,7 @@
 					<li><a href="<?= $this->directoryUrl.'/zarzadzanieobslugakli/servicelist'; ?>">Przeglądaj pracowników</a></li>
 				</ul>
 			</li>
-		<?php elseif($pses['funcId']==2): ?>
+		<?php endif; if($pses['funcId']==2): ?>
 			<!-- MECHANK -->
 			<li class="<?= $this->_controllerName=='mechanik' ? 'active':''; ?>">
 				<a href="<?= $this->directoryUrl.'/mechanik/zadanialist'; ?>"><span class="title">Zadania na dzisiaj</span></a>
