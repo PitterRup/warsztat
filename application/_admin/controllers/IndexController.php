@@ -6,7 +6,11 @@ class IndexController extends AdminController {
 
 
 	public function indexAction() {
-		$this->_request->goToAddress($this->directoryUrl.'/zarzadzanieklientem/customerlist');
+		if($this->sesField['funcId']=='2') $link = 'mechanik/zadanialist';
+		elseif($this->sesField['funcId']=='3') $link = 'zarzadzanieklientem/customerlist';
+		else $link = 'zarzadzanieklientem/customerlist';
+		
+		$this->_request->goToAddress($this->directoryUrl.'/'.$link);
 	}
 
 	public function loginAction() { 

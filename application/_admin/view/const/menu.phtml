@@ -1,48 +1,58 @@
+<?php
+	$pses = $this->sesField;
+?>
 <div id="menu">
 	<ul class="firstLevel">
-		<!-- ZADANIA -->
-		<li class="<?= $this->_controllerName=='zarzadzaniezadaniami' ? 'active':''; ?>">
-			<a><span class="title">Naprawy</span></a>
-			<ul class="child">
-				<li><a href="<?= $this->directoryUrl.'/zarzadzaniezadaniami/index'; ?>">Rezerwuj termin</a></li>
-				<li><a href="<?= $this->directoryUrl.'/zarzadzaniezadaniami/newcustomer'; ?>">Przeglądaj naprawy</a></li>
-			</ul>
-		</li>
+		<?php if(in_array($pses['funcId'], array(1,3))): ?>
+			<!-- ZADANIA -->
+			<li class="<?= $this->_controllerName=='zarzadzaniezadaniami' ? 'active':''; ?>">
+				<a><span class="title">Naprawy</span></a>
+				<ul class="child">
+					<li><a href="<?= $this->directoryUrl.'/zarzadzaniezadaniami/index'; ?>">Rezerwuj termin</a></li>
+					<li><a href="<?= $this->directoryUrl.'/zarzadzaniezadaniami/newcustomer'; ?>">Przeglądaj naprawy</a></li>
+				</ul>
+			</li>
 
-		<!-- KLIENCI -->
-		<li class="<?= $this->_controllerName=='zarzadzanieklientem' ? 'active':''; ?>">
-			<a><span class="title">Klienci</span></a>
-			<ul class="child">
-				<li><a href="<?= $this->directoryUrl.'/zarzadzanieklientem/newcustomer'; ?>">Nowy klient</a></li>
-				<li><a href="<?= $this->directoryUrl.'/zarzadzanieklientem/customerlist'; ?>">Przeglądaj klientów</a></li>
-			</ul>
-		</li>
+			<!-- KLIENCI -->
+			<li class="<?= $this->_controllerName=='zarzadzanieklientem' ? 'active':''; ?>">
+				<a><span class="title">Klienci</span></a>
+				<ul class="child">
+					<li><a href="<?= $this->directoryUrl.'/zarzadzanieklientem/newcustomer'; ?>">Nowy klient</a></li>
+					<li><a href="<?= $this->directoryUrl.'/zarzadzanieklientem/customerlist'; ?>">Przeglądaj klientów</a></li>
+				</ul>
+			</li>
+		<?php elseif($pses['funcId']==1): ?>
+			<!-- MECHANICY -->
+			<li class="<?= $this->_controllerName=='zarzadzaniemechanikami' ? 'active':''; ?>">
+				<a><span class="title">Mechanicy</span></a>
+				<ul class="child">
+					<li><a href="<?= $this->directoryUrl.'/zarzadzaniemechanikami/newmechanic'; ?>">Nowy mechanik</a></li>
+					<li><a href="<?= $this->directoryUrl.'/zarzadzaniemechanikami/mechaniclist'; ?>">Przeglądaj mechaników</a></li>
+				</ul>
+			</li>
 
-		<!-- MECHANICY -->
-		<li class="<?= $this->_controllerName=='zarzadzaniemechanikami' ? 'active':''; ?>">
-			<a><span class="title">Mechanicy</span></a>
-			<ul class="child">
-				<li><a href="<?= $this->directoryUrl.'/zarzadzaniemechanikami/newmechanic'; ?>">Nowy mechanik</a></li>
-				<li><a href="<?= $this->directoryUrl.'/zarzadzaniemechanikami/mechaniclist'; ?>">Przeglądaj mechaników</a></li>
-			</ul>
-		</li>
-
-		<!-- STANOWISKA -->
-		<li class="<?= $this->_controllerName=='zarzadzaniestanowiskami' ? 'active':''; ?>">
-			<a><span class="title">Stanowiska</span></a>
-			<ul class="child">
-				<li><a href="<?= $this->directoryUrl.'/zarzadzaniestanowiskami/newplace'; ?>">Nowe stanowisko</a></li>
-				<li><a href="<?= $this->directoryUrl.'/zarzadzaniestanowiskami/placelist'; ?>">Przeglądaj stanowiska</a></li>
-			</ul>
-		</li>
-
-		<!-- OBSŁUGA KLIENTA -->
-		<li class="<?= $this->_controllerName=='obsluga' ? 'active':''; ?>">
-			<a><span class="title">Obsługa klienta</span></a>
-			<ul class="child">
-				<li><a href="<?= $this->directoryUrl.'/zarzadzanieobslugakli/newservice'; ?>">Nowy pracownik</a></li>
-				<li><a href="<?= $this->directoryUrl.'/zarzadzanieobslugakli/servicelist'; ?>">Przeglądaj pracowników</a></li>
-			</ul>
-		</li>
+			<!-- STANOWISKA -->
+			<li class="<?= $this->_controllerName=='zarzadzaniestanowiskami' ? 'active':''; ?>">
+				<a><span class="title">Stanowiska</span></a>
+				<ul class="child">
+					<li><a href="<?= $this->directoryUrl.'/zarzadzaniestanowiskami/newplace'; ?>">Nowe stanowisko</a></li>
+					<li><a href="<?= $this->directoryUrl.'/zarzadzaniestanowiskami/placelist'; ?>">Przeglądaj stanowiska</a></li>
+				</ul>
+			</li>
+		
+			<!-- OBSŁUGA KLIENTA -->
+			<li class="<?= $this->_controllerName=='obsluga' ? 'active':''; ?>">
+				<a><span class="title">Obsługa klienta</span></a>
+				<ul class="child">
+					<li><a href="<?= $this->directoryUrl.'/zarzadzanieobslugakli/newservice'; ?>">Nowy pracownik</a></li>
+					<li><a href="<?= $this->directoryUrl.'/zarzadzanieobslugakli/servicelist'; ?>">Przeglądaj pracowników</a></li>
+				</ul>
+			</li>
+		<?php elseif($pses['funcId']==2): ?>
+			<!-- MECHANK -->
+			<li class="<?= $this->_controllerName=='mechanik' ? 'active':''; ?>">
+				<a href="<?= $this->directoryUrl.'/mechanik/zadanialist'; ?>"><span class="title">Zadania na dzisiaj</span></a>
+			</li>
+		<?php endif; ?>
 	</ul>
 </div>

@@ -12,10 +12,11 @@ class Authorize extends GeneralModelsController {
             $id = $this->data['id'];
             $ip = $_SERVER['REMOTE_ADDR'];
             $phpsessid = $_COOKIE['PHPSESSID'];
+            $data = $this->data;
             // zapisanie zmiennych synchronizacji
             if($this->setQuery("UPDATE $this->_name SET ip='$ip',phpsessid='$phpsessid' WHERE id='$id'")) {
-                $permissions = json_decode($this->data['permissions']);
-                $_SESSION[$this->_name] = array("state"=>true, "login"=>"$this->login", "permissions"=>$permissions);
+                $permissions = json_decode($data['permissions']);
+                $_SESSION[$this->_name] = array("state"=>true, "login"=>"$this->login", "id"=>$data['id'], "permissions"=>$permissions, "funcId"=>$data['funcId']);
                 return true;
             }
             else return false;
@@ -33,12 +34,12 @@ class Authorize extends GeneralModelsController {
         $this->login = $this->_getPost('login');
         $pass = $this->_getPost('pass');
 
-        $this->setQuery("SELECT * FROM $this->_name WHERE login= BINARY '$this->login' AND pass= BINARY '$pass'");
+        $this->setQuery("SELECT a.*, f.rola, f.permissions, f.id as 'funcId' FROM $this->_name a, $this->_FunPrac f WHERE a.Fun_Prac_ID=f.id AND a.login= BINARY '$this->login' AND a.pass= BINARY '$pass'");
         return ($this->numRows()==1) ? true:false;
     }
 
     public function getData($login) {
-        $this->setQuery("SELECT a.ip, a.phpsessid, f.permissions FROM $this->_name a, $this->_FunPrac f WHERE a.Fun_Prac_ID=f.id AND login= BINARY '$login'");
+        $this->setQuery("SELECT a.ip, a.phpsessid, f.permissions, f.rola FROM $this->_name a, $this->_FunPrac f WHERE a.Fun_Prac_ID=f.id AND login= BINARY '$login'");
         $this->fetchRow();
         return $this->data;
     } 

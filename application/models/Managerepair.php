@@ -118,4 +118,27 @@ class Managerepair extends Basemodel {
             return false;
         }
     }
+
+    public function getrepairslist($mechanikId) {
+        $this->setQuery("SELECT n.*, s.Nazw, a.Model, a.Marka, a.Rok_pr
+            FROM naprawa n, naprawa_pracownik p, stanowisko s, samochod a
+            WHERE p.Pracownik_ID='$mechanikId' AND p.Naprawa_ID=n.id AND n.Stanowisko_ID=s.id AND n.Samochod_ID=a.id
+            ORDER BY Data DESC");
+        $this->fetchAssocAll();
+        return $this->data;
+    }
+
+    public function getrepair($mechanikId, $repairid) {
+        $this->setQuery("SELECT n.*, s.Nazw, a.*
+            FROM naprawa n, naprawa_pracownik p, stanowisko s, samochod a
+            WHERE p.Pracownik_ID='$mechanikId' AND p.Naprawa_ID=n.id AND n.Stanowisko_ID=s.id AND n.Samochod_ID=a.id AND n.id='$repairid'");
+        $this->fetchAssocRow();
+        return $this->data;
+    }
+
+    public function editrepair($postData, $repairid) {
+        $status = $postData['status'];
+        $diagnoza = $postData['info'];
+        return $this->setQuery("UPDATE naprawa SET Status='$status', Diagnoza='$diagnoza' WHERE id='$repairid'");
+    }
 }

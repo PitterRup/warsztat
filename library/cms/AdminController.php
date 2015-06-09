@@ -19,7 +19,10 @@ abstract class AdminController extends GeneralController {
         $this->view->buttonListAdd = '<img src="'.$this->baseUrl.'/public/template/img/admin/list-add-icon.png" class="active"/><img src="'.$this->baseUrl.'/public/template/img/admin/list-add-active-icon.png" class="hover"/>';
         $this->view->buttonSetMini = '<img src="'.$this->baseUrl.'/public/template/img/admin/setMini-icon.png" class="active"/><img src="'.$this->baseUrl.'/public/template/img/admin/setMini-active-icon.png" class="hover"/>';
         $this->view->buttonListDownload = '<img src="'.$this->baseUrl.'/public/template/img/admin/downloadAlbum.png" class="active"/><img src="'.$this->baseUrl.'/public/template/img/admin/downloadAlbum_hover.png" class="hover"/>';
-	}
+	
+
+        $this->sesField = $this->view->sesField = $_SESSION[$this->_config->dbTableNames->Pracownik];
+    }
 
 
 	// metoda ustawiająca komunikat (do przeniesienia najlepiej zrobic z tego klase MSG z getterem i setterem)
