@@ -1,0 +1,17 @@
+<p class="h2">Lista napraw na dzisiaj</p>
+<ul class="table productTable">
+	<li class="naglowek">
+		<div class="col" style="width:200px">Stanowisko</div>
+		<div class="col" style="width:340px">Samochód</div>
+		<div class="col" style="width:155px">Status</div>
+		<div class="col last" style="width:60px">opcje</div>
+	</li>
+	<?php foreach($this->repairs as $this->repair): ?>
+		<li class="middle">
+			<div class="col" style="width:200px;"><?= $this->repair['Nazw']; ?></div>
+			<div class="col" style="width:340px;"><?= $this->repair['Marka'].' '.$this->repair['Model'].' '.$this->repair['Rok_pr']; ?></div>
+			<div class="col" style="width:155px; font-size: 14px;"><?= $this->repair['Status']; ?></div>
+			<div class="col opCol" style="width: 60px"><div class="highlight" onclick="javascript:objectMenu.toggle($(this));"><?= $this->buttonListEdit; ?><?= $this->renderContent("mechanik/editMenu.phtml"); ?></div></div>
+		</li>
+	<?php endforeach; ?>
+</ul>

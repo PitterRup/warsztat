@@ -1,0 +1,19 @@
+<div style="padding: 20px">
+    <form action="<?php echo $this->directoryUrl . '/mechanik/editrepair/repairid/'.$this->repairid.'/type/noContent'; ?>" method="POST" class="form saveBoxOn settingsForm">
+        <p class="h3">Edycja naprawy</p>
+        <div class="group">
+            <div class="row">
+                <label>Diagnoza </label>
+                <input type="text" name="dane[info]" value="<?= $this->repair['Diagnoza']; ?>">
+            </div>
+            <div class="row">
+                <label>Status </label>
+                <select name="dane[status]">
+                    <option value="niezdiagnozowany" <?= $this->repair['Status']=='niezdiagnozowany' ? 'selected':''; ?>>niezdiagnozowany</option>
+                    <option value="zdiagnozowany" <?= $this->repair['Status']=='zdiagnozowany' ? 'selected':''; ?>>zdiagnozowany</option>
+                    <option value="naprawiony" <?= $this->repair['Status']=='naprawiony' ? 'selected':''; ?>>naprawiony</option>
+                </select>
+            </div>
+        </div>
+    </form>
+</div> 

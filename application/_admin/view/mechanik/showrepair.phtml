@@ -1,0 +1,59 @@
+<div style="padding: 0 20px;">
+	<div class="form formGroup showForm">
+		<p class="h2">Informacje o naprawie</p>
+		<div class="group">
+			<div class="row">
+				<label>Nazwa stanowiska naprawy: </label>
+				<span class="textLine"><?= $this->repair['Nazw']; ?></span>
+			</div>
+			<div class="row">
+				<label>Diagnoza: </label>
+				<span class="textLine"><?= strlen($this->repair['Diagnoza'])==0 ? '<span style="color: red">Do ustalenia</span>':$this->repair['Diagnoza']; ?></span>
+			</div>
+		</div>
+		<div class="row">
+			<label>Marka samochodu: </label>
+			<span class="textLine"><?= $this->repair['Marka']; ?></span>
+		</div>
+		<div class="row">
+			<label>Model samochodu: </label>
+			<span class="textLine"><?= $this->repair['Model']; ?></span>
+		</div>
+		<div class="row">
+			<label>Rok produkcji samochodu: </label>
+			<span class="textLine"><?= $this->repair['Rok_pr']; ?></span>
+		</div>
+		<div class="row">
+			<label>Przebieg samochodu: </label>
+			<span class="textLine"><?= $this->repair['Przeb']; ?></span>
+		</div>
+		<div class="row">
+			<label>Wersja wyposażenia samochodu: </label>
+			<span class="textLine"><?= $this->repair['Wer_wyp']; ?></span>
+		</div>
+		<div class="row">
+			<label>Rodzaj nadwozia samochodu: </label>
+			<span class="textLine"><?= $this->repair['Rodz_nadw']; ?></span>
+		</div>
+		<div class="row">
+			<label>Pojemność silnika samochodu: </label>
+			<span class="textLine"><?= $this->repair['poj_sil']; ?></span>
+		</div>
+		<div class="row">
+			<label>Moc silnika samochodu: </label>
+			<span class="textLine"><?= $this->repair['Moc_sil']; ?></span>
+		</div>
+		<div class="row">
+			<label>Rodzaj silnika samochodu: </label>
+			<span class="textLine"><?= $this->repair['Rodz_sil']; ?></span>
+		</div>
+		<div class="row">
+			<label>Rodzaj oleju silnikowego samochodu: </label>
+			<span class="textLine"><?= $this->repair['rodz_ol_sil']; ?></span>
+		</div>
+		<div class="row">
+			<label>Napęd samochodu: </label>
+			<span class="textLine"><?= $this->repair['Naped']; ?></span>
+		</div>
+	</div>
+</div>
