@@ -1,5 +1,5 @@
 <div style="padding: 20px">
-    <form action="<?php echo $this->directoryUrl . '/mechanik/editrepair/repairid/'.$this->repairid.'/type/noContent'; ?>" method="POST" class="form saveBoxOn settingsForm">
+    <form action="<?php echo $this->directoryUrl . '/zarzadzaniezadaniami/editrepair/repairid/'.$this->repairid.'/type/noContent'; ?>" method="POST" class="form saveBoxOn settingsForm">
         <p class="h3">Edycja naprawy</p>
         <div class="group">
             <div class="row">
@@ -16,7 +16,7 @@
             </div>
             <div class="row">
                 <label>Cena naprawy <span class="small">gdy nieznana pozostawić puste</span></label>
-                <input type="text" name="price">
+                <input type="text" name="dane[price]" value="<?= $this->repair['Cena']; ?>">
             </div>
         </div>
 
@@ -35,7 +35,7 @@
                     <div class="col" style="width:255px;"><?= $mechanic['Imie'].' '.$mechanic['Nazw']; ?></div>
                     <div class="col" style="width:180px; font-size: 14px;"><?= $mechanic['pesel']; ?></div>
                     <div class="col" style="width:195px; font-size: 14px;"><?= $mechanic['nr_tel']; ?></div>
-                    <div class="col opCol" style="width: 60px"><input type="checkbox" name="mechanic" value="<?= $mechanic['id']; ?>"></div>
+                    <div class="col opCol" style="width: 60px"><input type="checkbox" name="mechanic[]" value="<?= $mechanic['id']; ?>"></div>
                 </li>
             <?php endforeach; ?>
         </ul> 
@@ -59,9 +59,11 @@
                     <div class="col" style="width:105px; font-size: 14px;"><?= $place['wymiary']; ?></div>
                     <div class="col" style="width:55px; font-size: 14px;"><?= $place['Posiad_tun'] ? 'tak':'nie'; ?></div>
                     <div class="col" style="width:235px; font-size: 14px;"><?= $place['przezn']; ?></div>
-                    <div class="col opCol" style="width: 60px"><input type="radio" name="place" value="<?= $place['id']; ?>" <?= $place['id']==$this->repair['stanowisko_id'] ? 'checked':''; ?>></div>
+                    <div class="col opCol" style="width: 60px"><input type="radio" name="dane[place]" value="<?= $place['id']; ?>" <?= $place['id']==$this->repair['stanowisko_id'] ? 'checked':''; ?>></div>
                 </li>
             <?php endforeach; ?>
         </ul>
+
+        <input type="hidden" name="date" value="<?= $this->date; ?>">
     </form>
 </div> 

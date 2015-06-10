@@ -144,7 +144,11 @@ class Managerepair extends Basemodel {
     public function editrepair($postData, $repairid) {
         $status = $postData['status'];
         $diagnoza = $postData['info'];
-        return $this->setQuery("UPDATE naprawa SET Status='$status', Diagnoza='$diagnoza' WHERE id='$repairid'");
+        $price = $postData['price'];
+        $stanowisko_id = $postData['place'];
+        $stanowisko = $stanowisko_id ? ", Stanowisko_ID='$stanowisko_id'":'';
+
+        return $this->setQuery("UPDATE naprawa SET Status='$status', Diagnoza='$diagnoza', Cena='$price' $stanowisko WHERE id='$repairid'");
     }
 
     public function countrepair() {

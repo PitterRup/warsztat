@@ -119,17 +119,29 @@ class ZarzadzaniezadaniamiController extends AdminController {
             $this->_linkScript($this->baseUrl . '/public/template/styles/_admin/table&list.css');
             $this->view->repair = $Manage->getrepair(null, $repairid);
 
-            $date = $this->view->repair['Data'];
-            $this->view->placestable = $Manage->getavailableplaces($date);
-            $this->view->mechanicstable = $Manage->getavailablemechanics($date);
+            $date = $this->view->date = substr($this->view->repair['Data'], 0,10);
+            
+            $availplaces = $Manage->getavailableplaces($date);
+            $availmechanics = $Manage->getavailablemechanics($date);
+
+            // aktualne stanowisko
+            $Managep = new Manageplace;
+            $curplace = $Managep->getplace($id);
+            // aktualni mechanicy
+            $Managem = new Managemechanic;
+            $this->view->curmechanics = $Managem->getrepairmechanics($repairid);
+
+            $this->view->placestable = array_merge($availplaces, $curplace);
+            $this->view->mechanicstable = array_merge($availmechanics, $curmechanics);
         }
         else {
             $postdata = $this->_getPost('dane');
-            
+            $date = $this->_getPost('date');
+
             if(!$Manage->editrepair($postdata, $repairid)) $this->msg(false, "Naprawa nie została zapisana.");
             else $this->msg(true, "Naprawa została zapisana");
             
-            $this->_request->goToAddress($this->directoryUrl . '/mechanik/zadanialist/type/msg', 0);
+            $this->_request->goToAddress($this->directoryUrl . '/zarzadzaniezadaniami/zadanialist/date/'.$date.'/type/msg', 0);
         }
     }
 }
