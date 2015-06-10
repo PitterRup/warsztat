@@ -5,7 +5,9 @@ class IndexController extends PageController {
 
 
 	public function indexAction() {
-	
+		$this->_layout->off();
+		$this->view->on = false;
+		$this->_request->goToAddress($this->baseUrl.'/naprawa/index',0);
 	}
 
 	public function loginAction() { 
@@ -13,11 +15,17 @@ class IndexController extends PageController {
 		$this->_linkScript($this->baseUrl.'/public/template/styles/_page/form.css');
 		if($this->_isPost()) {
 			$authorize = new Authorize($this->_config->dbTableNames->Klient);
-			if($authorize->logIn()) $this->_request->goToAddress($this->directoryUrl,0);
+			if($authorize->logIn()) {
+				$this->_layout->off();
+				$this->view->on = false;
+				$this->_request->goToAddress($this->baseUrl.'/naprawa/index',0);
+			}
 			else $this->msg(false,"Podane dane są nieprawidłowe.");
 		}
 	}
 	public function logoutAction() {
+		$this->_layout->off();
+		$this->view->on = false;
 		$authorize = new Authorize($this->_config->dbTableNames->Klient);
 		$authorize->logOut();
 
