@@ -1,21 +1,80 @@
-<?php 
-foreach ($this->data as $i=> $details){
-    echo 'Diagnoza: '.$details['Diagnoza'].'<br/>'
-            . 'Status: '.$details['Status'].'<br/>'
-            . 'Nazwa stanowiska: '.$details['Nazw'].'<br/>'
-            . 'Ładowność: '.$details['ladow'].'<br/>'
-            . 'Wymiary: '.$details['wymiary'].'<br/>'
-            . ($details['Posiad_tun']=='y'?'Posiada tunel':'Nie posiada tunelu').'<br/>'
-            . 'Przeznaczenie: '.$details['przezn'].'<br/>'
-            . '<br/>Dane samochodu<br/>'
-            . 'Marka: '.$details['Marka'].'<br/>'
-            . 'Model: '.$details['Model'].'<br/>'
-            . 'Rok produkcji: '.$details['Rok_pr'].'<br/>'
-            . '<br/>Dane mechaników<br/> ';
-   foreach($this->mechanic[$i] as $line){
-        echo'Imie: '.$line['Imie'].'<br/>'
-                . 'Nazwisko: '.$line['Nazw'].'<br/>'
-                . 'Numer telefonu: '.$line['nr_tel'].'<br/>';
-    }
-}
-?>
+<div style="padding: 0 20px;">
+    <div class="form formGroup showForm">
+        <p class="h2">Informacje o naprawie</p>
+        <div class="group">
+            <div class="row">
+                <label>Nazwa stanowiska naprawy: </label>
+                <span class="textLine"><?= $this->repair['Nazw']; ?></span>
+            </div>
+            <div class="row">
+                <label>Diagnoza: </label>
+                <span class="textLine"><?= strlen($this->repair['Diagnoza'])==0 ? '<span style="color: red">Do ustalenia</span>':$this->repair['Diagnoza']; ?></span>
+            </div>
+        </div>
+        <div class="group">
+            <div class="row">
+                <label>Marka samochodu: </label>
+                <span class="textLine"><?= $this->repair['Marka']; ?></span>
+            </div>
+            <div class="row">
+                <label>Model samochodu: </label>
+                <span class="textLine"><?= $this->repair['Model']; ?></span>
+            </div>
+            <div class="row">
+                <label>Rok produkcji samochodu: </label>
+                <span class="textLine"><?= $this->repair['Rok_pr']; ?></span>
+            </div>
+            <div class="row">
+                <label>Przebieg samochodu: </label>
+                <span class="textLine"><?= $this->repair['Przeb']; ?></span>
+            </div>
+            <div class="row">
+                <label>Wersja wyposażenia samochodu: </label>
+                <span class="textLine"><?= $this->repair['Wer_wyp']; ?></span>
+            </div>
+            <div class="row">
+                <label>Rodzaj nadwozia samochodu: </label>
+                <span class="textLine"><?= $this->repair['Rodz_nadw']; ?></span>
+            </div>
+            <div class="row">
+                <label>Pojemność silnika samochodu: </label>
+                <span class="textLine"><?= $this->repair['poj_sil']; ?></span>
+            </div>
+            <div class="row">
+                <label>Moc silnika samochodu: </label>
+                <span class="textLine"><?= $this->repair['Moc_sil']; ?></span>
+            </div>
+            <div class="row">
+                <label>Rodzaj silnika samochodu: </label>
+                <span class="textLine"><?= $this->repair['Rodz_sil']; ?></span>
+            </div>
+            <div class="row">
+                <label>Rodzaj oleju silnikowego samochodu: </label>
+                <span class="textLine"><?= $this->repair['rodz_ol_sil']; ?></span>
+            </div>
+            <div class="row">
+                <label>Napęd samochodu: </label>
+                <span class="textLine"><?= $this->repair['Naped']; ?></span>
+            </div>
+        </div>
+        <div class="group" style="margin-bottom: 100px;">
+            <p class="h3">Mechanicy tej naprawy</p>
+            <ul class="table productTable">
+                <li class="naglowek">
+                    <div class="col" style="width:60px">id</div>
+                    <div class="col" style="width:320px">Imię i nazwisko</div>
+                    <div class="col" style="width:180px">PESEL</div>
+                    <div class="col" style="width:195px">telefon</div>
+                </li>
+                <?php foreach($this->mechanics as $this->mechanic): ?>
+                    <li class="middle">
+                        <div class="col" style="width: 60px;"><?= $this->mechanic['id']; ?></div>
+                        <div class="col" style="width:320px;"><?= $this->mechanic['Imie'].' '.$this->mechanic['Nazw']; ?></div>
+                        <div class="col" style="width:180px; font-size: 14px;"><?= $this->mechanic['pesel']; ?></div>
+                        <div class="col" style="width:195px; font-size: 14px;"><?= $this->mechanic['nr_tel']; ?></div>
+                    </li>
+                <?php endforeach; ?>
+            </ul> 
+        </div>
+    </div>
+</div>

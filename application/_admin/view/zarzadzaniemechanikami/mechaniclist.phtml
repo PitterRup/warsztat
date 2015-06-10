@@ -1,5 +1,5 @@
 <p class="h2">Lista mechaników</p>
-<ul class="table productTable" model="Customers" loadState="1" paramsLink="<?= $this->_request->params; ?>" treeEdit="no">
+<ul class="table productTable">
 	<li class="naglowek">
 		<div class="col" style="width:60px">id</div>
 		<div class="col" style="width:255px">Imię i nazwisko</div>
@@ -17,12 +17,3 @@
 		</li>
 	<?php endforeach; ?>
 </ul> 
-
-
-   <?php /*foreach ($this->mechanics as $mechanic){
-     echo 'ID'.$mechanic['id'].'<br/>'.
-     'Imie'.$mechanic['Imie'].'<br/>'.
-            'Nazwisko' .$mechanic['Nazw'].'<br/>';
-    }*/
-   ?>
-       

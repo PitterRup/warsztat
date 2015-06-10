@@ -25,6 +25,13 @@ class ZarzadzaniezadaniamiController extends AdminController {
         $this->view->places = $Manage->countavailableplace();
     }
 
+    public function zadanialistAction() {
+        $this->_linkScript($this->baseUrl . '/public/template/styles/_admin/table&list.css');
+        $date = $this->_getParam('date');
+        $Manage = new Managerepair();
+        $this->view->repairs = $Manage->getrepairslist(null,$date);
+    }
+
     public function addrepairAction() {
         $this->_headScript($this->baseUrl . '/public/js/_admin/form.js');
         $this->_linkScript($this->baseUrl . '/public/template/styles/_admin/form.css');
@@ -65,14 +72,14 @@ class ZarzadzaniezadaniamiController extends AdminController {
     }
     
     public function getdetailsAction(){
-         $Manage = new Managerepair();
-        $date = $this->_getParam('date');
-        $datar;
-        $mechanicr;
-        if($Manage->getdetails($date,$datar,$mechanicr)){
-            $this->view->data=$datar;
-            $this->view->mechanic=$mechanicr; 
-        }
+        $this->_linkScript($this->baseUrl . '/public/template/styles/_admin/table&list.css');
+        $this->_linkScript($this->baseUrl . '/public/template/styles/_admin/form.css');
+        $repairid = $this->_getParam('repairid');
+        $Manage = new Managerepair();
+        $this->view->repair = $Manage->getrepair(null, $repairid);
+
+        $Managem = new Managemechanic;
+        $this->view->mechanics = $Managem->getrepairmechanics($repairid);
     }
 
     public function findClientAction() {
@@ -97,7 +104,7 @@ class ZarzadzaniezadaniamiController extends AdminController {
     }
     
     public function showrepairAction(){
-         $this->_linkScript($this->baseUrl . '/public/template/styles/_admin/table&list.css');
+        $this->_linkScript($this->baseUrl . '/public/template/styles/_admin/table&list.css');
         $Manage = new Managerepair();
         $this->view->date = $Manage->getweekarray();
         $this->view->repair=$Manage->countrepair();

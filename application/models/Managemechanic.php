@@ -40,4 +40,12 @@ class Managemechanic extends Basemodel {
 	public function delmechanic($id){
 		return $this->delete("pracownik", $id);
 	}
+
+	public function getrepairmechanics($repairid) {
+        $this->setQuery("SELECT p.*
+            FROM naprawa_pracownik n, pracownik p
+            WHERE n.naprawa_id='$repairid' AND n.pracownik_id=p.id");
+        $this->fetchAssocAll();
+        return $this->data;
+	}
 }

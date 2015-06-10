@@ -75,7 +75,7 @@
                     <div class="col" style="width:105px; font-size: 14px;"><?= $place['wymiary']; ?></div>
                     <div class="col" style="width:55px; font-size: 14px;"><?= $place['Posiad_tun'] ? 'tak':'nie'; ?></div>
                     <div class="col" style="width:235px; font-size: 14px;"><?= $place['przezn']; ?></div>
-                    <div class="col opCol" style="width: 60px"><input type="checkbox" name="place" value="<?= $place['id']; ?>"></div>
+                    <div class="col opCol" style="width: 60px"><input type="radio" name="place" value="<?= $place['id']; ?>"></div>
                 </li>
             <?php endforeach; ?>
         </ul>

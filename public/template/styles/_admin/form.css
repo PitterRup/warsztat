@@ -1,4 +1,8 @@
 /* standard dla wszystkich elementów */
+input[type=radio] {
+	margin: 11px auto;
+	line-height: 25px;
+}
 input[type=checkbox] {
 	float: left;
 	width: auto;

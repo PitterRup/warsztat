@@ -119,19 +119,22 @@ class Managerepair extends Basemodel {
         }
     }
 
-    public function getrepairslist($mechanikId) {
+    public function getrepairslist($mechanikId=null, $date=null) {
+        $m = $mechanikId ? "p.Pracownik_ID='$mechanikId' AND":'';
+        $n = $date ? "AND n.Data=STR_TO_DATE('$date','%Y-%m-%d')":'';
         $this->setQuery("SELECT n.*, s.Nazw, a.Model, a.Marka, a.Rok_pr
             FROM naprawa n, naprawa_pracownik p, stanowisko s, samochod a
-            WHERE p.Pracownik_ID='$mechanikId' AND p.Naprawa_ID=n.id AND n.Stanowisko_ID=s.id AND n.Samochod_ID=a.id
+            WHERE $m p.Naprawa_ID=n.id AND n.Stanowisko_ID=s.id AND n.Samochod_ID=a.id $n
             ORDER BY Data DESC");
         $this->fetchAssocAll();
         return $this->data;
     }
 
-    public function getrepair($mechanikId, $repairid) {
+    public function getrepair($mechanikId=null, $repairid) {
+        $m = $mechanikId ? "p.Pracownik_ID='$mechanikId' AND":'';
         $this->setQuery("SELECT n.*, s.Nazw, a.*
             FROM naprawa n, naprawa_pracownik p, stanowisko s, samochod a
-            WHERE p.Pracownik_ID='$mechanikId' AND p.Naprawa_ID=n.id AND n.Stanowisko_ID=s.id AND n.Samochod_ID=a.id AND n.id='$repairid'");
+            WHERE $m p.Naprawa_ID=n.id AND n.Stanowisko_ID=s.id AND n.Samochod_ID=a.id AND n.id='$repairid'");
         $this->fetchAssocRow();
         return $this->data;
     }
