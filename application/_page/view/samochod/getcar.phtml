@@ -1,4 +1,53 @@
-<?php
-echo'Marka '.$this->car['Marka'].'</br>'
-        . 'Model: '.$this->car['Model'];
-?>
+<div style="padding: 0 20px;">
+	<div class="form formGroup showForm">
+		<p class="h2">Informacje o samochodzie</p>
+		<div class="row">
+			<label>ID: </label>
+			<span class="textLine"><?= $this->car['id']; ?></span>
+		</div>
+		<div class="row">
+			<label>Marka: </label>
+			<span class="textLine"><?= $this->car['Marka']; ?></span>
+		</div>
+		<div class="row">
+			<label>Model: </label>
+			<span class="textLine"><?= $this->car['Model']; ?></span>
+		</div>
+		<div class="row">
+			<label>Rok produkcji </label>
+			<span class="textLine"><?= $this->car['Rok_pr']; ?></span>
+		</div>
+		<div class="row">
+			<label>Przebieg: </label>
+			<span class="textLine"><?= $this->car['Przeb']; ?></span>
+		</div>
+		<div class="row">
+			<label>Wersja wyposażenia: </label>
+			<span class="textLine"><?= $this->car['Wer_wyp']; ?></span>
+		</div>
+		<div class="row">
+			<label>Rodzaj nadwozia: </label>
+			<span class="textLine"><?= $this->car['Rodz_nadw']; ?></span>
+		</div>
+		<div class="row">
+			<label>Pojemność silnika: </label>
+			<span class="textLine"><?= $this->car['poj_sil']; ?></span>
+		</div>
+		<div class="row">
+			<label>Moc silnika: </label>
+			<span class="textLine"><?= $this->car['Moc_sil']; ?></span>
+		</div>
+		<div class="row">
+			<label>Rodzaj silnika: </label>
+			<span class="textLine"><?= $this->car['Rodz_sil']; ?></span>
+		</div>
+		<div class="row">
+			<label>Rodzaj oleju silnikowego: </label>
+			<span class="textLine"><?= $this->car['rodz_ol_sil']; ?></span>
+		</div>
+		<div class="row">
+			<label>Napęd: </label>
+			<span class="textLine"><?= $this->car['Naped']; ?></span>
+		</div>
+	</div>
+</div>

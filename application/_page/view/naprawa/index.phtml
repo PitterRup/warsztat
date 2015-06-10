@@ -1,9 +1,19 @@
-<?php
-foreach ($this->tabrepair as $l){
-    echo $l['Data'].'<br/>'.$l['Diagnoza'].'<br/>';
-}
-
-?>
-
-<a href="<?= $this->directoryUrl.'/dane/' ?>">Wyświetl swoje dane</a><br/>
-<a href="<?= $this->directoryUrl.'/samochod' ?>">Twoje samochody</a><br/>
+<p class="h2">Lista napraw</p>
+<ul class="table productTable">
+	<li class="naglowek">
+		<div class="col" style="width:80px">Auto id</div>
+		<div class="col" style="width:250px">Samochód</div>
+		<div class="col" style="width:155px">Data </div>
+		<div class="col last" style="width:90px">Cena</div>
+		<div class="col" style="width:175px">Status</div>
+	</li>
+	<?php foreach($this->repairs as $this->repair): ?>
+		<li class="middle">
+			<div class="col" style="width:80px;"><?= $this->repair['ID']; ?></div>
+			<div class="col" style="width:250px;"><?= $this->repair['Marka'].' '.$this->repair['Model'].' '.$this->repair['Rok_pr']; ?></div>
+			<div class="col" style="width:155px;"><?= $this->_filter->convertDatetimeToDate($this->repair['Data']); ?></div>
+			<div class="col" style="width:90px"><?= $this->repair['Cena']==0 ? 'brak':$this->repair['Cena'].'zł'; ?></div>
+			<div class="col" style="width:175px; font-size: 14px;"><?= $this->repair['Status']; ?></div>
+		</li>
+	<?php endforeach; ?>
+</ul>

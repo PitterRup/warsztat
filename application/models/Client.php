@@ -17,8 +17,8 @@ class Client extends GeneralModelsController {
     }
 
     public function getrepair($clientid) {
-        $query = "SELECT naprawa.Data, naprawa.Diagnoza,naprawa.Status, samochod.Marka, samochod.Model FROM naprawa JOIN samochod ON naprawa.Samochod_ID=samochod.id "
-                . "WHERE samochod.Klient_ID=$clientid ";
+        $query = "SELECT naprawa.Data, naprawa.Diagnoza,naprawa.Status, naprawa.Cena, samochod.Marka, samochod.Model, samochod.Rok_pr, samochod.ID FROM naprawa JOIN samochod ON naprawa.Samochod_ID=samochod.id "
+                . "WHERE samochod.Klient_ID=$clientid ORDER BY naprawa.Data DESC";
         if ($this->setQuery($query)) {
             $this->fetchAll();
             return $this->data;

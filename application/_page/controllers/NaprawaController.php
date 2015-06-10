@@ -17,10 +17,11 @@ class NaprawaController extends PageController {
         
     }
 
-//wyświetla informacje o naprawach
+	//wyświetla informacje o naprawach
     public function indexAction() {
+    	$this->_linkScript($this->baseUrl . '/public/template/styles/_admin/table&list.css');
         $Client = new Client();
-        $this->view->tabrepair = $Client->getrepair($this->sesField['id']);
+        $this->view->repairs = $Client->getrepair($this->sesField['id']);
     }
 
 }

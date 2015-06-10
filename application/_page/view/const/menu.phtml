@@ -1,15 +1,15 @@
 <div id="menu">
 	<ul class="firstLevel">
 		<li class="<?= $this->_controllerName=='zarzadzanieklientem' ? 'active':''; ?>">
-			<a><span class="title">Aktualne naprawy</span></a>
+			<a href="<?= $this->baseUrl.'/naprawa/index'; ?>"><span class="title">Aktualne naprawy</span></a>
 		</li>
 
 		<li class="<?= $this->_controllerName=='mechanicy' ? 'active':''; ?>">
-			<a><span class="title">Moje dane</span></a>
+			<a href="<?= $this->baseUrl.'/dane/index'; ?>"><span class="title">Moje dane</span></a>
 		</li>
 
 		<li class="<?= $this->_controllerName=='stanowiska' ? 'active':''; ?>">
-			<a><span class="title">Moje samochody</span></a>
+			<a href="<?= $this->baseUrl.'/samochod/index'; ?>"><span class="title">Moje samochody</span></a>
 		</li>
 	</ul>
 </div>

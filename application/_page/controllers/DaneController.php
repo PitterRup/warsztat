@@ -18,6 +18,9 @@ class DaneController extends PageController {
     
     //wyświetla dane klienta
     public function indexAction() {
+    	$this->_linkScript($this->baseUrl . '/public/template/styles/_admin/table&list.css');
+        $this->_linkScript($this->baseUrl . '/public/template/styles/_admin/form.css');
+        
         $Client = new Client();
         $this->view->data = $Client->getclientdata($this->sesField['id']);
     }

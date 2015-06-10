@@ -19,12 +19,17 @@ class SamochodController extends PageController {
 
     //wyswietla liste samochodów klienta
     public function indexAction() {
+        $this->_linkScript($this->baseUrl . '/public/template/styles/_admin/table&list.css');
+        $this->_linkScript($this->baseUrl . '/public/template/styles/_admin/form.css');
+        
         $Client = new Client();
         $this->view->cars = $Client->carlist($this->sesField['id']);
     }
     
     //wyświetla szczegółowe informacje o samochodzie
     public function getcarAction() {
+        $this->_linkScript($this->baseUrl . '/public/template/styles/_admin/form.css');
+
         $Client = new Client();
         $carid = $this->_getParam('carid');
         if ($carid) {
