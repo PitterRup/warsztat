@@ -121,11 +121,12 @@ class Managerepair extends Basemodel {
     }
 
     public function getrepairslist($mechanikId = null, $date = null) {
-        $m = $mechanikId ? "p.Pracownik_ID='$mechanikId' AND" : '';
+        $mf = $mechanikId ? "naprawa_pracownik p,":'';
+        $m = $mechanikId ? "p.Pracownik_ID='$mechanikId' AND p.Naprawa_ID=n.id AND" : '';
         $n = $date ? "AND n.Data=STR_TO_DATE('$date','%Y-%m-%d')" : '';
         $this->setQuery("SELECT n.*, s.Nazw, a.Model, a.Marka, a.Rok_pr
-            FROM naprawa n, naprawa_pracownik p, stanowisko s, samochod a
-            WHERE $m p.Naprawa_ID=n.id AND n.Stanowisko_ID=s.id AND n.Samochod_ID=a.id $n
+            FROM naprawa n, $mf stanowisko s, samochod a
+            WHERE $m n.Stanowisko_ID=s.id AND n.Samochod_ID=a.id $n
             ORDER BY Data DESC");
         $this->fetchAssocAll();
         return $this->data;
