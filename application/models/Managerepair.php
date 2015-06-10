@@ -92,8 +92,10 @@ class Managerepair extends Basemodel {
         $repair = "INSERT INTO naprawa(Data,Diagnoza,Status,Stanowisko_ID,Samochod_ID,Cena) VALUES (STR_TO_DATE('$date','%Y-%m-%d'),'$info','$status','$placeid','$carid','$price')";
         if ($this->setQuery($repair)) {
             $id = mysql_insert_id();
-            $repairid = "INSERT INTO naprawa_pracownik VALUES ('$id','$mechanicid')";
+            foreach($mechanicid as $mechanic){
+            $repairid = "INSERT INTO naprawa_pracownik VALUES ('$id','$mechanic')";
             $this->setQuery($repairid);
+            }
             return true;
         } else {
             return false;
