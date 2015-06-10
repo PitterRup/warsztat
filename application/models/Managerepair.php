@@ -21,12 +21,12 @@ class Managerepair extends Basemodel {
         }
         return $weekarray;
     }
-
+    
     public function countavailablemechanic() {
         $num = "SELECT COUNT(*) FROM pracownik WHERE Fun_Prac_ID=2";
         if ($this->setQuery($num)) {
             $this->fetchRow();
-            $mechanic = $this->data;
+            $mechanic = $this->data['COUNT(*)'];
         } else {
             return false;
         }
@@ -45,7 +45,7 @@ class Managerepair extends Basemodel {
         $num = "SELECT COUNT(*) FROM stanowisko ";
         if ($this->setQuery($num)) {
             $this->fetchRow();
-            $places = $this->data;
+            $places = $this->data['COUNT(*)'];
         } else {
             return false;
         }
@@ -141,4 +141,21 @@ class Managerepair extends Basemodel {
         $diagnoza = $postData['info'];
         return $this->setQuery("UPDATE naprawa SET Status='$status', Diagnoza='$diagnoza' WHERE id='$repairid'");
     }
+    
+    public function countrepair(){
+        $weekarray=  $this->getweekarray();
+        $repair=array();
+        foreach ( $weekarray as $time){
+        $query="SELECT Count(*) FROM naprawa WHERE Data=STR_TO_DATE('$time','%Y-%m-%d')";
+        if ($this->setQuery($query)) {
+            $this->fetchRow();
+      $repair[]=  $this->data['Count(*)'];
+        }
+        else{
+            return false;
+        }
+        }
+      return $repair;
+    }
+    
 }

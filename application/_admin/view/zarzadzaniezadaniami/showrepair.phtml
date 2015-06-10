@@ -1,0 +1,33 @@
+<p class="h2" style="margin-bottom:50px">Kalendarz napraw</p>
+
+
+
+<ul class="table calendar">
+	<li class="middle">
+		<?php 
+		$t = date("Y-m-d");
+		$t2 = date("Y-m-d", strtotime("$today +1 day"));
+		$t3 = date("Y-m-d", strtotime("$today +2 day"));
+		foreach($this->date as $key=>$days): 
+			$day = $this->_filter->getDayName($days);
+			$repair = $this->repair[$key];
+			if($day!='Niedziela'):
+				?>
+				<div class="col " style="width:131px">
+					<div class="colTitle">
+					<?php
+						if($days==$t) echo 'Dzisiaj';
+						elseif($days==$t2) echo 'Jutro';
+						elseif($days==$t3) echo 'Pojutrze';
+						else echo $this->_filter->convertDate($days);
+					?>
+					</div>
+					<a <?= $empty ? '':'href="'.$this->directoryUrl.'/zarzadzaniezadaniami/getdetails/date/'.$days.'"'; ?>>
+						<span class="dayName"><?= $day ?></span>
+						<span><?= 'Ilość napraw:'.$repair ?></span>
+					</a>
+				</div>
+			<?php endif;
+		endforeach; ?>
+	</li>
+</ul>

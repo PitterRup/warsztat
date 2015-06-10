@@ -95,5 +95,12 @@ class ZarzadzaniezadaniamiController extends AdminController {
         $count = $Manage->getNumRows();
         echo $count>0 ? $rows : '<center class="noResults">Brak samochodów dla tego klienta.</center>';
     }
+    
+    public function showrepairAction(){
+         $this->_linkScript($this->baseUrl . '/public/template/styles/_admin/table&list.css');
+        $Manage = new Managerepair();
+        $this->view->date = $Manage->getweekarray();
+        $this->view->repair=$Manage->countrepair();
+    }
 
 }
