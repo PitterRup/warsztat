@@ -10,6 +10,10 @@
                 <label>Diagnoza: </label>
                 <span class="textLine"><?= strlen($this->repair['Diagnoza'])==0 ? '<span style="color: red">Do ustalenia</span>':$this->repair['Diagnoza']; ?></span>
             </div>
+            <div class="row">
+                <label>Cena: </label>
+                <span class="textLine"><?= $this->repair['Cena']; ?>zł</span>
+            </div>
         </div>
         <div class="group">
             <div class="row">

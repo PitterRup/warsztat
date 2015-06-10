@@ -120,16 +120,19 @@ class ZarzadzaniezadaniamiController extends AdminController {
             $this->view->repair = $Manage->getrepair(null, $repairid);
 
             $date = $this->view->date = substr($this->view->repair['Data'], 0,10);
-            
+
             $availplaces = $Manage->getavailableplaces($date);
             $availmechanics = $Manage->getavailablemechanics($date);
 
             // aktualne stanowisko
             $Managep = new Manageplace;
-            $curplace = $Managep->getplace($id);
+            $curplace = array($Managep->getplace($this->view->repair['Stanowisko_ID']));
+            // print_r($this->view->repair);die;
             // aktualni mechanicy
             $Managem = new Managemechanic;
-            $this->view->curmechanics = $Managem->getrepairmechanics($repairid);
+            $curmechanics = $Managem->getrepairmechanics($repairid);
+            $this->view->curmechanics = array();
+            foreach($curmechanics as $row) $this->view->curmechanics[] = $row['id'];
 
             $this->view->placestable = array_merge($availplaces, $curplace);
             $this->view->mechanicstable = array_merge($availmechanics, $curmechanics);
@@ -137,6 +140,16 @@ class ZarzadzaniezadaniamiController extends AdminController {
         else {
             $postdata = $this->_getPost('dane');
             $date = $this->_getPost('date');
+            $mechanic = is_array($this->_getPost('mechanic')) ? $this->_getPost('mechanic'):array();
+            $oldmechanics = explode(",", $this->_getPost('oldmechanics'));
+            $doUsuniecia = array_diff($oldmechanics, $mechanic);
+            $doDodania = array_diff($mechanic, $oldmechanics);
+            
+            $Managem = new Managemechanic;
+            // usuniecie mechaników z naprawy
+            if(count($doUsuniecia)>0) $Managem->deletefromrepair($repairid, $doUsuniecia);
+            // dodanie mechaników do naprawy
+            if(count($doDodania)) $Managem->addtorepair($repairid, $doDodania);
 
             if(!$Manage->editrepair($postdata, $repairid)) $this->msg(false, "Naprawa nie została zapisana.");
             else $this->msg(true, "Naprawa została zapisana");

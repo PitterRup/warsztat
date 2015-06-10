@@ -48,4 +48,16 @@ class Managemechanic extends Basemodel {
         $this->fetchAssocAll();
         return $this->data;
 	}
+
+	public function deletefromrepair($repairid, $array) {
+		$where = '';
+		foreach($array as $id) $where .= "OR Pracownik_ID='$id' ";
+		$where = substr($where, 3);
+		return $this->setQuery("DELETE FROM naprawa_pracownik WHERE naprawa_ID='$repairid' AND ($where)");
+	}
+	public function addtorepair($repairid, $array) {
+		$where = '';
+		foreach($array as $id) $this->setQuery("INSERT INTO naprawa_pracownik VALUES('$repairid','$id')");
+		return true;
+	}
 }
