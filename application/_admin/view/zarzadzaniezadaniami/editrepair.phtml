@@ -1,0 +1,67 @@
+<div style="padding: 20px">
+    <form action="<?php echo $this->directoryUrl . '/mechanik/editrepair/repairid/'.$this->repairid.'/type/noContent'; ?>" method="POST" class="form saveBoxOn settingsForm">
+        <p class="h3">Edycja naprawy</p>
+        <div class="group">
+            <div class="row">
+                <label>Diagnoza </label>
+                <input type="text" name="dane[info]" value="<?= $this->repair['Diagnoza']; ?>">
+            </div>
+            <div class="row">
+                <label>Status </label>
+                <select name="dane[status]">
+                    <option value="niezdiagnozowany" <?= $this->repair['Status']=='niezdiagnozowany' ? 'selected':''; ?>>niezdiagnozowany</option>
+                    <option value="zdiagnozowany" <?= $this->repair['Status']=='zdiagnozowany' ? 'selected':''; ?>>zdiagnozowany</option>
+                    <option value="naprawiony" <?= $this->repair['Status']=='naprawiony' ? 'selected':''; ?>>naprawiony</option>
+                </select>
+            </div>
+            <div class="row">
+                <label>Cena naprawy <span class="small">gdy nieznana pozostawić puste</span></label>
+                <input type="text" name="price">
+            </div>
+        </div>
+
+        <p class="h4">Lista wolnych mechaników</p>
+        <ul class="table productTable">
+            <li class="naglowek">
+                <div class="col" style="width:60px">id</div>
+                <div class="col" style="width:255px">Imię i nazwisko</div>
+                <div class="col" style="width:180px">PESEL</div>
+                <div class="col" style="width:195px">telefon</div>
+                <div class="col last" style="width:60px">wybierz</div>
+            </li>
+            <?php foreach($this->mechanicstable as $mechanic): ?>
+                <li class="middle">
+                    <div class="col" style="width: 60px;"><?= $mechanic['id']; ?></div>
+                    <div class="col" style="width:255px;"><?= $mechanic['Imie'].' '.$mechanic['Nazw']; ?></div>
+                    <div class="col" style="width:180px; font-size: 14px;"><?= $mechanic['pesel']; ?></div>
+                    <div class="col" style="width:195px; font-size: 14px;"><?= $mechanic['nr_tel']; ?></div>
+                    <div class="col opCol" style="width: 60px"><input type="checkbox" name="mechanic" value="<?= $mechanic['id']; ?>"></div>
+                </li>
+            <?php endforeach; ?>
+        </ul> 
+
+        <p class="h4">Lista wolnych stanowisk</p>
+        <ul class="table productTable" style="margin-bottom: 200px">
+            <li class="naglowek">
+                <div class="col" style="width:60px">id</div>
+                <div class="col" style="width:155px">Nazwa</div>
+                <div class="col" style="width:70px">Ładowność</div>
+                <div class="col" style="width:105px">Wymiary</div>
+                <div class="col" style="width:55px">Tunel</div>
+                <div class="col" style="width:235px">Przeznaczenie</div>
+                <div class="col last" style="width:60px">wybierz</div>
+            </li>
+            <?php foreach($this->placestable as $place): ?>
+                <li class="middle">
+                    <div class="col" style="width: 60px;"><?= $place['id']; ?></div>
+                    <div class="col" style="width:155px;"><?= $place['Nazw']; ?></div>
+                    <div class="col" style="width:70px; font-size: 14px;"><?= $place['ladow']; ?></div>
+                    <div class="col" style="width:105px; font-size: 14px;"><?= $place['wymiary']; ?></div>
+                    <div class="col" style="width:55px; font-size: 14px;"><?= $place['Posiad_tun'] ? 'tak':'nie'; ?></div>
+                    <div class="col" style="width:235px; font-size: 14px;"><?= $place['przezn']; ?></div>
+                    <div class="col opCol" style="width: 60px"><input type="radio" name="place" value="<?= $place['id']; ?>" <?= $place['id']==$this->repair['stanowisko_id'] ? 'checked':''; ?>></div>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    </form>
+</div> 

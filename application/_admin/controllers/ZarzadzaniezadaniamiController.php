@@ -110,4 +110,26 @@ class ZarzadzaniezadaniamiController extends AdminController {
         $this->view->repair=$Manage->countrepair();
     }
 
+    public function editrepairAction() {
+        $repairid = $this->view->repairid = $this->_getParam('repairid');
+        $Manage = new Managerepair();
+        if(!$this->_isPost()) {
+            $this->_headScript($this->baseUrl . '/public/js/_admin/form.js');
+            $this->_linkScript($this->baseUrl . '/public/template/styles/_admin/form.css');
+            $this->_linkScript($this->baseUrl . '/public/template/styles/_admin/table&list.css');
+            $this->view->repair = $Manage->getrepair(null, $repairid);
+
+            $date = $this->view->repair['Data'];
+            $this->view->placestable = $Manage->getavailableplaces($date);
+            $this->view->mechanicstable = $Manage->getavailablemechanics($date);
+        }
+        else {
+            $postdata = $this->_getPost('dane');
+            
+            if(!$Manage->editrepair($postdata, $repairid)) $this->msg(false, "Naprawa nie została zapisana.");
+            else $this->msg(true, "Naprawa została zapisana");
+            
+            $this->_request->goToAddress($this->directoryUrl . '/mechanik/zadanialist/type/msg', 0);
+        }
+    }
 }
