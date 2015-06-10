@@ -34,12 +34,16 @@ class Authorize extends GeneralModelsController {
         $this->login = $this->_getPost('login');
         $pass = $this->_getPost('pass');
 
-        $this->setQuery("SELECT a.*, f.rola, f.permissions, f.id as 'funcId' FROM $this->_name a, $this->_FunPrac f WHERE a.Fun_Prac_ID=f.id AND a.login= BINARY '$this->login' AND a.pass= BINARY '$pass'");
+        if($this->_name=='pracownik') $query = "SELECT a.*, f.rola, f.permissions, f.id as 'funcId' FROM $this->_name a, $this->_FunPrac f WHERE a.Fun_Prac_ID=f.id AND a.login= BINARY '$this->login' AND a.pass= BINARY '$pass'";
+        else $query = "SELECT a.* FROM $this->_name a WHERE a.login= BINARY '$this->login' AND a.pass= BINARY '$pass'";;
+        $this->setQuery($query);
         return ($this->numRows()==1) ? true:false;
     }
 
     public function getData($login) {
-        $this->setQuery("SELECT a.ip, a.phpsessid, f.permissions, f.rola FROM $this->_name a, $this->_FunPrac f WHERE a.Fun_Prac_ID=f.id AND login= BINARY '$login'");
+        if($this->_name=='pracownik') $query = "SELECT a.ip, a.phpsessid, f.permissions, f.rola FROM $this->_name a, $this->_FunPrac f WHERE a.Fun_Prac_ID=f.id AND login= BINARY '$login'";
+        else $query = "SELECT a.ip, a.phpsessid, a.permissions FROM $this->_name a WHERE login= BINARY '$login'";
+        $this->setQuery($query);
         $this->fetchRow();
         return $this->data;
     } 

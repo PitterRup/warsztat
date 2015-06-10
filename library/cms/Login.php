@@ -34,13 +34,14 @@ abstract class Login {
 	}
 
 	public function hasPermission($type) {
-		if($type=='dir') {			
+		if($type=='dir') {
 			if(self::$adminState && Access::getPermission()==2) return true;
 			elseif(self::$userState && Access::getPermission()==1) return true;
 			else return false;
 		}
 		elseif($type=='controller') {
 			$permissions = json_decode(self::$data['permissions']);
+
 			$a = $this->_request->directoryPath();
 			$b = $this->_request->controllerName();
 			return (array_key_exists($a, $permissions)  
