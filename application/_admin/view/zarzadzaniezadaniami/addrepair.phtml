@@ -51,7 +51,7 @@
                     <div class="col" style="width:255px;"><?= $mechanic['Imie'].' '.$mechanic['Nazw']; ?></div>
                     <div class="col" style="width:180px; font-size: 14px;"><?= $mechanic['pesel']; ?></div>
                     <div class="col" style="width:195px; font-size: 14px;"><?= $mechanic['nr_tel']; ?></div>
-                    <div class="col opCol" style="width: 60px"><input type="checkbox" name="mechanic" value="<?= $mechanic['id']; ?>"></div>
+                    <div class="col opCol" style="width: 60px"><input type="checkbox" name="mechanic[]" value="<?= $mechanic['id']; ?>"></div>
                 </li>
             <?php endforeach; ?>
         </ul> 
