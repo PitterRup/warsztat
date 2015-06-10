@@ -21,7 +21,7 @@ class Managerepair extends Basemodel {
         }
         return $weekarray;
     }
-    
+
     public function countavailablemechanic() {
         $num = "SELECT COUNT(*) FROM pracownik WHERE Fun_Prac_ID=2";
         if ($this->setQuery($num)) {
@@ -79,7 +79,7 @@ class Managerepair extends Basemodel {
     }
 
     public function find(&$carinfo, &$clientinfo) {
-        $query = "SELECT * FROM samochod WHERE Marka='" . $carinfo['Marka'] . "' OR Model='" . $carinfo['Model'] . "' OR Rok_pr='" . $carinfo['Rok_pr'] . "' OR Klient_ID=(SELECT id FROM klient WHERE nazw='".$clientinfo."')";
+        $query = "SELECT * FROM samochod WHERE Marka='" . $carinfo['Marka'] . "' OR Model='" . $carinfo['Model'] . "' OR Rok_pr='" . $carinfo['Rok_pr'] . "' OR Klient_ID=(SELECT id FROM klient WHERE nazw='" . $clientinfo . "')";
         if ($this->setQuery($query)) {
             $this->fetchAll();
             return $this->data;
@@ -92,38 +92,37 @@ class Managerepair extends Basemodel {
         $repair = "INSERT INTO naprawa(Data,Diagnoza,Status,Stanowisko_ID,Samochod_ID,Cena) VALUES (STR_TO_DATE('$date','%Y-%m-%d'),'$info','$status','$placeid','$carid','$price')";
         if ($this->setQuery($repair)) {
             $id = mysql_insert_id();
-            foreach($mechanicid as $mechanic){
-            $repairid = "INSERT INTO naprawa_pracownik VALUES ('$id','$mechanic')";
-            $this->setQuery($repairid);
+            foreach ($mechanicid as $mechanic) {
+                $repairid = "INSERT INTO naprawa_pracownik VALUES ('$id','$mechanic')";
+                $this->setQuery($repairid);
             }
             return true;
         } else {
             return false;
         }
     }
-    
-    public function getdetails($date,&$datar,&$mechanicr){
-        $mechanicr=array();
-        $query ="SELECT * FROM `naprawa` JOIN `stanowisko` ON naprawa.Stanowisko_ID= stanowisko.id JOIN `samochod` ON naprawa.Samochod_ID=samochod.id WHERE naprawa.Data=STR_TO_DATE('$date','%Y-%m-%d') ";
-   if ($this->setQuery($query)) {
+
+    public function getdetails($date, &$datar, &$mechanicr) {
+        $mechanicr = array();
+        $query = "SELECT * FROM `naprawa` JOIN `stanowisko` ON naprawa.Stanowisko_ID= stanowisko.id JOIN `samochod` ON naprawa.Samochod_ID=samochod.id WHERE naprawa.Data=STR_TO_DATE('$date','%Y-%m-%d') ";
+        if ($this->setQuery($query)) {
             $this->fetchAll();
-            $datar=$this->data;
-            foreach ($datar as $key=>$num){
-            $mechanic="SELECT * FROM `pracownik` WHERE id=(SELECT Pracownik_ID FROM Naprawa_Pracownik WHERE Naprawa_ID=".$num['id'].")";
-            $this->setQuery($mechanic);
-            $this->fetchAll();
-            $mechanicr[$key]=  $this->data;
+            $datar = $this->data;
+            foreach ($datar as $key => $num) {
+                $mechanic = "SELECT * FROM `pracownik` WHERE id=(SELECT Pracownik_ID FROM Naprawa_Pracownik WHERE Naprawa_ID=" . $num['id'] . ")";
+                $this->setQuery($mechanic);
+                $this->fetchAll();
+                $mechanicr[$key] = $this->data;
             }
             return true;
-        }
-        else{
+        } else {
             return false;
         }
     }
 
-    public function getrepairslist($mechanikId=null, $date=null) {
-        $m = $mechanikId ? "p.Pracownik_ID='$mechanikId' AND":'';
-        $n = $date ? "AND n.Data=STR_TO_DATE('$date','%Y-%m-%d')":'';
+    public function getrepairslist($mechanikId = null, $date = null) {
+        $m = $mechanikId ? "p.Pracownik_ID='$mechanikId' AND" : '';
+        $n = $date ? "AND n.Data=STR_TO_DATE('$date','%Y-%m-%d')" : '';
         $this->setQuery("SELECT n.*, s.Nazw, a.Model, a.Marka, a.Rok_pr
             FROM naprawa n, naprawa_pracownik p, stanowisko s, samochod a
             WHERE $m p.Naprawa_ID=n.id AND n.Stanowisko_ID=s.id AND n.Samochod_ID=a.id $n
@@ -132,8 +131,8 @@ class Managerepair extends Basemodel {
         return $this->data;
     }
 
-    public function getrepair($mechanikId=null, $repairid) {
-        $m = $mechanikId ? "p.Pracownik_ID='$mechanikId' AND":'';
+    public function getrepair($mechanikId = null, $repairid) {
+        $m = $mechanikId ? "p.Pracownik_ID='$mechanikId' AND" : '';
         $this->setQuery("SELECT n.*, s.Nazw, a.*
             FROM naprawa n, naprawa_pracownik p, stanowisko s, samochod a
             WHERE $m p.Naprawa_ID=n.id AND n.Stanowisko_ID=s.id AND n.Samochod_ID=a.id AND n.id='$repairid'");
@@ -146,21 +145,20 @@ class Managerepair extends Basemodel {
         $diagnoza = $postData['info'];
         return $this->setQuery("UPDATE naprawa SET Status='$status', Diagnoza='$diagnoza' WHERE id='$repairid'");
     }
-    
-    public function countrepair(){
-        $weekarray=  $this->getweekarray();
-        $repair=array();
-        foreach ( $weekarray as $time){
-        $query="SELECT Count(*) FROM naprawa WHERE Data=STR_TO_DATE('$time','%Y-%m-%d')";
-        if ($this->setQuery($query)) {
-            $this->fetchRow();
-      $repair[]=  $this->data['Count(*)'];
+
+    public function countrepair() {
+        $weekarray = $this->getweekarray();
+        $repair = array();
+        foreach ($weekarray as $time) {
+            $query = "SELECT Count(*) FROM naprawa WHERE Data=STR_TO_DATE('$time','%Y-%m-%d')";
+            if ($this->setQuery($query)) {
+                $this->fetchRow();
+                $repair[] = $this->data['Count(*)'];
+            } else {
+                return false;
+            }
         }
-        else{
-            return false;
-        }
-        }
-      return $repair;
+        return $repair;
     }
-    
+
 }
