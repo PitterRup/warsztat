@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Czas wygenerowania: 09 Cze 2015, 17:26
+-- Czas wygenerowania: 15 Cze 2015, 19:50
 -- Wersja serwera: 5.5.43-0ubuntu0.14.04.1
 -- Wersja PHP: 5.5.9-1ubuntu4.9
 
@@ -19,6 +19,20 @@ SET time_zone = "+00:00";
 --
 -- Baza danych: `inzynieria`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `czesci`
+--
+
+CREATE TABLE IF NOT EXISTS `czesci` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nazwa` varchar(100) COLLATE utf8_polish_ci NOT NULL,
+  `naprawaID` mediumint(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `naprawaID` (`naprawaID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -69,7 +83,7 @@ CREATE TABLE IF NOT EXISTS `klient` (
 --
 
 INSERT INTO `klient` (`id`, `nazw`, `nip_pesel`, `adr_zameld`, `nr_tel`, `mail`, `war_ubez`, `login`, `pass`, `permissions`, `ip`, `phpsessid`) VALUES
-(1, 'Damian Horyszów', 2147483647, 'Leopoldów 23-456 Północna 4/2', '789-456-789', 'mucha12@mgas.con', 1, 'Damian12', 'damian12', '{"_page":1}', '', '');
+(1, 'Damian Horyszów', 2147483647, 'Leopoldów 23-456 Północna 4/2', '789-456-789', 'mucha12@mgas.con', 1, 'Damian12', 'damian12', '{"_page":1}', '127.0.0.1', '7g44qkr26a28l1hfd496j7cok0');
 
 -- --------------------------------------------------------
 
@@ -88,14 +102,7 @@ CREATE TABLE IF NOT EXISTS `naprawa` (
   PRIMARY KEY (`id`),
   KEY `naprawa_Samochod_FK` (`Samochod_ID`),
   KEY `naprawa_Stanowisko_FK` (`Stanowisko_ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
-
---
--- Zrzut danych tabeli `naprawa`
---
-
-INSERT INTO `naprawa` (`id`, `Data`, `Diagnoza`, `Status`, `Stanowisko_ID`, `Samochod_ID`, `Cena`) VALUES
-(1, '2015-06-09 00:00:00', 'Nie włącza się', 'zdiagnozowany', 2, 1, 550);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -109,13 +116,6 @@ CREATE TABLE IF NOT EXISTS `naprawa_pracownik` (
   PRIMARY KEY (`naprawa_ID`,`Pracownik_ID`),
   KEY `naprawa_Pracownik_Pra_FK` (`Pracownik_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
-
---
--- Zrzut danych tabeli `naprawa_pracownik`
---
-
-INSERT INTO `naprawa_pracownik` (`naprawa_ID`, `Pracownik_ID`) VALUES
-(1, 4);
 
 -- --------------------------------------------------------
 
@@ -149,10 +149,10 @@ CREATE TABLE IF NOT EXISTS `pracownik` (
 --
 
 INSERT INTO `pracownik` (`id`, `Imie`, `Nazw`, `pesel`, `adr_zam`, `nr_tel`, `mail`, `specj`, `dosw_zaw`, `dyspoz`, `obsl_stan`, `Fun_Prac_ID`, `login`, `pass`, `ip`, `phpsessid`) VALUES
-(1, 'janek', 'kowalski', 12341243, NULL, '123345678', NULL, NULL, NULL, 1, 'fd', 1, 'Administrator', 'administrator', '', ''),
+(1, 'janek', 'kowalski', 12341243, NULL, '123345678', NULL, NULL, NULL, 1, 'fd', 1, 'Administrator', 'administrator', '127.0.0.1', 'i36vrtpa2h37m58fqq0af62ql6'),
 (2, 'Patryk', 'Nowak', 98123112345, 'Niemiecka 34/32 22-550 We', '789-574-131', 'fjksa@gsaa.pl', 'administracja', 5, 0, '', 3, 'Janek', 'janek', '', ''),
 (3, 'Daniel', 'Buryło', 98101287654, 'Leopoldów 23-456 Północna 4/2', '789-456-789', 'poipoi@gmail.com', 'administracja', 4, 1, NULL, 3, 'DanielBurylo', 'daniel', '', ''),
-(4, 'Damian', 'Prystupa', 98101287654, 'Niemiecka 34/32 22-550 Werbkowice', '789-456-789', 'mucha12@mgas.con', 'mechanika obrotowa koła', 5, 1, '1,2', 2, 'Prystupa', 'prystupa', '127.0.0.1', 'hb6b4lo131frliijun5e3rek51'),
+(4, 'Damian', 'Prystupa', 98101287654, 'Niemiecka 34/32 22-550 Werbkowice', '789-456-789', 'mucha12@mgas.con', 'mechanika obrotowa koła', 5, 1, '1,2', 2, 'Prystupa', 'prystupa', '', ''),
 (5, 'Andrzej', 'Niedbała', 78945612356, 'Leopoldów 23-456 Północna 4/2', '789-789-789', 'mucha12@mgas.con', 'mechanika', 5, 1, '1,2', 2, 'Niedbała', 'niedbała', '', ''),
 (6, 'Bartek', 'Stanowił', 93123101223, 'Niemiecka 34/32 22-550 Werbkowice', '789-789-789', 'mucha12@mgas.con', 'administracja', 5, 1, NULL, 3, 'Kanabal', '12345', '', '');
 
@@ -214,6 +214,12 @@ INSERT INTO `stanowisko` (`id`, `Nazw`, `ladow`, `wymiary`, `Posiad_tun`, `przez
 --
 -- Ograniczenia dla zrzutów tabel
 --
+
+--
+-- Ograniczenia dla tabeli `czesci`
+--
+ALTER TABLE `czesci`
+  ADD CONSTRAINT `czesci_ibfk_1` FOREIGN KEY (`naprawaID`) REFERENCES `naprawa` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ograniczenia dla tabeli `naprawa`
