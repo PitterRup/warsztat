@@ -15,7 +15,7 @@ class ZarzadzanieklientemController extends AdminController {
 
     public function init() {
         // zdefiniowanie akcji domyślnej
-        // jest wykonywana gdy w adresie nie podany żadnej akcji, a akcja index nie istnieje
+        // jest wykonywana gdy w adresie nie podamy żadnej akcji, a metoda indexAction (akcja index) nie istnieje
         $this->defaultAction = 'customerlist';
     }
 //metoda ospowiada za dodawanie do bazy nowego klienta
@@ -43,15 +43,23 @@ class ZarzadzanieklientemController extends AdminController {
 //metoda dodaje nowy samochód
     public function newcarAction() {
         if (!$this->_isPost()) {
+            // dołączenie do szablonu strony plików stylu i js odpowiedzialnego za formularz
             $this->_headScript($this->baseUrl . '/public/js/_admin/form.js');
             $this->_linkScript($this->baseUrl . '/public/template/styles/_admin/form.css');
+            // przesłanie do widoku zmiennej clientid która przyda się przy dodaniu samochodu do bazy danych
             $this->view->clientid = $this->_getParam('clientid');
         } else {
+            // pobranie danych wysłanych metodą POST
             $postdata = $this->_getPost('dane');
+            // pobranie z paska adresu parametru clientid (wcześniej podaliśmy go do widoku i dołączyliśmy do linku formularza)
+            // w adresie wygląda to mniej więcej tak www.adresstrony.pl/panel/kontroler/akcja/parametr1/wartość1/parametr2/wartość2
+            // czyli nasz adres wygląda warsztat.pitterrup.unixstorm.org/panel/zarzadzanieklientem/newcar/clientid/np.1
             $param = $this->_getParam("clientid");
+            // dołączenie $clientid do danych POST
             $postdata['clientid'] = $param;
 
             $Manage = new Managecustomer();
+            // dodanie samochodu (w argumencie przesyłamy dane z formularza czyli dane POST)
             if (!$Manage->addCar($postdata)) {
                 $this->msg(false, "Samochód nie został dodany.");
                 $this->_request->goToAddress($this->directoryUrl . "/zarzadzanieklientem/newcar/clientid/$param/type/msg", 0);
@@ -63,16 +71,29 @@ class ZarzadzanieklientemController extends AdminController {
     }
 //metoda wyświetla listę klientów
     public function customerlistAction() {
+        // dołączenie do szablonu pliku stylu odpowiedzialnego za tabele
         $this->_linkScript($this->baseUrl . '/public/template/styles/_admin/table&list.css');
+        // $this->baseUrl jest to zmienna frameworka która przechowuje podstawowy adres, czyli jeśli teraz jesteś w warsztat.pitterrup.unixstorm.org/panel/zarzadzanieklientem/customerlist
+        // to $this->baseUrl przechowuje "warsztat.pitterrup.unixstorm.org" 
+        // możesz gdzieś jeszcze spotkać $this->directoryUrl. ona przechowuje adres: "warsztat.pitterrup.unixstorm.org/panel"
 
         $Manage = new Managecustomer();
+        // przesłanie do widoku klientów pobranych z bazy danych
+        // te dane mają formę tablicy czyli coś takiego:
+        // Array(0=>Array("clientID"=>1,"Nazw"=>tomasz kmiecik itd), 2=>Array(dane drugiego klienta), 3=>Array(dane trzeciego) itd);
+        // w widoku odwołujesz się do nich w ten sposób 
+        // echo $this->customers[0]['clientid']; <- to nam wyświetli "1".
+        // celowo nie dałem $this->view->customers ponieważ jesteś w widoku. 
+        // ten kontroler jest obok widoku więc musisz tablice danych po prostu przesłać do widoku
         $this->view->customers = $Manage->getcustomerlist();
     }
 //usuwa klienta
     public function delcustomerAction() {
+        // pobranie z paska adresu id klienta
         $id = $this->_getParam("clientid");
         if ($id) {
             $Manage = new Managecustomer();
+            // usunięcie klienta po id
             if ($Manage->delcustomer($id)) {
                 $this->msg(true, "Klient został usunięty.");
                 $this->_request->goToAddress($this->directoryUrl . "/zarzadzanieklientem/customerlist/type/msg", 0);
@@ -86,12 +107,19 @@ class ZarzadzanieklientemController extends AdminController {
     }
 //metoda edytuje dane klienta
     public function editcustomerAction() {
+        // dołączenie plików do formularza
         $this->_headScript($this->baseUrl . '/public/js/_admin/form.js');
         $this->_linkScript($this->baseUrl . '/public/template/styles/_admin/form.css');
+        // pobranie z paska adresu id klienta
         $id = $this->_getParam("clientid");
         $Manage = new Managecustomer();
+        // sprawdzenie czy próbujemy dostać się do tej akcji po wysłaniu formularza metodą POST czy zwyczajnie w adresie wpisaliśmy
+        // warsztat.pitterrup.unixstorm.org/panel/zarzadzaniekliente/editcustomer/clientid/np.2
+        // $this->_isPost() zwraca "true" jeśli wysłaliśmy formularz metodą POST
         if ($this->_isPost() && $id) {
+            // pobranie danych z formularza
             $data = $this->_getPost('dane');
+            // edycja danych
             if ($Manage->updatecustomer($id, $data)) {
                 $this->msg(true, "Zmiany zostały zapisane.");
             } else {
@@ -99,21 +127,31 @@ class ZarzadzanieklientemController extends AdminController {
             }
             $this->_request->goToAddress($this->directoryUrl . "/zarzadzanieklientem/customerlist/type/msg", 0);
         } else if ($id) {
+            // jeśli nie wysyłaliśmy formularza to wyświetlamy formularz więc pobieramy dane o kliencie z bazy danych
+            // i przesyłamy je do widoku
+            // tym razem dane są w postaci tablicy jednowymiarowej, czyli Array("clientid"=>1, "Nazw"=>"kmiszek piotr" itd);
+            // więc odwołujemy się do nich w widoku poprzez $this->clientdata['clientid'];
             $this->view->clientdata = $Manage->getclient($id);
         } else {
             $this->_request->goToAddress($this->directoryUrl . "/zarzadzanieklientem/customerlist/type/msg", 0);
         }
     }
-//metoda pokazuje informacje o kliencie
+
+    // metoda pokazująca dane o kliencie
     public function showcustomerAction() {
+        // dołaczenie plików stylu dla tabeli i formularza
         $this->_linkScript($this->baseUrl . '/public/template/styles/_admin/table&list.css');
         $this->_linkScript($this->baseUrl . '/public/template/styles/_admin/form.css');
+        // przsłanie do widoku id klienta pobranego z adresu
         $this->view->clientid = $id = $this->_getParam("clientid");
         if ($id) {
             $Manage = new Managecustomer();
+            // pobranie klienta z bazy danych
             $data = $Manage->getclient($id);
+            // pobranie samochodów klienta po id klienta
             $cars = $Manage->getcars($id);
             if ($data) {
+                // ???????? :)
                 $this->view->data = $data;
                 $this->view->cars = $cars;
             } else {

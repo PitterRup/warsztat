@@ -79,6 +79,8 @@ class ZarzadzaniezadaniamiController extends AdminController {
 
         $Managem = new Managemechanic;
         $this->view->mechanics = $Managem->getrepairmechanics($repairid);
+
+        $this->view->czesci = null;
     }
 
     public function findClientAction() {
