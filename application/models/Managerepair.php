@@ -102,6 +102,26 @@ class Managerepair extends Basemodel {
         }
     }
 
+    public function orderparts($repairid, &$data) {
+
+        foreach ($data as $part) {
+            $query = "INSERT INTO czesci(nazwa,naprawaID) VALUES ('$part','$repairid')";
+            if (!$this->setQuery($query)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public function delpart($id) {
+        $query = "DELETE FROM czesci WHERE id='$id'";
+        if ($this->setQuery($query)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function getdetails($date, &$datar, &$mechanicr) {
         $mechanicr = array();
         $query = "SELECT * FROM `naprawa` JOIN `stanowisko` ON naprawa.Stanowisko_ID= stanowisko.id JOIN `samochod` ON naprawa.Samochod_ID=samochod.id WHERE naprawa.Data=STR_TO_DATE('$date','%Y-%m-%d') ";
@@ -121,7 +141,7 @@ class Managerepair extends Basemodel {
     }
 
     public function getrepairslist($mechanikId = null, $date = null) {
-        $mf = $mechanikId ? "naprawa_pracownik p,":'';
+        $mf = $mechanikId ? "naprawa_pracownik p," : '';
         $m = $mechanikId ? "p.Pracownik_ID='$mechanikId' AND p.Naprawa_ID=n.id AND" : '';
         $n = $date ? "AND n.Data=STR_TO_DATE('$date','%Y-%m-%d')" : '';
         $this->setQuery("SELECT n.*, s.Nazw, a.Model, a.Marka, a.Rok_pr
@@ -133,7 +153,7 @@ class Managerepair extends Basemodel {
     }
 
     public function getrepair($mechanikId = null, $repairid) {
-        $mf = $mechanikId ? "naprawa_pracownik p,":'';
+        $mf = $mechanikId ? "naprawa_pracownik p," : '';
         $m = $mechanikId ? "p.Pracownik_ID='$mechanikId' AND p.Naprawa_ID=n.id AND" : '';
         $this->setQuery("SELECT n.*, s.Nazw, a.*
             FROM naprawa n, $mf stanowisko s, samochod a
@@ -147,7 +167,7 @@ class Managerepair extends Basemodel {
         $diagnoza = $postData['info'];
         $price = $postData['price'];
         $stanowisko_id = $postData['place'];
-        $stanowisko = $stanowisko_id ? ", Stanowisko_ID='$stanowisko_id'":'';
+        $stanowisko = $stanowisko_id ? ", Stanowisko_ID='$stanowisko_id'" : '';
 
         return $this->setQuery("UPDATE naprawa SET Status='$status', Diagnoza='$diagnoza', Cena='$price' $stanowisko WHERE id='$repairid'");
     }

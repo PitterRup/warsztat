@@ -18,7 +18,7 @@ class ZarzadzanieklientemController extends AdminController {
         // jest wykonywana gdy w adresie nie podany żadnej akcji, a akcja index nie istnieje
         $this->defaultAction = 'customerlist';
     }
-
+//metoda ospowiada za dodawanie do bazy nowego klienta
     public function newcustomerAction() {
         if (!$this->_isPost()) {
             $this->_headScript($this->baseUrl . '/public/js/_admin/form.js');
@@ -27,8 +27,8 @@ class ZarzadzanieklientemController extends AdminController {
         // po wysłaniu formularza metodą POST
         else {
             $postdata = $this->_getPost('dane');
-            $permissions = '{"_page":1}';
-            $postdata[] = $permissions;
+           // $permissions = '{"_page":1}';
+           // $postdata[] = $permissions;
             $id = 0;
             $Manage = new Managecustomer();
             if (!$Manage->addCustomer($postdata, $id)) {
@@ -40,7 +40,7 @@ class ZarzadzanieklientemController extends AdminController {
             }
         }
     }
-
+//metoda dodaje nowy samochód
     public function newcarAction() {
         if (!$this->_isPost()) {
             $this->_headScript($this->baseUrl . '/public/js/_admin/form.js');
@@ -61,14 +61,14 @@ class ZarzadzanieklientemController extends AdminController {
             }
         }
     }
-
+//metoda wyświetla listę klientów
     public function customerlistAction() {
         $this->_linkScript($this->baseUrl . '/public/template/styles/_admin/table&list.css');
 
         $Manage = new Managecustomer();
         $this->view->customers = $Manage->getcustomerlist();
     }
-
+//usuwa klienta
     public function delcustomerAction() {
         $id = $this->_getParam("clientid");
         if ($id) {
@@ -84,7 +84,7 @@ class ZarzadzanieklientemController extends AdminController {
             $this->_request->goToAddress($this->directoryUrl . "/zarzadzanieklientem/customerlist", 0);
         }
     }
-
+//metoda edytuje dane klienta
     public function editcustomerAction() {
         $this->_headScript($this->baseUrl . '/public/js/_admin/form.js');
         $this->_linkScript($this->baseUrl . '/public/template/styles/_admin/form.css');
@@ -104,7 +104,7 @@ class ZarzadzanieklientemController extends AdminController {
             $this->_request->goToAddress($this->directoryUrl . "/zarzadzanieklientem/customerlist/type/msg", 0);
         }
     }
-
+//metoda pokazuje informacje o kliencie
     public function showcustomerAction() {
         $this->_linkScript($this->baseUrl . '/public/template/styles/_admin/table&list.css');
         $this->_linkScript($this->baseUrl . '/public/template/styles/_admin/form.css');
@@ -123,7 +123,7 @@ class ZarzadzanieklientemController extends AdminController {
             $this->_request->goToAddress($this->directoryUrl . "/zarzadzanieklientem/customerlist", 0);
         }
     }
-
+//metoda pokazuje szczegółowe dane samochodu
     public function showcarAction() {
               $this->_linkScript($this->baseUrl . '/public/template/styles/_admin/form.css');
         $id = $this->_getParam("carid");
@@ -137,7 +137,7 @@ class ZarzadzanieklientemController extends AdminController {
             }
         }
     }
-
+//edycja danych samochodu
     public function editcarAction() {
         $this->_headScript($this->baseUrl . '/public/js/_admin/form.js');
         $this->_linkScript($this->baseUrl . '/public/template/styles/_admin/form.css');
@@ -158,7 +158,7 @@ class ZarzadzanieklientemController extends AdminController {
             $this->_request->goToAddress($this->directoryUrl . "/zarzadzanieklientem/customerlist", 0);
         }
     }
-
+//usuwanie samochodu z bazy danych
     public function delcarAction() {
         $id = $this->_getParam("carid");
         $clientid = $this->_getParam("clientid");
