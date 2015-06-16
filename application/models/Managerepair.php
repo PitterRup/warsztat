@@ -153,13 +153,18 @@ class Managerepair extends Basemodel {
     }
 
     public function getrepair($mechanikId = null, $repairid) {
+        $repair;
         $mf = $mechanikId ? "naprawa_pracownik p," : '';
         $m = $mechanikId ? "p.Pracownik_ID='$mechanikId' AND p.Naprawa_ID=n.id AND" : '';
         $this->setQuery("SELECT n.*, s.Nazw, a.*
             FROM naprawa n, $mf stanowisko s, samochod a
             WHERE $m n.Stanowisko_ID=s.id AND n.Samochod_ID=a.id AND n.id='$repairid'");
         $this->fetchAssocRow();
-        return $this->data;
+        $repair= $this->data;
+        $this->setQuery("SELECT * FROM czesci WHERE naprawaID='$repairid'");
+        $this->fetchAll();
+        $repair['parts']=  $this->data;
+        return $repair;
     }
 
     public function editrepair($postData, $repairid) {

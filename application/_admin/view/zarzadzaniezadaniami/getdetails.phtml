@@ -8,7 +8,7 @@
             </div>
             <div class="row">
                 <label>Diagnoza: </label>
-                <span class="textLine"><?= strlen($this->repair['Diagnoza'])==0 ? '<span style="color: red">Do ustalenia</span>':$this->repair['Diagnoza']; ?></span>
+                <span class="textLine"><?= strlen($this->repair['Diagnoza']) == 0 ? '<span style="color: red">Do ustalenia</span>' : $this->repair['Diagnoza']; ?></span>
             </div>
             <div class="row">
                 <label>Cena: </label>
@@ -70,12 +70,25 @@
                     <div class="col" style="width:180px">PESEL</div>
                     <div class="col" style="width:195px">telefon</div>
                 </li>
-                <?php foreach($this->mechanics as $this->mechanic): ?>
+                <?php foreach ($this->mechanics as $this->mechanic): ?>
                     <li class="middle">
                         <div class="col" style="width: 60px;"><?= $this->mechanic['id']; ?></div>
-                        <div class="col" style="width:320px;"><?= $this->mechanic['Imie'].' '.$this->mechanic['Nazw']; ?></div>
+                        <div class="col" style="width:320px;"><?= $this->mechanic['Imie'] . ' ' . $this->mechanic['Nazw']; ?></div>
                         <div class="col" style="width:180px; font-size: 14px;"><?= $this->mechanic['pesel']; ?></div>
                         <div class="col" style="width:195px; font-size: 14px;"><?= $this->mechanic['nr_tel']; ?></div>
+                    </li>
+                <?php endforeach; ?>
+            </ul> 
+        </div>
+        <div class="group" style="margin-bottom: 100px;">
+            <p class="h3">Zamówione części</p>
+            <ul class="table productTable">
+                <li class="naglowek">
+                    <div class="col" style="width:320px">Nazwa</div>
+                </li>
+                <?php foreach ($this->repair['parts'] as $this->parts): ?>
+                    <li class="middle">
+                        <div class="col" style="width:320px;"><?= $this->parts['nazwa']; ?></div>
                     </li>
                 <?php endforeach; ?>
             </ul> 

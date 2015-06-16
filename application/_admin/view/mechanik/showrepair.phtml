@@ -55,5 +55,19 @@
 			<label>Napęd samochodu: </label>
 			<span class="textLine"><?= $this->repair['Naped']; ?></span>
 		</div>
+                
+                <div class="group" style="margin-bottom: 100px;">
+            <p class="h3">Zamówione części</p>
+            <ul class="table productTable">
+                <li class="naglowek">
+                    <div class="col" style="width:320px">Nazwa</div>
+                </li>
+                <?php foreach ($this->repair['parts'] as $this->parts): ?>
+                    <li class="middle">
+                        <div class="col" style="width:320px;"><?= $this->parts['nazwa']; ?></div>
+                    </li>
+                <?php endforeach; ?>
+            </ul> 
+        </div>
 	</div>
 </div>
