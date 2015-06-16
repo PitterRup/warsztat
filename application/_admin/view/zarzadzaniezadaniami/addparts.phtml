@@ -1,5 +1,11 @@
-<form action="<?= $this->directoryUrl.'/zarzadzaniezadaniami/addparts/repairid/'.$this->repairid.'/type/noContent'; ?>" method="POST">
-    <input type="text" name="data[]">
-    <input type="submit" value="wyslij">
-        
-</form>
+<div style="padding: 20px">
+	<form action="<?= $this->directoryUrl.'/zarzadzaniezadaniami/addparts/repairid/'.$this->repairid.'/type/noContent'; ?>" method="POST" class="form saveBoxOn settingsForm">
+		<p class="h2">Nowy samochód</p>
+		<div class="group">
+			<div class="row">
+				<label>Nazwa części </label>
+				<input type="text" name="data[]">
+			</div>
+		</div>
+	</form>
+</div>

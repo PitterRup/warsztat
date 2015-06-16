@@ -27,7 +27,7 @@ class MechanikController extends AdminController {
     public function showrepairAction() {
         $this->_linkScript($this->baseUrl . '/public/template/styles/_admin/table&list.css');
         $this->_linkScript($this->baseUrl . '/public/template/styles/_admin/form.css');
-        $repairid = $this->_getParam('repairid');
+        $this->view->repairid = $repairid = $this->_getParam('repairid');
         $Manage = new Managerepair();
         $this->view->repair = $Manage->getrepair($this->sesField['id'], $repairid);
     }
@@ -59,21 +59,29 @@ class MechanikController extends AdminController {
             if ($Manage->orderparts($repairid, $data)) {
                 $this->msg(true, "Części zostały zamówione.");
             } else {
-                $this->msg(false, "Wystąpił błąd.");
+                $this->msg(false, "Wystąpił błąd. Części nie zostały zamówione.");
             }
                   $this->_request->goToAddress($this->directoryUrl . '/mechanik/zadanialist/type/msg', 0);
         } else {
-                  $this->view->repairid = $repairid = $this->_getParam('repairid');
+            $this->_headScript($this->baseUrl . '/public/js/_admin/form.js');
+            $this->_linkScript($this->baseUrl . '/public/template/styles/_admin/form.css');
+              $this->view->repairid = $repairid = $this->_getParam('repairid');
         }
   
     }
 
-    public function delparts($partid) {
-        if ($this->_isPost()) {
-            
+    public function delpartAction() {
+        $partid = $this->_getParam('partid');
+        $repairid = $this->_getParam('repairid');
+
+        $Manage = new Managerepair();
+        if ($Manage->delpart($partid)) {
+            $this->msg(true, "Zamówienie zostało anulowane.");
         } else {
-            $this->_request->goToAddress($this->directoryUrl . '/mechanik/zadanialist/type/msg', 0);
+            $this->msg(false, "Wystąpił błąd. Zamówienie nie zostało anulowane.");
         }
+
+        $this->_request->goToAddress($this->directoryUrl . '/mechanik/showrepair/repairid/'.$repairid.'/type/msg', 0);
     }
 
 }

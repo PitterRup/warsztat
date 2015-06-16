@@ -73,14 +73,12 @@ class ZarzadzaniezadaniamiController extends AdminController {
     public function getdetailsAction() {
         $this->_linkScript($this->baseUrl . '/public/template/styles/_admin/table&list.css');
         $this->_linkScript($this->baseUrl . '/public/template/styles/_admin/form.css');
-        $repairid = $this->_getParam('repairid');
+        $this->view->repairid = $repairid = $this->_getParam('repairid');
         $Manage = new Managerepair();
         $this->view->repair = $Manage->getrepair(null, $repairid);
 
         $Managem = new Managemechanic;
         $this->view->mechanics = $Managem->getrepairmechanics($repairid);
-
-        $this->view->czesci = null;
     }
 
     public function findClientAction() {
@@ -173,13 +171,29 @@ class ZarzadzaniezadaniamiController extends AdminController {
             if ($Manage->orderparts($repairid, $data)) {
                 $this->msg(true, "Części zostały zamówione.");
             } else {
-                $this->msg(false, "Wystąpił błąd.");
+                $this->msg(false, "Wystąpił błąd. Części nie zostały zamówione.");
             }
-                  $this->_request->goToAddress($this->directoryUrl . '/zarzadzaniezadaniami/index/type/msg', 0);
+                  $this->_request->goToAddress($this->directoryUrl . '/zarzadzaniezadaniami/getdetails/repairid/'.$repairid.'/type/msg', 0);
         } else {
+                $this->_headScript($this->baseUrl . '/public/js/_admin/form.js');
+            $this->_linkScript($this->baseUrl . '/public/template/styles/_admin/form.css');
                   $this->view->repairid = $repairid = $this->_getParam('repairid');
         }
   
+    }
+
+    public function delpartAction() {
+        $partid = $this->_getParam('partid');
+        $repairid = $this->_getParam('repairid');
+
+        $Manage = new Managerepair();
+        if ($Manage->delpart($partid)) {
+            $this->msg(true, "Zamówienie zostało anulowane.");
+        } else {
+            $this->msg(false, "Wystąpił błąd. Zamówienie nie zostało anulowane.");
+        }
+
+        $this->_request->goToAddress($this->directoryUrl . '/zarzadzaniezadaniami/getdetails/repairid/'.$repairid.'/type/msg', 0);
     }
 
 }

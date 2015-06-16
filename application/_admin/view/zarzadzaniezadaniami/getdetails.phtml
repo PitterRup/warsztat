@@ -81,18 +81,24 @@
                 <?php endforeach; ?>
             </ul> 
         </div>
-        <div class="group" style="margin-bottom: 100px;">
+        
+        <div class="group" style="margin-bottom: 150px;">
             <p class="h3">Zamówione części</p>
             <ul class="table productTable">
                 <li class="naglowek">
-                    <div class="col" style="width:320px">Nazwa</div>
+                    <div class="col" style="width:80px">Id</div>
+                    <div class="col" style="width:620px">Nazwa</div>
+                    <div class="col last" style="width:60px">anuluj</div>
                 </li>
                 <?php foreach ($this->repair['parts'] as $this->parts): ?>
                     <li class="middle">
-                        <div class="col" style="width:320px;"><?= $this->parts['nazwa']; ?></div>
+                        <div class="col" style="width:80px;"><?= $this->parts['id']; ?></div>
+                        <div class="col" style="width:620px;"><?= $this->parts['nazwa']; ?></div>
+                        <div class="col opCol" style="width: 60px"><a href="<?= $this->directoryUrl.'/zarzadzaniezadaniami/delpart/partid/'.$this->parts['id'].'/repairid/'.$this->repairid.'/type/noContent'; ?>" style="margin-top: 12px"><?= $this->buttonListDelete; ?></a></div>
                     </li>
                 <?php endforeach; ?>
             </ul> 
         </div>
+
     </div>
 </div>
